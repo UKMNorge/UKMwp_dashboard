@@ -4,7 +4,7 @@
 		<h4>Fylkeskontakten</h4>
 		<p>Kontakt med fylkeskontakten er veldig viktig, og de kan svare på de fleste spørsmål om UKM.</p>
 		<table border="0" cellpadding="2" cellspacing="0" class="kontaktpersontabell">
-			{% for kontakt in kontaktpersoner %}
+			{% for kontakt in kontakter %}
 			<tr>
 				<td class="img"><img src="{{kontakt.picture}}" width="40" /></td>
 				<td class="navn">{{kontakt.name}}<div class="tittel">{{kontakt.title}}</div></td>

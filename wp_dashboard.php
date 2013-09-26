@@ -18,7 +18,6 @@ require(ABSPATH . 'wp-admin/admin-header.php');
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter());
 
-var_dump($TWIGdata);
 echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
 
 require(ABSPATH . 'wp-admin/admin-footer.php');
