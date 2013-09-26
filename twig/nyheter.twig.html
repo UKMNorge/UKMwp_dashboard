@@ -1,0 +1,15 @@
+<h3>Status serverflytting og -rydding</h3>
+UKM Norge holder nå på å flytte over til ny web-server, og gjennomfører i den anledning en serverrydding. Vi beklager at dette ikke har blitt ferdig tidligere, og jobber på spreng for å få alle tjenester/moduler opp igjen.
+
+<h3>Prioritert liste statusliste</h3>
+Ny sesong er opprettet, og passordliste generert. DVS fylkeskontakter kan snart logge inn og spre passord til lokalkontakter.
+<ol>
+	{% for tjeneste in statusliste %}
+	<li>
+		<div class="icon"><img src="http://ico.ukm.no/circle-{{ icon }}-48.png" /></div>
+		<div class="status">{{ status }}>
+		<div class="title">{{ title }}</div>
+		<div class="issues"><a href="//github.com/UKMNorge/{{ repo }}/issues">Kjente feil / mangler</a></div>
+	</li>
+	{% endfor %}
+</ol>

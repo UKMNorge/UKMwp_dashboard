@@ -16,7 +16,8 @@ require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
 require(ABSPATH . 'wp-admin/admin-header.php');
 
 $TWIGdata = array('site_type' => get_option('site_type'),
-				  'kontakter' => UKMWP_kontakter());
+				  'kontakter' => UKMWP_kontakter(),
+				  'statusliste' => UKMWP_statusliste());
 
 echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
 

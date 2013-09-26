@@ -17,4 +17,59 @@ function UKMWP_kontakter() {
 	}
 	return $kontaktpersoner;		 
 }
+
+
+function UKMWP_statusliste() {
+	$status[] = array(
+					  'title'	=>	'Wordpress dashboard',
+					  'icon'	=>	'blue',
+					  'status'	=> 'Fungerer, mangler innhold',
+					  'repo'	=> 'UKMwp_dashboard'
+				  );
+
+	$status[] = array(
+					  'title'	=>	'Wordpress instrato-meny',
+					  'icon'	=>	'red',
+					  'status'	=> 'Mangler',
+					  'repo'	=> 'UKMinstrato'
+				  );
+
+	$status[] = array(
+					  'title'	=>	'Wordpress ambassadør-meny',
+					  'icon'	=>	'red',
+					  'status'	=> 'Mangler',
+					  'repo'	=> 'UKMambassador'
+				  );
+
+	$status[] = array(
+					  'title'	=>	'Wordpress mønstring',
+					  'icon'	=>	'blue',
+					  'status'	=> 'Mangler, testet OK',
+					  'repo'	=> 'UKMmonstring'
+				  );
+
+	$status[] = array(
+					  'title'	=>	'Rapportsenter',
+					  'icon'	=>	'blue',
+					  'status'	=> 'Mangler, testet OK',
+					  'repo'	=> 'UKMrapporter'
+				  );
+
+	$status[] = array(
+					  'title'	=>	'RAPPORT: statistikk',
+					  'icon'	=>	'red',
+					  'status'	=> 'Virker ikke',
+					  'repo'	=> 'UKMrapporter'
+				  );
+
+	$status[] = array(
+					  'title'	=>	'RAPPORT: alle innslag',
+					  'icon'	=>	'red',
+					  'status'	=> 'Virker ikke',
+					  'repo'	=> 'UKMrapporter'
+				  );
+
+
+	return $status;
+}
 ?>
