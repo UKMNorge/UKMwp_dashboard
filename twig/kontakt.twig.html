@@ -1,17 +1,18 @@
 <div class="changelog">
+	{{ site_type }}
 	{% if site_type == 'lokal' %}
 	<div class="feature-section images-stagger-right">
 		<h4>Fylkeskontakten</h4>
 		<p>Kontakt med fylkeskontakten er veldig viktig, og de kan svare på de fleste spørsmål om UKM.</p>
 		<table border="0" cellpadding="2" cellspacing="0" class="kontaktpersontabell">
-		<?php foreach($kontaktpersoner as $kp) { ?>
+			{% for kontakt in kontaktpersoner %}
 			<tr>
-				<td class="img"><img src="<?= $kp->g('picture')?>" width="40" /></td>
-				<td class="navn"><?= $kp->g('name') ?><div class="tittel"><?= $kp->g('title')?></div></td>
-				<td class="mobil"><?= $kp->g('tlf') ?></td>
-				<td class="e-post"><a href="mailto:<?= $kp->g('email') ?>"><?= $kp->g('email') ?></a></td>
+				<td class="img"><img src="{{kontakt.picture}}" width="40" /></td>
+				<td class="navn">{{kontakt.name}}<div class="tittel">{{kontakt.title}}</div></td>
+				<td class="mobil UKMSMS">{{kontakt.phone}}</td>
+				<td class="e-post"><a href="mailto:{{kontakt.mail}}">{{kontakt.mail}}</a></td>
 			</tr>
-		<?php } ?>
+			{% endfor %}
 		</table>
 	</div>
 	{% endif %}

@@ -10,9 +10,12 @@ require_once(ABSPATH . 'wp-content/plugins/UKMNorge/wp_dashboard.php');
 *******************************************************************
 */
 require_once('UKM/inc/twig-admin.inc.php');
+require_once('UKM/monstring.class.php');
+
 require(ABSPATH . 'wp-admin/admin-header.php');
 
-$TWIGdata = array('site_type' => get_option('site_type'));
+$TWIGdata = array('site_type' => get_option('site_type'),
+				  'kontakter' => UKMWP_kontakter());
 
 echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
 
@@ -376,38 +379,6 @@ if($user_role == 'ukm_jurymedlem'){ ?>
 		</table>
 		<?php } ?>	
 		</div>
-	<?php
-		##############################################################################
-		## KONTAKT
-		} elseif($_GET['tab']=='kontakt') {
-			$m = new monstring(get_option('pl_id'));
-			$fylke = $m->g('fylke_id');
-			
-			$fylkeM = new fylke_monstring($m->g('fylke_id'), get_option('season'));
-			$fylkeM = $fylkeM->monstring_get();
-			$kontaktpersoner = $fylkeM->kontakter();	
-		?>
-		<div class="changelog">
-			<div class="feature-section images-stagger-right">
-				<h4>Fylkeskontakten</h4>
-				<p>Kontakt med fylkeskontakten er veldig viktig, og de kan svare på de fleste spørsmål om UKM.</p>
-				<table border="0" cellpadding="2" cellspacing="0" class="kontaktpersontabell">
-				<?php foreach($kontaktpersoner as $kp) { ?>
-					<tr>
-						<td class="img"><img src="<?= $kp->g('picture')?>" width="40" /></td>
-						<td class="navn"><?= $kp->g('name') ?><div class="tittel"><?= $kp->g('title')?></div></td>
-						<td class="mobil"><?= $kp->g('tlf') ?></td>
-						<td class="e-post"><a href="mailto:<?= $kp->g('email') ?>"><?= $kp->g('email') ?></a></td>
-					</tr>
-				<?php } ?>
-				</table>
-			</div>
-	
-			<div class="feature-section images-stagger-right">
-				<img src="http://om.ukm.no/wp-content/uploads/2010/10/By-ikon-300x300.png" width="200" class="image-50" />
-				<h4>UKM Norge</h4>
-				<p>For tekniske spørsmål og hjelp til arrangørsystemet bør du kontakte <a href="mailto:support@ukm.no">support@ukm.no</a> (464 21 625), mens for generelle henvendelser kan du sende e-post til <a href="mailto:ukm@ukm.no">ukm@ukm.no</a> eller ringe 464 15 500</p>
-			</div>
 	<?php
 		##############################################################################
 		## LOKALMØNSTRINGER
