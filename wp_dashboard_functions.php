@@ -29,8 +29,8 @@ function UKMWP_statusliste() {
 
 	$status[] = array(
 					  'title'	=>	'Wordpress instrato-meny',
-					  'icon'	=>	'red',
-					  'status'	=> 'Mangler',
+					  'icon'	=>	'green',
+					  'status'	=> 'Modul OK, vil fungere så fort Instrato får oppdaterte passordlister',
 					  'repo'	=> 'UKMinstrato'
 				  );
 

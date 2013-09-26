@@ -22,3 +22,19 @@ li.servstatus div.title {
   padding-top: 20px;
   clear: both;
 }
+
+
+.kontaktpersontabell td.navn {
+	width: 200px;
+}
+.kontaktpersontabell td.navn div.tittel{
+	font-size: 12px;
+}
+
+.kontaktpersontabell td.mobil {
+	width: 100px;
+}
+
+.kontaktpersontabell td.epost {
+	width: 250px;
+}
