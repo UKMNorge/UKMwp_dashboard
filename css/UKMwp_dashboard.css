@@ -1,0 +1,24 @@
+div.infos div{
+  float: left;
+  font-weight: bold;
+  padding-top: 4px;
+}
+div.infos div.issues {
+  font-weight: normal;
+  clear: both; 
+}
+li.servstatus img {
+  width: 20px; 
+  margin-top: -4px;
+  margin-right: 4px;
+}
+li.servstatus {
+  clear: both;
+}
+li.servstatus div.title {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0px 0px 4px 0px;
+  padding-top: 20px;
+  clear: both;
+}

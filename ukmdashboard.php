@@ -9,6 +9,7 @@ Author URI: http://mariusmandal.no
 */
 
 add_action( 'admin_init', 'UKMWP_dash' );
+add_action( 'admin_enqueue_scripts', 'UKMWP_dash_scriptsandstyles' );
 
 function UKMWP_dash() {
 	global $wp_version;
@@ -38,4 +39,8 @@ function UKMWP_dash_update() {
 	update_site_option('ukmwp_dash_version', $wp_version);
 }
 
+
+function UKMWP_dash_scriptsandstyles() {
+	wp_enqueue_script('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
+}
 ?>
