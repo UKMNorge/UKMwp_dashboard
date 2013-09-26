@@ -41,6 +41,6 @@ function UKMWP_dash_update() {
 
 
 function UKMWP_dash_scriptsandstyles() {
-	wp_enqueue_script('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
+	wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
 }
 ?>
