@@ -1,0 +1,33 @@
+<script language="javascript">
+	jQuery(document).ready(function(){
+		jQuery('#UKMWP_tabs a').click(function() {
+			jQuery(this).siblings().removeClass('nav-tab-active');
+			jQuery(this).addClass('nav-tab-active');
+			
+			jQuery('#UKMWP_tabcontent > div').hide();
+			jQuery('#UKMWP_tabcontent > div#content_'+jQuery(this).attr('id')).slideDown(200);
+		})
+	});
+</script>
+
+<div class="wrap about-wrap">
+	<h1>Velkommen til UKMs arrangørsystem</h1>
+	<div class="about-text">UKM 2014 medfører store endringer "under panseret". Det vil i tiden frem mot 1. desember dukke opp stadig flere menyvalg.</div>
+		
+	<!-- TABS -->
+	<h2 class="nav-tab-wrapper" id="UKMWP_tabs">
+		<a id="nytt" class="nav-tab ukm nav-tab-active">Hva er nytt?</a>
+		<a id="kontakt" class="nav-tab ukm">Kontakt</a>
+	</h2>	
+
+	<div id="UKMWP_tabcontent">
+		<div id="content_nytt">
+			<h3> Her vil vi komme med nyheter</h3>
+		</div>
+
+		<div id="content_kontakt" style="display:none;">
+			{% embed "kontakt.twig.html" %}{% endembed %}
+		</div>
+	</div>
+
+</div>

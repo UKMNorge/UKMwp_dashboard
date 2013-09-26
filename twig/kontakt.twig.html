@@ -1,0 +1,23 @@
+<div class="changelog">
+	{% if site_type == 'lokal' %}
+	<div class="feature-section images-stagger-right">
+		<h4>Fylkeskontakten</h4>
+		<p>Kontakt med fylkeskontakten er veldig viktig, og de kan svare på de fleste spørsmål om UKM.</p>
+		<table border="0" cellpadding="2" cellspacing="0" class="kontaktpersontabell">
+		<?php foreach($kontaktpersoner as $kp) { ?>
+			<tr>
+				<td class="img"><img src="<?= $kp->g('picture')?>" width="40" /></td>
+				<td class="navn"><?= $kp->g('name') ?><div class="tittel"><?= $kp->g('title')?></div></td>
+				<td class="mobil"><?= $kp->g('tlf') ?></td>
+				<td class="e-post"><a href="mailto:<?= $kp->g('email') ?>"><?= $kp->g('email') ?></a></td>
+			</tr>
+		<?php } ?>
+		</table>
+	</div>
+	{% endif %}
+	<div class="feature-section images-stagger-right">
+		<img src="http://grafikk.ukm.no/profil/ikoner/storby.png" width="200" class="image-50" />
+		<h4>UKM Norge</h4>
+		<p>For tekniske spørsmål og hjelp til arrangørsystemet bør du kontakte <a href="mailto:support@ukm.no">support@ukm.no</a> (464 21 625), mens for generelle henvendelser kan du sende e-post til <a href="mailto:ukm@ukm.no">ukm@ukm.no</a> eller ringe 464 15 500</p>
+	</div>
+</div>
