@@ -1,5 +1,5 @@
 <div class="changelog">
-	{% if kontakter|length > 0 %}
+	{% if site_type == 'kommune' and kontakter|length > 0 %}
 	<div class="feature-section images-stagger-right">
 		<h4>Fylkeskontakten</h4>
 		<p>Kontakt med fylkeskontakten er veldig viktig, og de kan svare på de fleste spørsmål om UKM.</p>
