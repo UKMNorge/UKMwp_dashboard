@@ -11,16 +11,15 @@ require_once(ABSPATH . 'wp-content/plugins/UKMNorge/wp_dashboard.php');
 */
 require_once('UKM/inc/twig-admin.inc.php');
 require_once('UKM/monstring.class.php');
+require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
 
 require(ABSPATH . 'wp-admin/admin-header.php');
 
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter());
 
-echo 'HEEEEI';
 var_dump($TWIGdata);
-echo 'strange';
-//echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
+echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
 
 require(ABSPATH . 'wp-admin/admin-footer.php');
 die();
