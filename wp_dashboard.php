@@ -19,8 +19,8 @@ $TWIGdata = array('site_type' => get_option('site_type'),
 
 echo 'HEEEEI';
 var_dump($TWIGdata);
-
-echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
+echo 'strange';
+//echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
 
 require(ABSPATH . 'wp-admin/admin-footer.php');
 die();
