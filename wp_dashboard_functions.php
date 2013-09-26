@@ -21,6 +21,13 @@ function UKMWP_kontakter() {
 
 function UKMWP_statusliste() {
 	$status[] = array(
+					  'title'	=>	'Wordpress modifikasjoner',
+					  'icon'	=>	'blue',
+					  'status'	=> 'Fungerer, mangler merking av innlegg med innslag',
+					  'repo'	=> 'UKMwp_admin-tweaks'
+				  );
+
+	$status[] = array(
 					  'title'	=>	'Wordpress dashboard',
 					  'icon'	=>	'blue',
 					  'status'	=> 'Fungerer, mangler innhold',
@@ -30,23 +37,24 @@ function UKMWP_statusliste() {
 	$status[] = array(
 					  'title'	=>	'Wordpress instrato-meny',
 					  'icon'	=>	'green',
-					  'status'	=> 'Modul OK, vil fungere så fort Instrato får oppdaterte passordlister',
+					  'status'	=> 'Testet OK! Vil fungere så fort Instrato får oppdaterte passordlister',
 					  'repo'	=> 'UKMinstrato'
 				  );
 
 	$status[] = array(
-					  'title'	=>	'Wordpress ambassadør-meny',
-					  'icon'	=>	'red',
-					  'status'	=> 'Mangler',
-					  'repo'	=> 'UKMambassador'
+					  'title'	=>	'Wordpress mønstring',
+					  'icon'	=>	'green',
+					  'status'	=> 'Testet OK!',
+					  'repo'	=> 'UKMmonstring'
 				  );
 
 	$status[] = array(
-					  'title'	=>	'Wordpress mønstring',
-					  'icon'	=>	'blue',
-					  'status'	=> 'Mangler, testet OK',
-					  'repo'	=> 'UKMmonstring'
+					  'title'	=>	'Materiellbestilling',
+					  'icon'	=>	'red',
+					  'status'	=> 'Ikke testet',
+					  'repo'	=> ''
 				  );
+
 
 	$status[] = array(
 					  'title'	=>	'Rapportsenter',
@@ -67,6 +75,13 @@ function UKMWP_statusliste() {
 					  'icon'	=>	'red',
 					  'status'	=> 'Virker ikke',
 					  'repo'	=> 'UKMrapporter'
+				  );
+
+	$status[] = array(
+					  'title'	=>	'Wordpress ambassadør-meny',
+					  'icon'	=>	'red',
+					  'status'	=> 'Mangler',
+					  'repo'	=> 'UKMambassador'
 				  );
 
 
