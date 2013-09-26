@@ -5,11 +5,13 @@ UKM Norge holder nå på å flytte over til ny web-server, og gjennomfører i de
 Ny sesong er opprettet, og passordliste generert. DVS fylkeskontakter kan snart logge inn og spre passord til lokalkontakter.
 <ol>
 	{% for tjeneste in statusliste %}
-	<li>
-		<div class="icon"><img src="http://ico.ukm.no/circle-{{ tjeneste.icon }}-48.png" /></div>
-		<div class="status">{{ tjeneste.status }}</div>
+	<li class="servstatus">
 		<div class="title">{{ tjeneste.title }}</div>
-		<div class="issues"><a href="//github.com/UKMNorge/{{ tjeneste.repo }}/issues">Kjente feil / mangler</a></div>
+		<div class="infos">
+			<div class="icon"><img src="http://ico.ukm.no/circle-{{ tjeneste.icon }}-48.png" /></div>
+			<div class="status">{{ tjeneste.status }}</div>
+			<div class="issues"><a href="//github.com/UKMNorge/{{ tjeneste.repo }}/issues">Kjente feil / mangler</a></div>
+		</div>
 	</li>
 	{% endfor %}
 </ol>
