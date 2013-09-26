@@ -6,10 +6,10 @@ Ny sesong er opprettet, og passordliste generert. DVS fylkeskontakter kan snart 
 <ol>
 	{% for tjeneste in statusliste %}
 	<li>
-		<div class="icon"><img src="http://ico.ukm.no/circle-{{ icon }}-48.png" /></div>
-		<div class="status">{{ status }}</div>
-		<div class="title">{{ title }}</div>
-		<div class="issues"><a href="//github.com/UKMNorge/{{ repo }}/issues">Kjente feil / mangler</a></div>
+		<div class="icon"><img src="http://ico.ukm.no/circle-{{ tjeneste.icon }}-48.png" /></div>
+		<div class="status">{{ tjeneste.status }}</div>
+		<div class="title">{{ tjeneste.title }}</div>
+		<div class="issues"><a href="//github.com/UKMNorge/{{ tjeneste.repo }}/issues">Kjente feil / mangler</a></div>
 	</li>
 	{% endfor %}
 </ol>
