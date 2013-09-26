@@ -10,7 +10,7 @@ function UKMWP_kontakter() {
 	foreach($kpobjekter as $kp) {
 		$kparray = array('picture' 	=> $kp->g('picture'),
 						 'name'		=> $kp->g('name'),
-						 'phone'	=> $kp->g('tlf')
+						 'phone'	=> $kp->g('tlf'),
 						 'mail'		=> $kp->g('email'),
 						 'title'	=> $kp->g('title'));
 		$kontaktpersoner[] = $kparray;
