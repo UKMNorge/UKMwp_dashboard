@@ -58,10 +58,16 @@ function UKMWP_statusliste() {
 	$status[] = array(
 					  'title'	=>	'Materiellbestilling',
 					  'icon'	=>	'green',
-					  'status'	=> 'Ikke testet',
+					  'status'	=> 'Testet OK',
 					  'repo'	=> ''
 				  );
 
+	$status[] = array(
+					  'title'	=>	'Passordliste',
+					  'icon'	=>	'red',
+					  'status'	=> 'Virker midlertidig (skal flyttes til WP)',
+					  'repo'	=> 'UKMpassord'
+				  );
 
 	$status[] = array(
 					  'title'	=>	'Rapportsenter',
@@ -84,12 +90,6 @@ function UKMWP_statusliste() {
 					  'repo'	=> 'UKMrapporter'
 				  );
 				  
-	$status[] = array(
-					  'title'	=>	'Passordliste',
-					  'icon'	=>	'red',
-					  'status'	=> 'Virker midlertidig (skal flyttes til WP)',
-					  'repo'	=> 'UKMpassord'
-				  );
 
 	return $status;
 }
