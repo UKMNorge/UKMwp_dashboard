@@ -47,10 +47,17 @@ function UKMWP_statusliste() {
 					  'status'	=> 'Testet OK!',
 					  'repo'	=> 'UKMmonstring'
 				  );
+				  
+	$status[] = array(
+					  'title'	=>	'Wordpress ambassadør-meny',
+					  'icon'	=>	'green',
+					  'status'	=> 'Fungerer',
+					  'repo'	=> 'UKMambassador'
+				  );
 
 	$status[] = array(
 					  'title'	=>	'Materiellbestilling',
-					  'icon'	=>	'red',
+					  'icon'	=>	'green',
 					  'status'	=> 'Ikke testet',
 					  'repo'	=> ''
 				  );
@@ -76,14 +83,13 @@ function UKMWP_statusliste() {
 					  'status'	=> 'Virker ikke',
 					  'repo'	=> 'UKMrapporter'
 				  );
-
+				  
 	$status[] = array(
-					  'title'	=>	'Wordpress ambassadør-meny',
+					  'title'	=>	'Passordliste',
 					  'icon'	=>	'red',
-					  'status'	=> 'Mangler',
-					  'repo'	=> 'UKMambassador'
+					  'status'	=> 'Virker midlertidig (skal flyttes til WP)',
+					  'repo'	=> 'UKMpassord'
 				  );
-
 
 	return $status;
 }
