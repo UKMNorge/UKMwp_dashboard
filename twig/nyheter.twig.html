@@ -1,17 +1,10 @@
-<h3>Status serverflytting og -rydding</h3>
-UKM Norge holder nå på å flytte over til ny web-server, og gjennomfører i den anledning en serverrydding. Vi beklager at dette ikke har blitt ferdig tidligere, og jobber på spreng for å få alle tjenester/moduler opp igjen.
+<div class="changelog">
+	<h3>Vi har ryddet og flyttet funksjoner</h3>
 
-<h3>Prioritert liste statusliste</h3>
-Ny sesong er opprettet, og passordliste generert. DVS fylkeskontakter kan snart logge inn og spre passord til lokalkontakter.
-<ol>
-	{% for tjeneste in statusliste %}
-	<li class="servstatus">
-		<div class="title">{{ tjeneste.title }}</div>
-		<div class="infos">
-			<div class="icon"><img src="http://ico.ukm.no/circle-{{ tjeneste.icon }}-48.png" /></div>
-			<div class="status">{{ tjeneste.status }}</div>
-			<div class="issues"><a href="//github.com/UKMNorge/{{ tjeneste.repo }}/issues">Kjente feil / mangler</a></div>
-		</div>
-	</li>
-	{% endfor %}
-</ol>
+	<div class="feature-section images-stagger-right">
+		<img alt="" src="//ukm.no/wp-content/plugins/UKMwp_dashboard/img/nytt-menyelementer.png" class="image-66" />
+		<h4>Ambassadører, passordlister og designgenerator</h4>
+		<p>For å gjøre det enklere å finne frem har vi nå ryddet intranettet, slik at fanen UKM for arrangører kun inneholder nyheter og informasjon fra UKM Norge. All funksjonalitet er flyttet inn i Wordpress (hvor du er nå).</p>
+		<p>Ambassadører, passordlister (kun for fylkeskontakter) og designgeneratoren har blitt flyttet til hver sitt menyelement, som du finner til venstre på denne siden.</p>
+	</div>
+</div>
