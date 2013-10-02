@@ -41,12 +41,6 @@ function UKMWP_statusliste() {
 					  'repo'	=> 'UKMinstrato'
 				  );
 
-	$status[] = array(
-					  'title'	=>	'Wordpress mønstring',
-					  'icon'	=>	'green',
-					  'status'	=> 'Testet OK!',
-					  'repo'	=> 'UKMmonstring'
-				  );
 				  
 	$status[] = array(
 					  'title'	=>	'Wordpress ambassadør-meny',
@@ -64,9 +58,17 @@ function UKMWP_statusliste() {
 
 	$status[] = array(
 					  'title'	=>	'Passordliste',
-					  'icon'	=>	'red',
-					  'status'	=> 'Virker midlertidig (skal flyttes til WP)',
+					  'icon'	=>	'green',
+					  'status'	=> 'Testet OK',
 					  'repo'	=> 'UKMpassord'
+				  );
+
+
+	$status[] = array(
+					  'title'	=>	'Wordpress mønstring',
+					  'icon'	=>	'red',
+					  'status'	=> 'Fungerer ikke!',
+					  'repo'	=> 'UKMmonstring'
 				  );
 
 	$status[] = array(
