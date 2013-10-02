@@ -9,8 +9,8 @@ function UKMWP_statusliste() {
 
 	$status[] = array(
 					  'title'	=>	'Wordpress dashboard',
-					  'icon'	=>	'blue',
-					  'status'	=> 'Fungerer, mangler innhold',
+					  'icon'	=>	'green',
+					  'status'	=> 'Testet OK',
 					  'repo'	=> 'UKMwp_dashboard'
 				  );
 
