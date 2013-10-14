@@ -17,17 +17,12 @@
 	<!-- TABS -->
 	<h2 class="nav-tab-wrapper" id="UKMWP_tabs">
 		<a id="nytt" class="nav-tab ukm nav-tab-active">Hva er nytt?</a>
-		<a id="status" class="nav-tab ukm">Status</a>
 		<a id="kontakt" class="nav-tab ukm">Kontakt</a>
 	</h2>	
 
 	<div id="UKMWP_tabcontent">
 		<div id="content_nytt">
 			{% embed "nyheter.twig.html" %}{% endembed %}
-		</div>
-
-		<div id="content_status" style="display:none;">
-			{% embed "status.twig.html" %}{% endembed %}
 		</div>
 
 		<div id="content_kontakt" style="display:none;">

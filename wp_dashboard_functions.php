@@ -1,6 +1,4 @@
 <?php
-require_once('wp_dashboard_status.php');
-
 function UKMWP_kontakter() {
 	$m = new monstring(get_option('pl_id'));
 	$fylke = $m->g('fylke_id');
