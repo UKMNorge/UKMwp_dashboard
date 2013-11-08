@@ -16,7 +16,7 @@ require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
 require(ABSPATH . 'wp-admin/admin-header.php');
 
 $MESSAGES = array();
-$MESSAGES = do_action('UKMWPDASH_collect_infos', $MESSAGES);
+$MESSAGES = do_action('UKMWPDASH_message_collector', $MESSAGES);
 
 var_dump($MESSAGES);
 
