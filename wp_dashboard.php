@@ -19,7 +19,8 @@ $MESSAGES = array();
 $MESSAGES = apply_filters('UKMWPDASH_messages', $MESSAGES);
 
 $TWIGdata = array('site_type' => get_option('site_type'),
-				  'kontakter' => UKMWP_kontakter()
+				  'kontakter' => UKMWP_kontakter(),
+				  'messages'  => $MESSAGES,
 				  );
 
 echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
