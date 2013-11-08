@@ -18,8 +18,6 @@ require(ABSPATH . 'wp-admin/admin-header.php');
 $MESSAGES = array();
 $MESSAGES = apply_filters('UKMWPDASH_messages', $MESSAGES);
 
-var_dump($MESSAGES);
-
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter()
 				  );

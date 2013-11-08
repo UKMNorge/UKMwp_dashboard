@@ -1,0 +1,6 @@
+{% for message in messages %}
+	<div class="alert {{message.level}} span9">
+		<h4>{{message.header}}</h4>
+		<p>{{message.body}}</p>
+	</div>
+{% endfor %}
