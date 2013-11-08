@@ -15,8 +15,10 @@ require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
 
 require(ABSPATH . 'wp-admin/admin-header.php');
 
-do_action('UKMWPDASH_collect_infos');
+$MESSAGES = array();
+$MESSAGES = do_action('UKMWPDASH_collect_infos', $MESSAGES);
 
+var_dump($MESSAGES);
 
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter()
