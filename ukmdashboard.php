@@ -8,6 +8,10 @@ Version: 1.0
 Author URI: http://mariusmandal.no
 */
 
+if(is_admin()) {
+	var_dump( get_current_screen() );
+}
+
 add_action( 'admin_init', 'UKMWP_dash' );
 add_action( 'admin_enqueue_scripts', 'UKMWP_dash_scriptsandstyles' );
 
