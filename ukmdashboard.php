@@ -41,14 +41,13 @@ function UKMWP_dash_update() {
 
 
 function UKMWP_dash_scriptsandstyles() {
-	if(is_admin()) {
-		var_dump( get_current_screen() );
-	}
-
-	wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
+	$screen = get_current_screen();
 	
-	wp_enqueue_script('bootstrap_js');
-	wp_enqueue_style('bootstrap_css');
-
+	if( $screen->base == 'dashboard' ) {
+		wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
+		
+		wp_enqueue_script('bootstrap_js');
+		wp_enqueue_style('bootstrap_css');
+	}
 }
 ?>
