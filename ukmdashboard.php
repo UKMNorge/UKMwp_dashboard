@@ -8,10 +8,6 @@ Version: 1.0
 Author URI: http://mariusmandal.no
 */
 
-if(is_admin()) {
-	var_dump( get_current_screen() );
-}
-
 add_action( 'admin_init', 'UKMWP_dash' );
 add_action( 'admin_enqueue_scripts', 'UKMWP_dash_scriptsandstyles' );
 
@@ -45,6 +41,10 @@ function UKMWP_dash_update() {
 
 
 function UKMWP_dash_scriptsandstyles() {
+	if(is_admin()) {
+		var_dump( get_current_screen() );
+	}
+
 	wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
 	
 	wp_enqueue_script('bootstrap_js');
