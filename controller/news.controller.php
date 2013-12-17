@@ -1,7 +1,7 @@
 <?php
 /// CONFIG
 $ID_ARRANGOR = 881;
-
+$TWIGdata['image_path'] = 'http://arrangor.ukm.no/';
 
 require_once('WPOO/WPOO/Post.php');
 require_once('WPOO/WPOO/Author.php');
@@ -45,6 +45,11 @@ if(isset($_GET['post'])) {
 	foreach( $posts as $key => $post ) {
 		the_post();
 		$wpoo = new WPOO_Post( $post );
+		
+		$wpoo->image->url = str_replace('/wp-content/uploads/', 
+										'/wp-content/blogs.dir/'.$ID_ARRANGOR.'/files/',
+										$wpoo->image->url
+										);
 		$TWIGdata['news'][] = $wpoo;
 	}
 }
