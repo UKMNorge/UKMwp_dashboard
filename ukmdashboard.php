@@ -18,27 +18,6 @@ if(is_admin()) {
 	add_filter( 'posts_results', 'blogid_query_posts_results', 10, 2 );
 }
 
-
-function blogid_query_set_blog_id( $query ) {
-	global $wpdb;
-	if ( isset($query->query_vars['blogid']) && $query->query_vars['blogid'] != $wpdb->blogid ){
-		$query->original_blog_id = $wpdb->blogid;
-		$wpdb->set_blog_id( $query->query_vars['blogid'] );
-	}
-}
-function blogid_query_restore_blog_id( $query ) {
-	global $wpdb;	
-	if ( isset($query->query_vars['blogid']) && isset($query->original_blog_id) )
-		$wpdb->set_blog_id( $query->original_blog_id );
-}
-
-function blogid_query_posts_results( $posts, $query ) {
-	blogid_query_restore_blog_id( $query );
-	return $posts;
-}
-
-
-
 function UKMWP_dash() {
 	global $wp_version;
 	$wpdash_version = get_site_option('ukmwp_dash_version');
