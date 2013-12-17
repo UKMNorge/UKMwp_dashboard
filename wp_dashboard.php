@@ -11,7 +11,7 @@ require_once(ABSPATH . 'wp-content/plugins/UKMNorge/wp_dashboard.php');
 */
 global $current_user;
 
-update_user_option($current_user, 'admin_color', 'light', true);
+update_user_option($current_user->ID, 'admin_color', 'light', true);
 
 require_once('UKM/inc/twig-admin.inc.php');
 require_once('UKM/monstring.class.php');
