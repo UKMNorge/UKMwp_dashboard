@@ -46,7 +46,7 @@ if(isset($_GET['post'])) {
 		the_post();
 		$wpoo = new WPOO_Post( $post );
 		
-		$wpoo->image->url = str_replace('/wp-content/uploads/', 
+		$wpoo->image->url = str_replace('/arrangor/wp-content/uploads/', 
 										'/wp-content/blogs.dir/'.$ID_ARRANGOR.'/files/',
 										$wpoo->image->url
 										);
