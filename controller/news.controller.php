@@ -56,6 +56,11 @@ if(isset($_GET['post'])) {
 										'/wp-content/blogs.dir/'.$ID_ARRANGOR.'/files/',
 										$wpoo->image->url
 										);
+		global $blog_id;
+		$wpoo->image->url = str_replace('/blogs.dir/'.$blog_id.'/files/', 
+										'/wp-content/blogs.dir/'.$ID_ARRANGOR.'/files/',
+										$wpoo->image->url
+										);
 		$TWIGdata['news'][] = $wpoo;
 	}
 }
