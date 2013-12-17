@@ -46,10 +46,14 @@ if(isset($_GET['post'])) {
 		the_post();
 		$wpoo = new WPOO_Post( $post );
 		
-		$wpoo->image->url = str_replace('/arrangor/wp-content/uploads/', 
+		echo 'TEST '. $post->ID ."\r\n";
+		echo $wpoo->image->url ."\r\n";
+		
+		$wpoo->image->url = str_replace('/wp-content/uploads/', 
 										'/wp-content/blogs.dir/'.$ID_ARRANGOR.'/files/',
 										$wpoo->image->url
 										);
+		echo $wpoo->image->url ."\r\n";
 		$TWIGdata['news'][] = $wpoo;
 	}
 }
