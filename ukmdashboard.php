@@ -11,6 +11,34 @@ Author URI: http://mariusmandal.no
 add_action( 'admin_init', 'UKMWP_dash' );
 add_action( 'admin_enqueue_scripts', 'UKMWP_dash_scriptsandstyles' );
 
+if(is_admin()) {
+	add_action( 'pre_get_posts', 'blogid_query_set_blog_id' );
+	add_action( 'loop_start', 'blogid_query_set_blog_id' );
+	add_action( 'loop_end', 'blogid_query_restore_blog_id' );
+	add_filter( 'posts_results', 'blogid_query_posts_results', 10, 2 );
+}
+
+
+function blogid_query_set_blog_id( $query ) {
+	global $wpdb;
+	if ( isset($query->query_vars['blogid']) && $query->query_vars['blogid'] != $wpdb->blogid ){
+		$query->original_blog_id = $wpdb->blogid;
+		$wpdb->set_blog_id( $query->query_vars['blogid'] );
+	}
+}
+function blogid_query_restore_blog_id( $query ) {
+	global $wpdb;	
+	if ( isset($query->query_vars['blogid']) && isset($query->original_blog_id) )
+		$wpdb->set_blog_id( $query->original_blog_id );
+}
+
+function blogid_query_posts_results( $posts, $query ) {
+	blogid_query_restore_blog_id( $query );
+	return $posts;
+}
+
+
+
 function UKMWP_dash() {
 	global $wp_version;
 	$wpdash_version = get_site_option('ukmwp_dash_version');
@@ -46,8 +74,8 @@ function UKMWP_dash_scriptsandstyles() {
 	if( $screen->base == 'dashboard' ) {
 		wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
 		
-		wp_enqueue_script('bootstrap_js');
-		wp_enqueue_style('bootstrap_css');
+		wp_enqueue_script('WPbootstrap3_js');
+		wp_enqueue_style('WPbootstrap3_css');
 	}
 }
 ?>

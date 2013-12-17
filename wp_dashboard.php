@@ -9,6 +9,10 @@ require_once(ABSPATH . 'wp-content/plugins/UKMNorge/wp_dashboard.php');
 -------------
 *******************************************************************
 */
+global $current_user;
+
+update_user_option($current_user, 'admin_color', 'light', true);
+
 require_once('UKM/inc/twig-admin.inc.php');
 require_once('UKM/monstring.class.php');
 require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
@@ -18,10 +22,17 @@ require(ABSPATH . 'wp-admin/admin-header.php');
 $MESSAGES = array();
 $MESSAGES = apply_filters('UKMWPDASH_messages', $MESSAGES);
 
+foreach($MESSAGES as $key => $MESSAGE) {
+	if($MESSAGE['level'] == 'alert-error')
+		$MESSAGES[$key]['level'] = 'alert-danger';
+}
+
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter(),
 				  'messages'  => $MESSAGES,
 				  );
+
+require_once(dirname(__FILE__).'/controller/news.controller.php');
 
 echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
 

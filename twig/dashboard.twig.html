@@ -10,26 +10,62 @@
 	});
 </script>
 
-<div class="wrap about-wrap">
-	<h1>Velkommen til UKMs arrangørsystem</h1>
-	<div class="about-text">UKM 2014 medfører store endringer "under panseret". <br />Det meste ser likt ut som i fjor :-)</div>
+<div class="wrap" id="UKMWP_wrapper">
+	<h1>
+		UKM arrangørsystem
+		{% if post is defined %}
+			<small><a href="index.php">tilbake til forsiden</a></small>
+		{% endif %}
+	</h1>
 
-	{% embed "messages.twig.html" %}{% endembed %}
-
-	<!-- TABS -->
-	<h2 class="nav-tab-wrapper" id="UKMWP_tabs">
-		<a id="nytt" class="nav-tab ukm nav-tab-active">Hva er nytt?</a>
-		<a id="kontakt" class="nav-tab ukm">Kontakt</a>
-	</h2>	
-
-	<div id="UKMWP_tabcontent">
-		<div id="content_nytt">
-			{% embed "nyheter.twig.html" %}{% endembed %}
+	{% if post is defined %}
+		<div class="col-xs-12">
+			{% embed "post.twig.html" %}{% endembed %}
 		</div>
-
-		<div id="content_kontakt" style="display:none;">
-			{% embed "kontakt.twig.html" %}{% endembed %}
+	{% else %}
+	
+		<div class="wpdashright pull-right col-xs-12 col-sm-12 col-md-4 well" id="wp_dash_messages">
+			<span class="header">Meldinger</span>
+			{% embed "messages.twig.html" %}{% endembed %}
 		</div>
-	</div>
+	
+		<div class="col-xs-12 col-md-8" id="UKMWP_tabscontainer">
+			<!-- TABS -->
+			<h2 class="nav-tab-wrapper" id="UKMWP_tabs">
+				<a id="nytt" class="nav-tab ukm nav-tab-active">Nyheter fra UKM Norge til lokalkontaktene</a>
+				<a id="kontakt" class="nav-tab ukm">Support</a>
+			</h2>
 
+			<div id="UKMWP_tabcontent">
+				<div id="content_nytt">
+					{% for post in news %}
+						<div class="col-xs-6 col-sm-4">
+							{% embed "news.twig.html" %}{% endembed %}
+						</div>
+						{% if loop.index is divisibleby(3) %}
+							<div class="clearfix visible-sm visible-md visible-lg"></div>
+						{% endif %}
+						{% if loop.index is divisibleby(2) %}
+							<div class="clearfix visible-xs"></div>
+						{% endif %}
+					{% endfor %}
+					
+					<div class="cleafix"></div>
+					{% if pagination_prev is defined %}
+						<a href="?pagination={{pagination_prev}}" class="btn btn-default pull-left">Nyere saker</a>
+					{% endif %}
+					
+					{% if pagination_next is defined %}
+						<a href="?pagination={{pagination_next}}" class="btn btn-default pull-right">Eldre saker</a>
+					{% endif %}
+					<div class="cleafix"></div>
+				</div>
+		
+				<div id="content_kontakt" style="display:none;">
+					{% embed "kontakt.twig.html" %}{% endembed %}
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	{% endif %}
 </div>

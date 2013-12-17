@@ -1,7 +1,9 @@
 {% for message in messages %}
-	<div class="alert {{message.level}} span11">
+	<div class="alert {{message.level}}">
 		<h4>{{message.header}}</h4>
 		<p>{{message.body}}</p>
 	</div>
+{% else %}
+	<p>Ingen meldinger</p>
 {% endfor %}
 <div class="clearfix"></div>
