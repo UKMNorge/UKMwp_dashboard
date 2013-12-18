@@ -6,6 +6,7 @@ $TWIGdata['image_path'] = 'http://arrangor.ukm.no/';
 require_once('WPOO/WPOO/Post.php');
 require_once('WPOO/WPOO/Author.php');
 
+/*
 add_action( 'pre_get_posts', 'blogid_query_set_blog_id' );
 add_action( 'loop_start', 'blogid_query_set_blog_id' );
 add_action( 'loop_end', 'blogid_query_restore_blog_id' );
@@ -30,17 +31,19 @@ function blogid_query_posts_results( $posts, $query ) {
 	return $posts;
 }
 
+*/
 
 
+switch_to_blog($ID_ARRANGOR);
 if(isset($_GET['post'])) {
-	$posts = query_posts( 'blogid='.$ID_ARRANGOR.'&p='.$_GET['post'] );
+	$posts = query_posts( 'p='.$_GET['post'] );
 	$post = $posts[0];
 	the_post();
-	$TWIGdata['post'] = new WPOO_Post( $post );	
+	$TWIGdata['post'] = new WPOO_Post( $post );
 } else {
 	$page = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 	$limit = 12;
-	$posts = query_posts( 'blogid='.$ID_ARRANGOR.'&cat=-2&post_status=publish&posts_per_page='.$limit.'&paged='.$page );
+	$posts = query_posts( 'cat=-2&post_status=publish&posts_per_page='.$limit.'&paged='.$page );
 	
 	if(sizeof($posts) == $limit)
 		$TWIGdata['pagination_next'] = $page+1;
@@ -64,3 +67,4 @@ if(isset($_GET['post'])) {
 		$TWIGdata['news'][] = $wpoo;
 	}
 }
+restore_current_blog()
