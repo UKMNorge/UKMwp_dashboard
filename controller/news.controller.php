@@ -25,20 +25,7 @@ if(isset($_GET['post'])) {
 	global $post;
 	foreach( $posts as $key => $post ) {
 		the_post();
-		$wpoo = new WPOO_Post( $post );
-		
-/*
-		$wpoo->image->url = str_replace('/wp-content/uploads/', 
-										'/wp-content/blogs.dir/'.$ID_ARRANGOR.'/files/',
-										$wpoo->image->url
-										);
-		global $blog_id;
-		$wpoo->image->url = str_replace('/blogs.dir/'.$blog_id.'/files/', 
-										'/wp-content/blogs.dir/'.$ID_ARRANGOR.'/files/',
-										$wpoo->image->url
-										);
-*/
-		$TWIGdata['news'][] = $wpoo;
+		$TWIGdata['news'][] = new WPOO_Post( $post );
 	}
 }
 restore_current_blog();
