@@ -1,0 +1,84 @@
+<h1>Dokumenter for UKM-arrangører</h1>
+<p class="lead">På denne siden finner du diverse viktige dokumenter for UKM-arrangører</p>
+
+<div class="pull-right col-xs-5" style="text-align:center;">
+	<h2>Arrangørhåndboken</h2>
+	<a href="http://ukm.no/arrangor/wp-content/blogs.dir/881/files/2013/08/UKMArrang%C3%B8rH%C3%A5ndbok-lett.pdf" target="_blank">
+		<img src="http://ukm.no/arrangor/files/2013/12/Screenshot-2013-12-18-14.18.08-221x300.png" /><br />
+		Åpne som PDF
+	</a>
+</div>
+
+<ol class="list-unstyled">
+	<li>
+		<a href="http://ukm.no/arrangor/wp-content/blogs.dir/881/files/2013/08/Strategi-og-handlingsplan.pdf" target="_blank">
+			Strategi- og handlingsplan
+		</a>
+	</li>
+	<li>
+		<a href="http://ukm.no/arrangor/wp-content/blogs.dir/881/files/2013/12/Risikoh%C3%A5ndtering-MAL-KORT.docx" target="_blank">
+			HMS-mal for risikohåndtering
+		</a>
+	</li>
+	<li>
+		<a href="http://ukm.no/arrangor/wp-content/blogs.dir/881/files/2013/12/HMS-erkl%C3%A6ring-MAL.docx" target="_blank">
+			HMS-mal, erklæring
+		</a>
+	</li>
+	<li>
+		<a href="http://ukm.no/arrangor/wp-content/blogs.dir/881/files/2013/08/Etiske-retningslinjer.pdf" target="_blank">
+			Etiske retningslinjer
+		</a>
+	</li>
+	<li>
+		<a href="http://arrangor.ukm.no/wp-content/blogs.dir/881/files/2011/10/UKM-Id%C3%A9hefte_liten.pdf" target="_blank">
+			Idéhefte storbyprosjektet
+		</a>
+	</li>
+	
+	
+</ol>
+
+<h3>Informasjon og pressearbeid</h3>
+	<ol class="list-unstyled">
+		{% for dok in dokumenter.info_presse %}
+		<li>
+			{{dok.navn}} (<a href="{{dok.pdf}}" target="_blank">PDF</a> | <a href="{{dok.doc}}" target="_blank">WORD</a>)
+		</li>
+		{% endfor %}
+	</ol>
+	
+<h3>Nettredaksjon</h3>
+	<ol class="list-unstyled">
+		{% for dok in dokumenter.nettredaksjon %}
+		<li>
+			{{dok.navn}} (<a href="{{dok.pdf}}" target="_blank">PDF</a> | <a href="{{dok.doc}}" target="_blank">WORD</a>)
+		</li>
+		{% endfor %}
+	</ol>
+
+<h3>Unge arrangører (arrangørweekend)</h3>
+	<p>
+		UKM skal jobbe systematisk for å øke ungdomsmedvirkning. 
+		Organisasjonen er til for ungdom og skal sikre at flest mulig av de arbeidsoppgavene som etableres skal kunne påvirkes og utføres av ungdom. 
+		UKM Norge har de siste årene laget en egen satsing for å få flere unge arrangører
+	</p>
+	<ol class="list-unstyled">
+		{% for dok in dokumenter.arrangorweekend %}
+		<li>
+			<a href="{{dok.fil}}" target="_blank">{{dok.navn}}</a>
+		</li>
+		{% endfor %}
+	</ol>
+	
+<h3>Superfinale</h3>
+	<p>
+		Vil dere øke spenningen, gi forestillingen god dramaturgi og holde på publikum helt til slutt, kan det være verdt å prøve en superfinale
+	</p>
+	<ol class="list-unstyled">
+		<li>
+			Eksempelprogram superfinale (<a href="http://arrangor.ukm.no/wp-content/blogs.dir/881/files/2011/07/eksempelprogram-for-superfinale.pdf" target="_blank">PDF</a> | <a href="http://arrangor.ukm.no/wp-content/blogs.dir/881/files/2011/07/eksempelprogram-for-superfinale.docx" target="_blank">WORD</a>)
+		</li>
+	</ol>
+
+<h3>Styreprotokoller</h3>
