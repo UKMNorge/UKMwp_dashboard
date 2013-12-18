@@ -80,7 +80,7 @@ switch_to_blog($ID_ARRANGOR);
 	$TWIGdata['dokumenter']['styreprotokoller'] = $keysort_array;
 restore_current_blog();							 
 
-var_dump($TWIGdata['dokumenter']['styreprotokoller']);
+#var_dump($TWIGdata['dokumenter']['styreprotokoller']);
 
 /*
 $TWIGdata['dokumenter']['tema'][] = array('navn' => 'NAVN',

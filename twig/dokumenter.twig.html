@@ -82,3 +82,10 @@
 	</ol>
 
 <h3>Styreprotokoller</h3>
+<ol class="list-unstyled">
+	{% for fil in dokumenter.styreprotokoller %}
+	<li>
+		<a href="{{fil.url}}" target="_blank">{{fil.post_title}}</a>
+	</li>
+	{% endfor %}
+</ol>
