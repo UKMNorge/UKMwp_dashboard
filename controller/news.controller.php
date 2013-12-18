@@ -67,4 +67,4 @@ if(isset($_GET['post'])) {
 		$TWIGdata['news'][] = $wpoo;
 	}
 }
-restore_current_blog()
+restore_current_blog();
