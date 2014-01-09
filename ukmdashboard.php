@@ -13,7 +13,7 @@ add_action( 'admin_enqueue_scripts', 'UKMWP_dash_scriptsandstyles' );
 add_action('admin_menu', 'UKMwpd_menu');
 
 function UKMwpd_menu() {
-	$page = add_menu_page('Dokumenter', 'Dokumenter', 'administrator', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
+	$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
 	add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
 }
 
