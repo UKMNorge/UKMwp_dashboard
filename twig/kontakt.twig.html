@@ -1,17 +1,19 @@
 <h2>Vi er her for å hjelpe!</h2>
 <p class="lead">For tekniske spørsmål om arrangørsystem, nettsider og påmelding anbefaler vi å kontakte UKM Norge support</p>
 
-<div class="well col-xs-4 UKMSUPPORT_contact">
+<div class="well col-xs-12 col-sm-5 col-md-4 UKMSUPPORT_contact">
 	<div class="col-xs-4">
 		<img src="http://grafikk.ukm.no/support/support_tech1.jpg" class="img img-circle" style="max-width: 100%;" />
 	</div>
-	<h4>UKM Norge support</h4>
-	<p class="UKMSMS">464 21 625</p>
-	<p><a href="mailto:support@ukm.no">support@ukm.no</a></p>
+	<div class="col-xs-8">
+		<h4>UKM Norge support</h4>
+		<p class="UKMSMS">464 21 625</p>
+		<p><a href="mailto:support@ukm.no">support@ukm.no</a></p>
+	</div>
 </div>
 
 
-<div class="well col-xs-4 UKMSUPPORT_contact">
+<div class="well col-xs-12 col-sm-5 col-md-4 UKMSUPPORT_contact">
 	<div class="col-xs-4">
 		<img src="http://grafikk.ukm.no/support/support.jpg" class="img img-circle" style="max-width: 100%;" />
 	</div>
@@ -30,7 +32,7 @@
 	<p class="lead">Kontaktpersoner fra fylket kan hjelpe deg med generelle spørsmål om UKM, kvoter, spesialordninger i fylket osv</p>
 	
 	{% for kontakt in kontakter %}
-	<div class="well col-xs-4 UKMSUPPORT_contact">
+	<div class="well col-xs-12 col-sm-5 col-md-4 UKMSUPPORT_contact">
 		<div class="col-xs-4">
 			<img src="{{kontakt.picture}}" class="img img-circle" style="max-width: 100%;" />
 		</div>
