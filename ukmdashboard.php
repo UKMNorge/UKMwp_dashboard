@@ -15,6 +15,8 @@ add_action('admin_menu', 'UKMwpd_menu');
 function UKMwpd_menu() {
 	$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
 	add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
+	$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
+	add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );	
 }
 
 function UKMdokumenter_sns() {
@@ -27,6 +29,15 @@ function UKMdokumenter() {
 	$TWIGdata = array();
 	require_once('controller/dokumenter.controller.php');
 	echo TWIG('dokumenter.twig.html', $TWIGdata, dirname(__FILE__));
+}
+
+function UKMwpd_support() {
+	require_once('UKM/inc/twig-admin.inc.php');
+	require_once('wp_dashboard_functions.php');
+	$TWIGdata = array('site_type' => get_option('site_type'),
+					  'kontakter' => UKMWP_kontakter()
+					 );
+	echo TWIG('kontakt.twig.html', $TWIGdata, dirname(__FILE__));
 }
 
 function UKMWP_dash() {
@@ -57,6 +68,13 @@ function UKMWP_dash_update() {
 	update_site_option('ukmwp_dash_version', $wp_version);
 }
 
+
+function UKMWP_support_scriptsandstyles() {
+	wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
+	
+	wp_enqueue_script('WPbootstrap3_js');
+	wp_enqueue_style('WPbootstrap3_css');
+}
 
 function UKMWP_dash_scriptsandstyles() {
 	$screen = get_current_screen();
