@@ -84,11 +84,11 @@ function UKMWP_dash_update_error($source='ukjent') {
 	$mail = new UKMmail();
 	$mail->to('test12@ukm.no,marius@ukm.no,test@ukm.no')
 		 ->subject('WORDPRESS UPDATE ERROR!')
-		 ->text('<strong>Under oppdatering av wordpress feilet oppdateringen av index.php, '
-		 	   .'som medfører at UKM-dashboardet ikke lenger er tilgjengelig.</strong> '
-		 	   .'Dette må fikses ASAP!'
-		 	   .'<strong>Feilkilde: </strong>'. $source
-   		 	   .'<em>Funksjonalitet for dette ligger i UKMwp_dashboard.git, filen ukmdashboard.php</em>'
+		 ->text('<h3>Under oppdatering av wordpress feilet oppdateringen av index.php, '
+		 	   .'som medfører at UKM-dashboardet ikke lenger er tilgjengelig.</h3>'
+		 	   .'<p style="font-weight:bold;color:#ff0000;">Dette må fikses ASAP!</p>'
+		 	   .'<p><strong>Feilkilde: </strong>'. $source .'</p>'
+   		 	   .'<p><em>Funksjonalitet for dette ligger i UKMwp_dashboard.git, filen ukmdashboard.php</em></p>'
    		 	   )
    		 ->ok();
 }
