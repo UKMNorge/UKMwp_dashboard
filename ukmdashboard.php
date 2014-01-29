@@ -76,7 +76,9 @@ function UKMWP_dash_update() {
 			echo 'Write access denied';
 		}
 		var_dump( $fp );
-		fwrite($fp, $admind_content);
+		if( !fwrite($fp, $admind_content)) {
+			echo 'FILE WRITE ERROR';
+		}
 		fclose($fp);
 	}
 	
