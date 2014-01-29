@@ -61,12 +61,14 @@ function UKMWP_dash_update() {
 	$admind_dash_ukm  = "'". plugin_dir_path( __FILE__ ).'wp_dashboard.php'."'";
 
 	$admind_content = str_replace($admind_dash_orig, $admind_dash_ukm, $admind_content);
-	if( $_SERVER['REMOTE_ADDR'] == '81.0.146.162' )
-		var_dump($admind_content);
 
-	$fp = fopen($admind_path, 'w');
-	fwrite($fp, $admind_content);
-	fclose($fp);
+	if( $_SERVER['REMOTE_ADDR'] == '81.0.146.162' ) {
+		ini_set('display_errors', true);
+		error_reporting(E_ALL);
+		$fp = fopen($admind_path, 'w');
+		fwrite($fp, $admind_content);
+		fclose($fp);
+	}
 	
 	update_site_option('ukmwp_dash_version', $wp_version);
 }
