@@ -67,6 +67,9 @@ function UKMWP_dash_update() {
 		error_reporting(E_ALL);
 		var_dump($admind_path);
 		$fp = fopen($admind_path, 'w');
+		if( !$fp ) {
+			echo 'Write access denied';
+		}
 		fwrite($fp, $admind_content);
 		fclose($fp);
 	}
