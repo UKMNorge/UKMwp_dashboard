@@ -44,7 +44,7 @@ function UKMWP_dash() {
 	global $wp_version;
 	$wpdash_version = get_site_option('ukmwp_dash_version');
 	// If WP is updated, rewrite wp-admin/index.php
-	if($wp_version != $wpdash_version)
+	if($wp_version != $wpdash_version || true)
 		UKMWP_dash_update();
 }
 
