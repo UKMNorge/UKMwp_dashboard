@@ -68,6 +68,8 @@ function UKMWP_dash_update() {
 		var_dump($admind_path);
 		if( !is_writable( $admind_path )) {
 			echo 'NOT WRITEABLE';
+		} else {
+			echo 'WRITEABLE';
 		}
 		$fp = fopen($admind_path, 'w');
 		if( !$fp ) {
