@@ -55,11 +55,14 @@ function UKMWP_dash_update() {
 	$admind_path = ABSPATH.'wp-admin/index.php';
 	
 	$admind_content = file_get_contents($admind_path);
-	
+	require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
+
 	$admind_dash_orig = "ABSPATH . 'wp-admin/includes/dashboard.php'";
 	$admind_dash_ukm  = "'". plugin_dir_path( __FILE__ ).'wp_dashboard.php'."'";
 
 	$admind_content = str_replace($admind_dash_orig, $admind_dash_ukm, $admind_content);
+	if( $_SERVER['REMOTE_ADDR'] == '81.0.146.162' )
+		var_dump($admind_content);
 
 	$fp = fopen($admind_path, 'w');
 	fwrite($fp, $admind_content);
