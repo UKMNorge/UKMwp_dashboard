@@ -63,28 +63,35 @@ function UKMWP_dash_update() {
 	$admind_content = str_replace($admind_dash_orig, $admind_dash_ukm, $admind_content);
 
 	if( $_SERVER['REMOTE_ADDR'] == '81.0.146.162' ) {
-		ini_set('display_errors', true);
-		error_reporting(E_ALL);
-		var_dump($admind_path);
 		if( !is_writable( $admind_path )) {
-			echo 'NOT WRITEABLE';
-		} else {
-			echo 'WRITEABLE';
+			UKMWP_dash_update_error('File not writeable');
 		}
 		$fp = fopen($admind_path, 'w');
 		if( !$fp ) {
-			echo 'Write access denied';
+			UKMWP_dash_update_error('File open denied');
 		}
-		var_dump( $fp );
 		if( !fwrite($fp, $admind_content)) {
-			echo 'FILE WRITE ERROR';
+			UKMWP_dash_update_error('File write error');
 		}
 		fclose($fp);
+		UKMWP_dash_update_error('File OK');
 	}
-	
 	update_site_option('ukmwp_dash_version', $wp_version);
 }
 
+function UKMWP_dash_update_error($source='ukjent') {
+	require_once('UKM/mail.class.php');
+	$mail = new UKMmail();
+	$mail->to('test12@ukm.no,marius@ukm.no,test@ukm.no')
+		 ->subject('WORDPRESS UPDATE ERROR!')
+		 ->text('<strong>Under oppdatering av wordpress feilet oppdateringen av index.php, '
+		 	   .'som medfører at UKM-dashboardet ikke lenger er tilgjengelig.</strong> '
+		 	   .'Dette må fikses ASAP!'
+		 	   .'<strong>Feilkilde: </strong>'. $source
+   		 	   .'<em>Funksjonalitet for dette ligger i UKMwp_dashboard.git, filen ukmdashboard.php</em>'
+   		 	   )
+   		 ->ok();
+}
 
 function UKMWP_support_scriptsandstyles() {
 	wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
