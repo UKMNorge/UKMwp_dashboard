@@ -44,7 +44,7 @@ function UKMWP_dash() {
 	global $wp_version;
 	$wpdash_version = get_site_option('ukmwp_dash_version');
 	// If WP is updated, rewrite wp-admin/index.php
-	if($wp_version != $wpdash_version || true)
+	if($wp_version != $wpdash_version)
 		UKMWP_dash_update();
 }
 
@@ -62,27 +62,24 @@ function UKMWP_dash_update() {
 
 	$admind_content = str_replace($admind_dash_orig, $admind_dash_ukm, $admind_content);
 
-	if( $_SERVER['REMOTE_ADDR'] == '81.0.146.162' ) {
-		if( !is_writable( $admind_path )) {
-			UKMWP_dash_update_error('File not writeable');
-		}
-		$fp = fopen($admind_path, 'w');
-		if( !$fp ) {
-			UKMWP_dash_update_error('File open denied');
-		}
-		if( !fwrite($fp, $admind_content)) {
-			UKMWP_dash_update_error('File write error');
-		}
-		fclose($fp);
-		UKMWP_dash_update_error('File OK');
-	}
+	if( !is_writable( $admind_path ))
+		UKMWP_dash_update_error('File not writeable');
+	$fp = fopen($admind_path, 'w');
+	
+	if( !$fp )
+		UKMWP_dash_update_error('File open denied');
+	if( !fwrite($fp, $admind_content))
+		UKMWP_dash_update_error('File write error');
+	
+	fclose($fp);
+
 	update_site_option('ukmwp_dash_version', $wp_version);
 }
 
 function UKMWP_dash_update_error($source='ukjent') {
 	require_once('UKM/mail.class.php');
 	$mail = new UKMmail();
-	$mail->to('test12@ukm.no,marius@ukm.no,test@ukm.no')
+	$mail->to('support@ukm.no,marius@ukm.no,jardar@ukm.no')
 		 ->subject('WORDPRESS UPDATE ERROR!')
 		 ->text('<h3>Under oppdatering av wordpress feilet oppdateringen av index.php, '
 		 	   .'som medfører at UKM-dashboardet ikke lenger er tilgjengelig.</h3>'
