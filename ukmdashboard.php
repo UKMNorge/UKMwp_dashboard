@@ -15,6 +15,10 @@ add_action('admin_menu', 'UKMwpd_menu');
 function UKMwpd_menu() {
 	$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
 	add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
+
+	$page = add_menu_page('Søk penger', 'Søk penger', 'administrator', 'UKMstimulering', 'UKMstimulering', 'http://ico.ukm.no/news-16.png',4);
+	add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
+
 	$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
 	add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );	
 }
@@ -23,6 +27,15 @@ function UKMdokumenter_sns() {
 	wp_enqueue_script('WPbootstrap3_js');
 	wp_enqueue_style('WPbootstrap3_css');
 }
+
+function UKMstimulering() {
+	require_once('UKM/inc/twig-admin.inc.php');
+	$TWIGdata = array();
+	$PAGE_ID = 3245;
+	require_once('controller/page.controller.php');
+	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
+}
+
 
 function UKMdokumenter() {
 	require_once('UKM/inc/twig-admin.inc.php');
