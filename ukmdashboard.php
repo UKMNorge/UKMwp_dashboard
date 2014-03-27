@@ -16,7 +16,7 @@ function UKMwpd_menu() {
 	$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
 	add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
 
-	$page = add_menu_page('Søk penger', 'Søk penger', 'administrator', 'UKMstimulering', 'UKMstimulering', 'http://ico.ukm.no/news-16.png',4);
+	$page = add_menu_page('Søk penger', 'Søk penger', 'administrator', 'UKMstimulering', 'UKMstimulering', 'http://ico.ukm.no/cash-menu.png',4);
 	add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
 
 	$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
