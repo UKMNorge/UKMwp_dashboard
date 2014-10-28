@@ -1,6 +1,10 @@
 <?php
 /// CONFIG
-$ID_ARRANGOR = 881;
+if( UKM_HOSTNAME == 'ukm.dev' ) {
+	$ID_ARRANGOR = 13;
+} else {
+	$ID_ARRANGOR = 881;
+}
 $TWIGdata['image_path'] = 'http://arrangor.ukm.no/';
 
 require_once('WPOO/WPOO/Post.php');
