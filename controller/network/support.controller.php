@@ -25,19 +25,8 @@ while( $fylke = mysql_fetch_assoc( $fylker ) ) {
 	foreach( $lokalmonstringer as $plid ) {
 		$lokalmonstring = new stdClass();
 		$lokalmonstring->blog_url = 'http://'. UKM_HOSTNAME .'/pl'. $plid .'/';
-		$lokalmonstring->blog_path = '/pl'.((int)$plid).'/';
-		
-		$lokalmonstring->blog_id = $wpdb->get_var( $wpdb->prepare("SELECT `blog_id` 
-																	FROM {$wpdb->blogs} 
-																	WHERE `path` = '%s'",
-																$lokalmonstring->blog_path
-																)
-												);
-		echo $wpdb->prepare("SELECT `blog_id` 
-																	FROM {$wpdb->blogs} 
-																	WHERE `path` = '%s'",
-																$lokalmonstring->blog_path
-																);
+		$lokalmonstring->blog_path = '/pl'. $plid .'/';
+		$lokalmonstring->blog_id = get_blog_id_from_url(UKM_HOSTNAME,$lokalmonstring->blog_path );
 		$blog_details = get_blog_details( $lokalmonstring->blog_id, 'blogname' );
 		$lokalmonstring->name = $blog_details->blogname;
 		$lokalmonstring->fylke = $fylke->name;
