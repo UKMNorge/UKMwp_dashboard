@@ -33,7 +33,11 @@ while( $fylke = mysql_fetch_assoc( $fylker ) ) {
 																$lokalmonstring->blog_path
 																)
 												);
-		
+		echo $wpdb->prepare("SELECT `blog_id` 
+																	FROM {$wpdb->blogs} 
+																	WHERE `path` = '%s'",
+																$lokalmonstring->blog_path
+																);
 		$blog_details = get_blog_details( $lokalmonstring->blog_id, 'blogname' );
 		$lokalmonstring->name = $blog_details->blogname;
 		$lokalmonstring->fylke = $fylke->name;
