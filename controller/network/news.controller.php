@@ -20,6 +20,7 @@ function posts( $blog_id, $limit=3 ) {
 		$blog_post_data = new stdClass();
 		$blog_post_data->title = $blog_post->title;
 		$blog_post_data->date = $blog_post->date;
+		$blog_post_data->url = $blog_post->url;
 		
 		$blog_posts[] = $blog_post_data;
 	}

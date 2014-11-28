@@ -16,17 +16,17 @@
 					{% for post in site.posts %}
 						<li class="post">
 						<div class="timeago" title="{{post.date}}">{{post.date|date('d.M')}}</div>
-							<div class="link"><p><a href="{{post.url}}">{{post.title}}</a></p></div>
+							<div class="link"><p><a href="{{post.url}}" target="_blank">{{post.title}}</a></p></div>
 						</li>
 					{% endfor %}
 				</ol>
 				
 				<div class="actions">
 					<div class="action">
-						<a href="{{ site.link_add }}"><img src="{{ plugin_path }}img/ico-news.png" width="20" /><br />Nytt innlegg</a>
+						<a href="{{ site.link_add }}" target="_blank"><img src="{{ plugin_path }}img/ico-news.png" width="20" /><br />Nytt innlegg</a>
 					</div>
 					<div class="action">
-						<a href="{{ site.link_panel }}"><img src="{{ plugin_path }}img/ico-wordpress.png" width="20" /><br />Kontrollpanel</a>
+						<a href="{{ site.link_panel }}" target="_blank"><img src="{{ plugin_path }}img/ico-wordpress.png" width="20" /><br />Kontrollpanel</a>
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 					{% for post in site_arrangor.posts %}
 						<li class="post">
 							<div class="timeago" title="{{post.date}}">{{post.date|date('d.M')}}</div>
-							<div class="link"><p><a href="{{post.url}}">{{post.title}}</a></p></div>
+							<div class="link"><p><a href="{{post.url}}" target="_blank">{{post.title}}</a></p></div>
 						</li>
 					{% endfor %}
 				</ol>
@@ -52,16 +52,16 @@
 				<ol class="list-unstyled">
 					{% for link in site_arrangor.links %}
 					<li class="edit-link">
-						<p><a href="{{ link.url }}">{{ link.text }}</a></p>
+						<p><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></p>
 					</li>
 					{% endfor %}
 				</ol>
 				<div class="actions">
 					<div class="action">
-						<a href="{{ site.link_add }}"><img src="{{ plugin_path }}img/ico-news.png" width="20" /><br />Nytt innlegg</a>
+						<a href="{{ site.link_add }}" target="_blank"><img src="{{ plugin_path }}img/ico-news.png" width="20" /><br />Nytt innlegg</a>
 					</div>
 					<div class="action">
-						<a href="{{ site.link_panel }}"><img src="{{ plugin_path }}img/ico-wordpress.png" width="20" /><br />Kontrollpanel</a>
+						<a href="{{ site.link_panel }}" target="_blank"><img src="{{ plugin_path }}img/ico-wordpress.png" width="20" /><br />Kontrollpanel</a>
 					</div>
 				</div>
 			</div>	
