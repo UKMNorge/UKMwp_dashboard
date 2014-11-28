@@ -6,7 +6,12 @@ function posts( $blog_id, $limit=3 ) {
 	$blog_posts = [];
 	
 	switch_to_blog( $blog_id );
-	$posts = query_posts( 'post_status=publish&posts_per_page='.$limit );
+	if( $blog_id == 1 ) {
+		$remove ='&cat=-12';
+	} else {
+		$remove = '';
+	}
+	$posts = query_posts( 'post_status=publish&posts_per_page='.$limit.$remove );
 	global $post;
 	foreach( $posts as $key => $post ) {
 		the_post();

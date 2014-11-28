@@ -42,6 +42,9 @@ h5 {
 .list-unstyled {
 	margin-left: 0px;
 }
+li {
+	clear: both;
+}
 
 .site {
 	margin-top: 25px;
