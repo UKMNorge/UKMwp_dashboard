@@ -14,7 +14,7 @@ while( $fylke = mysql_fetch_assoc( $fylker ) ) {
 		continue;
 	
 	$fylke = new stdClass();
-	$fylke->blog_url = $monstring->get('url');
+	$fylke->blog_url = $monstring->get('url').'/';
 	$fylke->blog_path = str_replace('http://'. UKM_HOSTNAME, '', $fylke->blog_url );
 	$fylke->blog_id = get_blog_id_from_url( UKM_HOSTNAME, '/'. $fylke->blog_path.'/' );
 	$fylke->name = $monstring->get('pl_name');
