@@ -65,6 +65,7 @@ function UKMWP_dash() {
 function UKMWP_dash_update() {
 	global $wp_version;
 
+	// UPDATE STANDARD DASHBOARD
 	$admind_path = ABSPATH.'wp-admin/index.php';
 	
 	$admind_content = file_get_contents($admind_path);
@@ -72,6 +73,28 @@ function UKMWP_dash_update() {
 
 	$admind_dash_orig = "ABSPATH . 'wp-admin/includes/dashboard.php'";
 	$admind_dash_ukm  = "'". plugin_dir_path( __FILE__ ).'wp_dashboard.php'."'";
+
+	$admind_content = str_replace($admind_dash_orig, $admind_dash_ukm, $admind_content);
+
+	if( !is_writable( $admind_path ))
+		UKMWP_dash_update_error('File not writeable');
+	$fp = fopen($admind_path, 'w');
+	
+	if( !$fp )
+		UKMWP_dash_update_error('File open denied');
+	if( !fwrite($fp, $admind_content))
+		UKMWP_dash_update_error('File write error');
+	
+	fclose($fp);
+
+
+	// UPDATE NETWORK DASHBOARD
+	$admind_path = ABSPATH.'wp-admin/network/index.php';
+	
+	$admind_content = file_get_contents($admind_path);
+
+	$admind_dash_orig = "ABSPATH . 'wp-admin/includes/dashboard.php'";
+	$admind_dash_ukm  = "'". plugin_dir_path( __FILE__ ).'wp_network_dashboard.php'."'";
 
 	$admind_content = str_replace($admind_dash_orig, $admind_dash_ukm, $admind_content);
 
@@ -112,10 +135,17 @@ function UKMWP_support_scriptsandstyles() {
 
 function UKMWP_dash_scriptsandstyles() {
 	$screen = get_current_screen();
-	
 	if( $screen->base == 'dashboard' ) {
 		wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
-		
+	}
+	if( $screen->base == 'dashboard-network' ) {
+		wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_network_dashboard.css');
+		wp_enqueue_script('UKMwp_network_dashboard_timagojs',  plugin_dir_url( __FILE__ )  . 'js/timeago.jquery.js' );
+		wp_enqueue_script('UKMwp_network_dashboard_fastlivefilterjs',  plugin_dir_url( __FILE__ )  . 'js/fastlivefilter.jquery.js' );
+		wp_enqueue_script('UKMwp_network_dashboard_js',  plugin_dir_url( __FILE__ )  . 'js/wp_network_dashboard.js' );
+
+	}
+	if( $screen->base == 'dashboard' || $screen->base == 'dashboard-network' ) {
 		wp_enqueue_script('WPbootstrap3_js');
 		wp_enqueue_style('WPbootstrap3_css');
 	}
