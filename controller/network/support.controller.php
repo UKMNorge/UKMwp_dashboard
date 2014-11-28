@@ -25,8 +25,8 @@ while( $fylke = mysql_fetch_assoc( $fylker ) ) {
 	foreach( $lokalmonstringer as $plid ) {
 		$lokalmonstring = new stdClass();
 		$lokalmonstring->blog_url = 'http://'. UKM_HOSTNAME .'/pl'. $plid .'/';
-		$lokalmonstring->blog_path = 'pl'. $plid .'';
-		$lokalmonstring->blog_id = get_blog_id_from_url(UKM_HOSTNAME,$lokalmonstring->blog_path );
+		$lokalmonstring->blog_path = '/pl'. $plid .'/';
+		$lokalmonstring->blog_id = get_blog_id_from_url( UKM_HOSTNAME, '/'. $lokalmonstring->blog_path.'/' );
 		echo UKM_HOSTNAME .' - '. $lokalmonstring->blog_path .' <br />';
 		var_dump( get_blog_id_from_url(UKM_HOSTNAME,$lokalmonstring->blog_path ) );
 		$blog_details = get_blog_details( $lokalmonstring->blog_id, 'blogname' );
