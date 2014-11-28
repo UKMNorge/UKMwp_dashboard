@@ -52,8 +52,12 @@ li {
 }
 
 .site li.post .timeago {
-	width: 44px;
+	width: 50px;
 	float: left;
+}
+
+.site li.post .link p {
+	font-size: 11px;
 }
 
 .site li.post .title p {
