@@ -28,6 +28,7 @@ while( $fylke = mysql_fetch_assoc( $fylker ) ) {
 		$lokalmonstring->blog_path = '/pl'. $plid .'/';
 		$lokalmonstring->blog_id = get_blog_id_from_url(UKM_HOSTNAME,$lokalmonstring->blog_path );
 		echo UKM_HOSTNAME .' - '. $lokalmonstring->blog_path .' <br />';
+		var_export( $lokalmonstring->blog_id );
 		$blog_details = get_blog_details( $lokalmonstring->blog_id, 'blogname' );
 		$lokalmonstring->name = $blog_details->blogname;
 		$lokalmonstring->fylke = $fylke->name;
