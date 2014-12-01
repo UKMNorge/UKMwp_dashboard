@@ -7,13 +7,16 @@ function UKMWP_kontakter() {
 	$fylkeM = $fylkeM->monstring_get();
 	$kpobjekter = $fylkeM->kontakter();
 	
-	foreach($kpobjekter as $kp) {
-		$kparray = array('picture' 	=> $kp->g('picture'),
-						 'name'		=> $kp->g('name'),
-						 'phone'	=> $kp->g('tlf'),
-						 'mail'		=> $kp->g('email'),
-						 'title'	=> $kp->g('title'));
-		$kontaktpersoner[] = $kparray;
+	$kontaktpersoner = [];
+	if( is_array( $kpobjekter ) ) {
+		foreach($kpobjekter as $kp) {
+			$kparray = array('picture' 	=> $kp->g('picture'),
+							 'name'		=> $kp->g('name'),
+							 'phone'	=> $kp->g('tlf'),
+							 'mail'		=> $kp->g('email'),
+							 'title'	=> $kp->g('title'));
+			$kontaktpersoner[] = $kparray;
+		}
 	}
 	return $kontaktpersoner;		 
 }
