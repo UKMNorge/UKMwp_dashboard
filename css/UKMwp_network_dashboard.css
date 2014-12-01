@@ -1,4 +1,4 @@
-#UKMWP_wrapper p, #UKMWP_wrapper div {
+#UKMWP_wrapper p:not(.lead), #UKMWP_wrapper div {
 	font-family: Helvetica !important;
 	font-size: 12px !important;
 	color: #000000;
