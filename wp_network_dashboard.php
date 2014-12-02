@@ -28,15 +28,14 @@ require_once('controller/network/innhold_tema.controller.php');
 require_once('controller/network/innhold_sites.controller.php');
 require_once('controller/network/support.controller.php');
 
-/*
-	$MESSAGES = array();
-$MESSAGES = apply_filters('UKMWPDASH_messages', $MESSAGES);
+$MESSAGES = array();
+$MESSAGES = apply_filters('UKMWPNETWDASH_messages', $MESSAGES);
 
-foreach($MESSAGES as $key => $MESSAGE) {
-	if($MESSAGE['level'] == 'alert-error')
+foreach($MESSAGES as $key => $msg) {
+	if($msg['level'] == 'alert-error')
 		$MESSAGES[$key]['level'] = 'alert-danger';
 }
-*/
+$TWIGdata['messages'] = $MESSAGES;
 
 #require_once(dirname(__FILE__).'/controller/news.controller.php');
 
