@@ -50,8 +50,8 @@
 	$site = new stdClass();
 	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 13 : 881;
 	$site->title = 'UKM internasjonalt';
-	$site->link_add = 'http://'. UKM_HOSTNAME .'/internasjonalt/wp-admin/post-new.php';
-	$site->link_panel = 'http://'. UKM_HOSTNAME .'/internasjonalt/wp-admin/';
+	$site->link_add = 'http://'. UKM_HOSTNAME .'/arrangor/wp-admin/post-new.php';
+	$site->link_panel = 'http://'. UKM_HOSTNAME .'/arrangor/wp-admin/';
 	$site->posts = posts( $site->ID, 3 );
 	
 	$site->links = [];
