@@ -20,8 +20,8 @@ $TWIGdata = array();
 $TWIGdata['plugin_path'] = plugin_dir_url( __FILE__ ).'/';
 $TWIGdata['base_path'] = 'http://'. UKM_HOSTNAME .'/';
 
-error_reporting(E_ALL);
-ini_set('display_errors',true);
+#error_reporting(E_ALL);
+#ini_set('display_errors',true);
 
 
 require_once('controller/network/innhold_tema.controller.php');
