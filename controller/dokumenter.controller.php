@@ -60,8 +60,13 @@ $TWIGdata['dokumenter']['arrangorweekend'][] = array('navn' => 'Kræsjtest: vedl
 													 'fil'	=> 'http://arrangor.ukm.no/wp-content/blogs.dir/881/files/2013/01/Krasjtest_vedlegg.zip',
 													 );
 													 
+$TWIGdata['dokumenter']['konferansierer'][] = array('navn' => 'Konferansierens rolle på UKM',
+													 'fil'	=> 'http://ukm.no/arrangor/files/2015/02/Konfransierhefte.pdf',
+													 );
+													 
 $ID_ARRANGOR = 881;
 $ID_PARENT_POST = 2653;
+$keysort_array = array();
 switch_to_blog($ID_ARRANGOR);
 	$args = array(
 		'orderby'		 => 'post_title',

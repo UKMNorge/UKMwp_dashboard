@@ -57,6 +57,15 @@
 		{% endfor %}
 	</ol>
 
+<h3>Konferansierer</h3>
+	<ol class="list-unstyled">
+		{% for dok in dokumenter.konferansierer %}
+		<li>
+			<a href="{{dok.fil}}" target="_blank">{{dok.navn}}</a>
+		</li>
+		{% endfor %}
+	</ol>
+
 <h3>Unge arrangører (arrangørweekend)</h3>
 	<p>
 		UKM skal jobbe systematisk for å øke ungdomsmedvirkning. 
