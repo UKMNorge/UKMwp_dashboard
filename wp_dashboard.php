@@ -30,9 +30,12 @@ foreach($MESSAGES as $key => $MESSAGE) {
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter(),
 				  'messages'  => $MESSAGES,
+				  'block_pre_messages' => array(), // PUTT HTML her for å vise på topp av startsiden
 				  );
 
 require_once(dirname(__FILE__).'/controller/news.controller.php');
+
+$TWIGdata = apply_filters('UKMwp_dashboard_load_controllers', $TWIGdata);
 
 echo TWIG('dashboard.twig.html', $TWIGdata, dirname(__FILE__));
 

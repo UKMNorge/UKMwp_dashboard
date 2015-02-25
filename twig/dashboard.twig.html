@@ -23,7 +23,12 @@
 			{% embed "post.twig.html" %}{% endembed %}
 		</div>
 	{% else %}
-	
+		
+		{% if block_pre_messages is defined %}
+			{% for block in block_pre_messages %}
+				{{ block|raw }}
+			{% endfor %}
+		{% endif %}
 		<div class="wpdashright pull-right col-xs-12 col-sm-12 col-md-4 well" id="wp_dash_messages">
 			<span class="header">Meldinger</span>
 			{% embed "messages.twig.html" %}{% endembed %}
