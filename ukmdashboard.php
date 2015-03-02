@@ -13,14 +13,16 @@ add_action( 'admin_enqueue_scripts', 'UKMWP_dash_scriptsandstyles' );
 add_action('admin_menu', 'UKMwpd_menu');
 
 function UKMwpd_menu() {
-	$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
-	add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
-
-	$page = add_menu_page('Søk penger', 'Søk penger', 'editor', 'UKMstimulering', 'UKMstimulering', 'http://ico.ukm.no/cash-menu.png',4);
-	add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
-
-	$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
-	add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );	
+	if( in_array( get_option('site_type'), array('kommune','fylke','land')) ) {
+		$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
+		add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
+	
+		$page = add_menu_page('Søk penger', 'Søk penger', 'editor', 'UKMstimulering', 'UKMstimulering', 'http://ico.ukm.no/cash-menu.png',4);
+		add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
+	
+		$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
+		add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );	
+	}
 }
 
 function UKMdokumenter_sns() {
