@@ -22,6 +22,16 @@
 	$site->posts = posts( $site->ID );
 	
 	$sites[] = $site;
+
+	// UKM-festivalen
+	$site = new stdClass();
+	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 60 : 2173;
+	$site->title = 'UKM-festivalen';
+	$site->link_add = 'http://'. UKM_HOSTNAME .'/festivalen/wp-admin/post-new.php';
+	$site->link_panel = 'http://'. UKM_HOSTNAME .'/festivalen/wp-admin/';
+	$site->posts = posts( $site->ID, 3 );
+	
+	$sites[] = $site;
 	
 	// UKM for ambassadører
 	$site = new stdClass();
