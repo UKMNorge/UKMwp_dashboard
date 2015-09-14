@@ -37,21 +37,21 @@ function UKMdokumenter_sns() {
 function UKMstimulering() {
 	require_once('UKM/inc/twig-admin.inc.php');
 	$TWIGdata = array();
-	$PAGE_ID = get_page_by_path('stimuleringsmidler');
+	$PAGE_SLUG = 'stimuleringsmidler';
 	require_once('controller/page.controller.php');
 	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
 }
 function UKMstimulering_sok() {
 	require_once('UKM/inc/twig-admin.inc.php');
 	$TWIGdata = array();
-	$PAGE_ID = get_page_by_path('stimuleringsmidler-soknadsskjema');
+	$PAGE_SLUG = 'stimuleringsmidler-soknadsskjema';
 	require_once('controller/page.controller.php');
 	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
 }
 function UKMstimulering_rapport() {
 	require_once('UKM/inc/twig-admin.inc.php');
 	$TWIGdata = array();
-	$PAGE_ID = get_page_by_path('stimuleringsmidler-rapportskjema');
+	$PAGE_SLUG = 'stimuleringsmidler-rapportskjema';
 	require_once('controller/page.controller.php');
 	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
 }
