@@ -44,14 +44,14 @@ function UKMstimulering() {
 function UKMstimulering_sok() {
 	require_once('UKM/inc/twig-admin.inc.php');
 	$TWIGdata = array();
-	$PAGE_SLUG = 'stimuleringsmidler-soknadsskjema';
+	$PAGE_SLUG = 'stimuleringsmidler/stimuleringsmidler-soknadsskjema';
 	require_once('controller/page.controller.php');
 	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
 }
 function UKMstimulering_rapport() {
 	require_once('UKM/inc/twig-admin.inc.php');
 	$TWIGdata = array();
-	$PAGE_SLUG = 'stimuleringsmidler-rapportskjema';
+	$PAGE_SLUG = 'stimuleringsmidler/stimuleringsmidler-rapportskjema';
 	require_once('controller/page.controller.php');
 	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
 }
