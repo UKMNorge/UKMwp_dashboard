@@ -17,8 +17,12 @@ function UKMwpd_menu() {
 		$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
 		add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
 	
-		$page = add_menu_page('Søk penger', 'Søk penger', 'editor', 'UKMstimulering', 'UKMstimulering', 'http://ico.ukm.no/cash-menu.png',4);
+		$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'editor', 'UKMstimulering', 'UKMstimulering', 'http://ico.ukm.no/cash-menu.png',4);
+		$subpage1 = add_submenu_page('UKMstimulering', 'Søknadsskjema', 'Søknadsskjema', 'editor', 'UKMstimulering_sok', 'UKMstimulering_sok');
+		$subpage2 = add_submenu_page('UKMstimulering', 'Rapport', 'Rapportskjema', 'editor', 'UKMstimulering_rapport', 'UKMstimulering_rapport');
 		add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
+		add_action( 'admin_print_styles-' . $subpage1, 'UKMdokumenter_sns' );	
+		add_action( 'admin_print_styles-' . $subpage2, 'UKMdokumenter_sns' );	
 	
 		$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
 		add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );	
@@ -33,7 +37,21 @@ function UKMdokumenter_sns() {
 function UKMstimulering() {
 	require_once('UKM/inc/twig-admin.inc.php');
 	$TWIGdata = array();
-	$PAGE_ID = 3245;
+	$PAGE_ID = get_page_by_path('stimuleringsmidler');
+	require_once('controller/page.controller.php');
+	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
+}
+function UKMstimulering_sok() {
+	require_once('UKM/inc/twig-admin.inc.php');
+	$TWIGdata = array();
+	$PAGE_ID = get_page_by_path('stimuleringsmidler-soknadsskjema');
+	require_once('controller/page.controller.php');
+	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
+}
+function UKMstimulering_rapport() {
+	require_once('UKM/inc/twig-admin.inc.php');
+	$TWIGdata = array();
+	$PAGE_ID = get_page_by_path('stimuleringsmidler-rapportskjema');
 	require_once('controller/page.controller.php');
 	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
 }
