@@ -33,6 +33,7 @@ $TWIGdata = array('site_type' => get_option('site_type'),
 				  'block_pre_messages' => array(), // PUTT HTML her for å vise på topp av startsiden
 				  );
 
+$POST_QUERY = 'cat=-2,-74';
 require_once(dirname(__FILE__).'/controller/news.controller.php');
 
 $TWIGdata = apply_filters('UKMwp_dashboard_load_controllers', $TWIGdata);
