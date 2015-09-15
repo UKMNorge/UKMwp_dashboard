@@ -33,6 +33,3 @@ if(isset($_GET['post'])) {
 	}
 }
 restore_current_blog();
-if( isset($_GET['debug']) ) {
-	var_dump( $TWIGdata['news'] );
-}
