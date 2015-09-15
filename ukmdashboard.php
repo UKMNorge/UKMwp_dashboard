@@ -46,7 +46,7 @@ function UKMstimulering() {
 
 function UKMstimulering_idebank() {
 	require_once('UKM/inc/twig-admin.inc.php');
-	$POST_QUERY = 'cat=2';
+	$POST_QUERY = 'cat=74';
 	require_once(dirname(__FILE__).'/controller/news.controller.php');
 }
 function UKMstimulering_sok() {
