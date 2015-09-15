@@ -1,8 +1,16 @@
+{% if post.meta.redirect is defined %}
+	{% set link = 'post.meta.redirect %}
+	{% set target = 'target="_blank"' %}
+{% else %}
+	{% set link = '?post'~ post.ID %}
+	{% set target = '' %}
+{% endif %}
+
 <div class="news">
-	<a href="?post={{post.ID}}">
+	<a href="{{ link }}" {{ target }}>
 		<div class="grid_post_image" style="background-image: url('{{post.image.url}}');"></div>
 	</a>
-	<a href="?post={{post.ID}}"><h2>{{post.title|raw}}</h2></a>
+	<a href="{{ link }}" {{ target }}><h2>{{post.title|raw}}</h2></a>
 	<p>{{post.lead|raw}}</p>
-	<a href="?post={{post.ID}}">les mer</a>
+	<a href="{{ link }}" {{ target }}>les mer</a>
 </div>
