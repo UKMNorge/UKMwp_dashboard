@@ -46,8 +46,10 @@ function UKMstimulering() {
 
 function UKMstimulering_idebank() {
 	require_once('UKM/inc/twig-admin.inc.php');
+	$TWIGdata = array();
 	$POST_QUERY = 'cat=74';
 	require_once(dirname(__FILE__).'/controller/news.controller.php');
+	echo TWIG('stimuleringsmidler_idebank.twig.html', $TWIGdata, dirname(__FILE__));
 }
 function UKMstimulering_sok() {
 	require_once('UKM/inc/twig-admin.inc.php');

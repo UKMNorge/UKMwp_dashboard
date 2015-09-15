@@ -1,0 +1,33 @@
+<div class="col-xs-12 col-md-8" id="UKMWP_tabscontainer">
+	<!-- TABS -->
+	<h2 class="nav-tab-wrapper" id="UKMWP_tabs">
+		<a id="nytt" class="nav-tab ukm nav-tab-active">Idébank for stimuleringsmidler</a>
+	</h2>
+
+	<div id="UKMWP_tabcontent">
+		<div id="content_nytt">
+			{% for post in news %}
+				<div class="col-xs-6 col-sm-4">
+					{% embed "news.twig.html" %}{% endembed %}
+				</div>
+				{% if loop.index is divisibleby(3) %}
+					<div class="clearfix visible-sm visible-md visible-lg"></div>
+				{% endif %}
+				{% if loop.index is divisibleby(2) %}
+					<div class="clearfix visible-xs"></div>
+				{% endif %}
+			{% endfor %}
+			
+			<div class="cleafix"></div>
+			{% if pagination_prev is defined %}
+				<a href="?pagination={{pagination_prev}}" class="btn btn-default pull-left">Nyere saker</a>
+			{% endif %}
+			
+			{% if pagination_next is defined %}
+				<a href="?pagination={{pagination_next}}" class="btn btn-default pull-right">Eldre saker</a>
+			{% endif %}
+			<div class="cleafix"></div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
