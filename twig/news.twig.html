@@ -1,5 +1,5 @@
 {% if post.meta.redirect is defined %}
-	{% set link = 'post.meta.redirect %}
+	{% set link = post.meta.redirect %}
 	{% set target = 'target="_blank"' %}
 {% else %}
 	{% set link = '?post'~ post.ID %}
