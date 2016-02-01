@@ -171,7 +171,7 @@ function UKMWP_dash_scriptsandstyles() {
 	if( $screen->base == 'dashboard-network' ) {
 		
 		// BS-4alpha
-		wp_dequeue_style('WPbootstrap3_css');
+#		wp_enqueue_style('WPbootstrap3_css');
 		wp_enqueue_style('WPbootstrap4_css');
 #		wp_enqueue_script('WPbootstrap4_js');
 		
