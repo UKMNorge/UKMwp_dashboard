@@ -1,20 +1,14 @@
-<div class="wrap container" id="UKMWP_wrapper" style="margin-left:0px;">
-	<h1 id="top">UKM Norge: startside</h1>
-	<p>Startside for UKM Norges nettsteder og nettbaserte verktøy. Denne siden er kun tilgjengelig for UKM Norge</p>
-	
-	{% for message in messages %}
-		<div class="alert {{message.level}}">
-			<strong>{{message.module}}:</strong>
-			{% if message.link is defined and message.link is not empty %}
-				<a href="{{message.link}}">{{message.header}}</a>
-			{% else %}
-				{{ message.header }}
-			{% endif %}
-			<span class="pull-right"><abbr title="{{message.body}}">info</abbr></span>
+<div class="wrap" style="margin-left:0px;margin-top:0px">
+	<h1>UKM Norge: startside</h1>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			{% embed "network/messages.twig.html" %}{% endembed %}
 		</div>
-	{% endfor %}
-	<div class="clearfix"></div>
+		<div class="col-xs-12 col-sm-6 col-md-8">
+			{% embed "network/support.twig.html" %}{% endembed %}
+		</div>
+	</div>
 	
-	{% embed "network/support.twig.html" %}{% endembed %}
+	<hr class="m-b-1 m-t-1" />
 	{% embed "network/innhold.twig.html" %}{% endembed %}
 </div>

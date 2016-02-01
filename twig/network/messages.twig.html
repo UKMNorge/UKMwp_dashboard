@@ -1,0 +1,21 @@
+<div class="card">
+	<div class="card-block p-x-0 p-t-0 p-b-0">
+		<table class="table m-b-0">
+			<tbody>
+				{% for message in messages %}
+				    <tr class="{{message.level}}">
+						<td scope="row">
+							<span class="pull-right"><abbr title="{{message.body}}">i</abbr></span>
+							<strong>{{message.module}}:</strong>
+							{% if message.link is defined and message.link is not empty %}
+								<a href="{{message.link}}">{{message.header}}</a>
+							{% else %}
+								{{ message.header }}
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>

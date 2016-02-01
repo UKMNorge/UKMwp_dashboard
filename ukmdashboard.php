@@ -169,6 +169,12 @@ function UKMWP_dash_scriptsandstyles() {
 		wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
 	}
 	if( $screen->base == 'dashboard-network' ) {
+		
+		// BS-4alpha
+		wp_dequeue_style('WPbootstrap3_css');
+		wp_enqueue_style('WPbootstrap4_css');
+#		wp_enqueue_script('WPbootstrap4_js');
+		
 		wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_network_dashboard.css');
 		wp_enqueue_script('UKMwp_network_dashboard_timagojs',  plugin_dir_url( __FILE__ )  . 'js/timeago.jquery.js' );
 		wp_enqueue_script('UKMwp_network_dashboard_fastlivefilterjs',  plugin_dir_url( __FILE__ )  . 'js/fastlivefilter.jquery.js' );

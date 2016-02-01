@@ -1,70 +1,38 @@
-<h1>Innhold på UKM.no</h1>
-
-<div class="theme">
-	<div class="col-xs-2 title">Månedens tema:</div>
-	<div class="col-xs-10">{{ innhold.tema }}</div>
-</div>
-
-<div class="row">
-	<div class="col-xs-12 col-sm-8">
-		<div class="row sites">
-		{% for site in sites %}
-			<div class="col-xs-12 col-sm-6 site">
-				<h4>{{site.title}}</h4>
-				
-				<ol class="list-unstyled col-xs-12">
-					{% for post in site.posts %}
-						<li class="post">
-						<div class="timeago" title="{{post.date}}">{{post.date|date('d.M')}}</div>
-							<div class="link"><p><a href="{{post.url}}" target="_blank">{{post.title}}</a></p></div>
-						</li>
-					{% endfor %}
-				</ol>
-				
-				<div class="actions">
-					<div class="action">
-						<a href="{{ site.link_add }}" target="_blank"><img src="{{ plugin_path }}img/ico-news.png" width="20" /><br />Nytt innlegg</a>
-					</div>
-					<div class="action">
-						<a href="{{ site.link_panel }}" target="_blank"><img src="{{ plugin_path }}img/ico-wordpress.png" width="20" /><br />Kontrollpanel</a>
-					</div>
-				</div>
+<h2 class="m-t-0">Innhold <small class="text-muted">TEMA: {{ innhold.tema }}</small></h2>
+<div class="row" style="font-size:0.9em;">
+{% for site in sites %}
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<div class="card m-b-2">
+			<div class="card-header font-weight-bold alert-{{ site.status }}">
+				{{site.title}}
+				<p class="pull-right">
+					<a href="{{ site.link_add  }}" target="_blank"><img src="{{ plugin_path }}img/ico-news.png" width="18" title="Nytt innlegg"></a>
+					&nbsp;
+					<a href="{{ site.link_panel }}" target="_blank"><img src="{{ plugin_path }}img/ico-wordpress.png" width="18" title="Kontrollpanel" /></a>
+				</p>
 			</div>
-		{% endfor %}
+			<div class="card-block p-x-0 p-t-0 p-b-0">
+				<table class="table table-striped m-b-0">
+					<tbody>						
+						{% for post in site.posts %}
+							<tr>
+								<td width="*%">
+									<a href="{{post.url}}" target="_blank">{{post.title}}</a>
+								</td>
+								<td class="text-xs-center" width="15%">
+									<small><div class="timeago" title="{{post.date}}">{{post.date|date('d.M')}}</div></small>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
-	
-	<div class="col-xs-12 col-sm-4">
-		<div class="row sites">
-			<div class="col-xs-12 site" id="edit_arrangor">
-				<h4>UKM for arrangører</h4>
-				
-				<ol class="list-unstyled">
-					{% for post in site_arrangor.posts %}
-						<li class="post">
-							<div class="timeago" title="{{post.date}}">{{post.date|date('d.M')}}</div>
-							<div class="link"><p><a href="{{post.url}}" target="_blank">{{post.title}}</a></p></div>
-						</li>
-					{% endfor %}
-				</ol>
-				
-				<h5>Endre informasjon</h5>
-				<ol class="list-unstyled">
-					{% for link in site_arrangor.links %}
-					<li class="edit-link">
-						<p><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></p>
-					</li>
-					{% endfor %}
-				</ol>
-				<div class="actions">
-					<div class="action">
-						<a href="{{ site_arrangor.link_add }}" target="_blank"><img src="{{ plugin_path }}img/ico-news.png" width="20" /><br />Nytt innlegg</a>
-					</div>
-					<div class="action">
-						<a href="{{ site_arrangor.link_panel }}" target="_blank"><img src="{{ plugin_path }}img/ico-wordpress.png" width="20" /><br />Kontrollpanel</a>
-					</div>
-				</div>
-			</div>	
-		</div>
-	</div>
+	{% if loop.index is divisibleby(3) %}
+		<div class="clearfix hidden-md-down"></div>
+	{% elseif loop.index is divisibleby(2) %}
+		<div class="clearfix hidden-lg-up"></div>
+	{% endif %}
+{% endfor %}
 </div>
