@@ -181,7 +181,7 @@ function UKMWP_dash_scriptsandstyles() {
 		wp_enqueue_script('UKMwp_network_dashboard_js',  plugin_dir_url( __FILE__ )  . 'js/wp_network_dashboard.js' );
 
 	}
-	if( $screen->base == 'dashboard' || $screen->base == 'dashboard-network' ) {
+	if( $screen->base == 'dashboard' ) {# || $screen->base == 'dashboard-network' ) {
 		wp_enqueue_script('WPbootstrap3_js');
 		wp_enqueue_style('WPbootstrap3_css');
 	}
