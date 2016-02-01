@@ -1,54 +1,52 @@
 <div class="card">
-	<div class="card-block p-x-0 p-t-0 p-b-0">
-		<div class="card-header">Logg ned til fylke- eller lokalside</div>
-		<div class="card-block">
-			<div>
-				<input type="text" name="filtrer" id="filterMonstringer" placeholder="Skriv her for å filtrere listen...." class="form-control input-sm" />
-			</div>
-			
-			<div class="row">
-				<div class="col-xs-12 col-sm-5">
-					<h5>Fylkesmønstringer</h5>
-					
-					<ol class="list-unstyled" id="fylkesmonstringer">
-						{% for site in monstringer.fylke %}
-							<li filter="{{ site.name }}" class="monstringSok">
-								{{ site.name }}
-								<br />
-								<a href="{{ site.blog_url }}wp-admin/" target="_blank">kontrollpanel</a>
-								|
-								<a href="{{ site.blog_url }}" target="_blank">nettside</a>
-								|
-								<a href="site-users.php?id={{ site.blog_id }}" target="_blank">brukere</a>
-								|
-								<a href="{{ site.blog_url }}wp-admin/admin.php?page=UKMpassord" target="_blank">passordliste</a>
-							</li>						
-						{% endfor %}
-					</ol>
-				</div>
-				<div class="col-xs-12 col-sm-7">
-					<h5>Lokalmønstringer</h5>
-	
-					<ol class="list-unstyled" id="lokalmonstringer">
-						{% for site in monstringer.lokal %}
-							<li filter="{{ site.name }} {{ site.fylke }}" class="monstringSok">
-								{{ site.name }} <small>({{ site.fylke }})</small>
-								<br />
-								<a href="{{ site.blog_url }}wp-admin/" target="_blank">kontrollpanel</a>
-								|
-								<a href="{{ site.blog_url }}" target="_blank">nettside</a>
-								|
-								<a href="site-users.php?id={{ site.blog_id }}" target="_blank">brukere</a>
-							</li>						
-						{% endfor %}
-					</ol>
-	
-				</div>
-			</div>
-					
-			<p id="plStartSearch">Ingen mønstringer vises før du begynner å filtrere listen</p>
-			<p id="plNoneFound">Beklager, ingen fylker eller kommuner/bydeler matcher søkeordet!</p>
-				
+	<div class="card-header">Logg ned til fylke- eller lokalside</div>
+	<div class="card-block">
+		<div>
+			<input type="text" name="filtrer" id="filterMonstringer" placeholder="Skriv her for å filtrere listen...." class="form-control input-sm" />
 		</div>
+		
+		<div class="row">
+			<div class="col-xs-12 col-sm-5">
+				<h5>Fylkesmønstringer</h5>
+				
+				<ol class="list-unstyled" id="fylkesmonstringer">
+					{% for site in monstringer.fylke %}
+						<li filter="{{ site.name }}" class="monstringSok">
+							{{ site.name }}
+							<br />
+							<a href="{{ site.blog_url }}wp-admin/" target="_blank">kontrollpanel</a>
+							|
+							<a href="{{ site.blog_url }}" target="_blank">nettside</a>
+							|
+							<a href="site-users.php?id={{ site.blog_id }}" target="_blank">brukere</a>
+							|
+							<a href="{{ site.blog_url }}wp-admin/admin.php?page=UKMpassord" target="_blank">passordliste</a>
+						</li>						
+					{% endfor %}
+				</ol>
+			</div>
+			<div class="col-xs-12 col-sm-7">
+				<h5>Lokalmønstringer</h5>
+
+				<ol class="list-unstyled" id="lokalmonstringer">
+					{% for site in monstringer.lokal %}
+						<li filter="{{ site.name }} {{ site.fylke }}" class="monstringSok">
+							{{ site.name }} <small>({{ site.fylke }})</small>
+							<br />
+							<a href="{{ site.blog_url }}wp-admin/" target="_blank">kontrollpanel</a>
+							|
+							<a href="{{ site.blog_url }}" target="_blank">nettside</a>
+							|
+							<a href="site-users.php?id={{ site.blog_id }}" target="_blank">brukere</a>
+						</li>						
+					{% endfor %}
+				</ol>
+
+			</div>
+		</div>
+				
+		<p id="plStartSearch">Ingen mønstringer vises før du begynner å filtrere listen</p>
+		<p id="plNoneFound">Beklager, ingen fylker eller kommuner/bydeler matcher søkeordet!</p>
+			
 	</div>
 </div>
