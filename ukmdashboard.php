@@ -172,7 +172,7 @@ function UKMWP_dash_scriptsandstyles() {
 		
 		// BS-4alpha
 #		wp_enqueue_style('WPbootstrap3_css');
-		wp_enqueue_style('WPbootstrap4_css');
+#		wp_enqueue_style('WPbootstrap4_css');
 #		wp_enqueue_script('WPbootstrap4_js');
 		
 		wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_network_dashboard.css');
@@ -181,7 +181,7 @@ function UKMWP_dash_scriptsandstyles() {
 		wp_enqueue_script('UKMwp_network_dashboard_js',  plugin_dir_url( __FILE__ )  . 'js/wp_network_dashboard.js' );
 
 	}
-	if( $screen->base == 'dashboard' ) {# || $screen->base == 'dashboard-network' ) {
+	if( $screen->base == 'dashboard' || $screen->base == 'dashboard-network' ) {
 		wp_enqueue_script('WPbootstrap3_js');
 		wp_enqueue_style('WPbootstrap3_css');
 	}

@@ -22,11 +22,13 @@ jQuery(document).ready(function() {
 jQuery(document).on('monstring_none_found', function() {
 	jQuery('#plStartSearch').hide();
 	jQuery('#plNoneFound').show();
+	jQuery('#container_monstringer').hide();
 });
 
 jQuery(document).on('monstring_some_found', function() {
 	jQuery('#plStartSearch').hide();
 	jQuery('#plNoneFound').hide();
+	jQuery('#container_monstringer').show();
 });
 
 jQuery(document).on('monstring_not_searching', function() {
@@ -34,4 +36,5 @@ jQuery(document).on('monstring_not_searching', function() {
 
 	jQuery('#plStartSearch').show();
 	jQuery('#plNoneFound').hide();
+	jQuery('#container_monstringer').hide();
 });

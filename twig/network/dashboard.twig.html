@@ -1,18 +1,148 @@
-<style>
-	body {font-size:14px;}
-	.card{ padding: 0; }
-</style>
-<div class="wrap" style="margin-left:0px;margin-top:0px;">
-	<h1>UKM Norge: startside</h1>
-	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-4">
-			{% embed "network/messages.twig.html" %}{% endembed %}
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-8">
-			{% embed "network/support.twig.html" %}{% endembed %}
-		</div>
-	</div>
-	
-	<hr class="m-b-1 m-t-1" />
-	{% embed "network/innhold.twig.html" %}{% endembed %}
+<div class="clearfix"></div>
+<div class="header-dashboard">UKM Norge-admin</div>
+<div class="header-shortcuts hidden-xs" style="text-align:center;">
+	<ul class="list-inline">
+		<li>
+			<a href="admin.php?page=UKMTVwp_network">
+				<img class="icon" src="http://ico.ukm.no/video-256.png" />
+				<br />
+				UKM-TV
+			</a>
+		</li>
+
+		<li>
+			<a href="admin.php?page=UKMsupport">
+				<img class="icon" src="http://ico.ukm.no/support-256.png" />
+				<br />
+				Support
+			</a>
+		</li>
+
+		<li>
+			<a href="admin.php?page=UKMmateriell">
+				<img class="icon" src="http://ico.ukm.no/kolli-256.png" />
+				<br />
+				Materiell
+			</a>
+		</li>
+	</ul>
 </div>
+<div class="wrap dashboard" style="margin-left:0px;margin-top:0px;">
+	<div class="content">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				{% embed "network/messages.twig.html" %}{% endembed %}
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				{% embed "network/support.twig.html" %}{% endembed %}
+			</div>
+		</div>
+		
+		<hr class="m-b-1 m-t-1" />
+		{% embed "network/innhold.twig.html" %}{% endembed %}
+	</div>
+</div>
+
+
+
+
+<style>
+.header-dashboard {
+    text-align: center;
+    background: #fff;
+    padding: 1px 0px 0px 0px;
+    margin-left: -20px;
+    font-size: 32px;
+    padding: 10px 10px;
+    color: #000;
+    opacity: 0.65;
+    font-weight: 100;
+}
+
+.header-shortcuts {
+    margin-left: -20px;
+    background: #ECECEC;
+    padding: 8px 0px 0px 0px;
+    border-top: 1px solid #CCCACA;
+    border-bottom: 1px solid #CCCACA;
+	margin-bottom: 23px;
+}
+.header-shortcuts ul {
+	margin-bottom:4px;
+    padding-left: 28px; /* MOTVIRKER PADDING PÅ UL > LI */
+
+}
+.header-shortcuts li {
+    opacity: 0.65;
+    cursor: pointer;
+    margin-bottom: 0px;
+    font-size: 12px;
+    padding: 0px 28px; /* OBS: PADDING-LEFT PARENT UL */
+}
+.header-shortcuts li:hover {
+    opacity: 1;
+}
+.header-shortcuts img.icon {
+    max-width: 32px;
+    margin-bottom: 3px;
+}
+
+.table.table-dashboard.noborder {
+    border: none;
+}
+
+.table.table-dashboard {
+    border: 1px solid #5bc0de;
+}
+.table.table-dashboard > thead > tr > th {
+    background: #5bc0de;
+}
+
+.table.table-dashboard.warning {
+    border: 1px solid #f0ad4e;
+}
+.table.table-dashboard.warning > thead > tr > th {
+    background: #f0ad4e;
+}
+
+.table.table-dashboard.danger {
+    border: 1px solid #d9534f;
+}
+.table.table-dashboard.danger > thead > tr > th {
+    background: #d9534f;
+    color: #fff;
+}
+
+
+table.table.table-dashboard {
+    font-size: 12px;
+    background: #fff;
+    border-collapse: separate;
+}
+.table-dashboard a {
+	color: #000;
+}
+.table.table-dashboard > thead > tr > th {
+	padding: 5px 13px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.table.table-dashboard > thead > tr > th img {
+    margin: -1px 0px 0px 0px;
+}
+
+.table.table-dashboard > thead > tr > th {
+    padding: 9px 20px;
+    border-bottom: none;
+}
+
+.table.table-dashboard > thead > tr > th > p {
+    margin-bottom: -2px;
+}
+
+.table.table-dashboard > tbody:first-child > tr > td {
+	border-top: none;
+}
+</style>

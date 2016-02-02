@@ -9,7 +9,7 @@
 			$since_last = date_diff( $now, $posttime )->format('%R%a');
 			
 			if( $site->frequency > abs( $since_last ) ) {
-				return 'success';
+				return 'info';
 			}
 			if( $site->frequency == abs( $since_last ) ) {
 				return 'warning';
@@ -22,10 +22,10 @@
 
 	$sites = array();
 
-	// UKM for ungdom	
+	// ungdom	
 	$site = new stdClass();
 	$site->ID = 1;
-	$site->title = 'UKM for ungdom';
+	$site->title = 'ungdom';
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/wp-admin/post-new.php';
 	$site->link_panel = 'http://'. UKM_HOSTNAME .'/wp-admin/';
 	$site->frequency = 7; #days
@@ -34,10 +34,10 @@
 	
 	$sites[] = $site;
 
-	// UKM for arrangorer
+	// arrangorer
 	$site = new stdClass();
 	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 13 : 881;
-	$site->title = 'UKM for arrangører';
+	$site->title = 'arrangører';
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/arrangor/wp-admin/post-new.php';
 	$site->link_panel = 'http://'. UKM_HOSTNAME .'/arrangor/wp-admin/';
 	$site->posts = posts( $site->ID, 3 );
@@ -47,13 +47,13 @@
 		$site->frequency = 7; #days
 	}
 	$site->posts = posts( $site->ID, 3 );
-	$site->status = post_status( $site );
+	$site->status = 'info';#post_status( $site );
 	$sites[] = $site;
 	
-	// UKM for voksne og presse
+	// voksne og presse
 	$site = new stdClass();
 	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 12 : 880;
-	$site->title = 'UKM for voksne og presse';
+	$site->title = 'voksne og presse';
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/om/wp-admin/post-new.php';
 	$site->link_panel = 'http://'. UKM_HOSTNAME .'/om/wp-admin/';
 	$site->frequency = 21; # days
@@ -78,10 +78,10 @@
 	
 	$sites[] = $site;
 	
-	// UKM for ambassadører
+	// ambassadører
 	$site = new stdClass();
 	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 12 : 377;
-	$site->title = 'UKM for ambassadører';
+	$site->title = 'ambassadører';
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/ambassador/wp-admin/post-new.php';
 	$site->link_panel = 'http://'. UKM_HOSTNAME .'/ambassador/wp-admin/';
 	$site->frequency = 28; #days
