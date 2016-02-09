@@ -41,7 +41,7 @@
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/arrangor/wp-admin/post-new.php';
 	$site->link_panel = 'http://'. UKM_HOSTNAME .'/arrangor/wp-admin/';
 	$site->posts = posts( $site->ID, 3 );
-	if( date('m') < 5 || date('m') > 9 ) {
+	if( date('m') > 4 && date('m') < 11 ) {
 		$site->frequency = 21; #days
 	} else {
 		$site->frequency = 7; #days
