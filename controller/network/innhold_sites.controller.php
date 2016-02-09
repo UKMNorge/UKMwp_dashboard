@@ -47,7 +47,7 @@
 		$site->frequency = 7; #days
 	}
 	$site->posts = posts( $site->ID, 3 );
-	$site->status = 'info';#post_status( $site );
+	$site->status = post_status( $site );
 	$sites[] = $site;
 	
 	// voksne og presse
