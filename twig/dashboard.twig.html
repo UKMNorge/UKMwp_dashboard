@@ -1,16 +1,74 @@
-<script language="javascript">
-	jQuery(document).ready(function(){
-		jQuery('#UKMWP_tabs a').click(function() {
-			jQuery(this).siblings().removeClass('nav-tab-active');
-			jQuery(this).addClass('nav-tab-active');
-			
-			jQuery('#UKMWP_tabcontent > div').hide();
-			jQuery('#UKMWP_tabcontent > div#content_'+jQuery(this).attr('id')).slideDown(200);
-		})
-	});
-</script>
+{% if post is defined %}
+	<div class="col-xs-12">
+		{% embed "post.twig.html" %}{% endembed %}
+	</div>
+{% else %}
+	<div class="clearfix"></div>
+	<div class="header-dashboard">UKM arrangørsystem</div>
+	<div class="header-shortcuts hidden-xs" style="text-align:center;">
+		<ul class="list-inline">
+			{% for shortcut in shortcuts %}
+				<li>
+					<a href="{{ shortcut.url }}">
+						<img class="icon" src="{{ shortcut.icon }}" />
+						<br />
+						{{ shortcut.title|raw }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="wrap dashboard" style="margin-left:0px;margin-top:0px;">
+		<div class="content">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					{% embed "meldinger.twig.html" %}{% endembed %}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					{% embed "kalender.twig.html" %}{% endembed %}
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					{% embed "pameldte.twig.html" %}{% endembed %}
+				</div>
+			</div>
 
-<div class="wrap" id="UKMWP_wrapper">
+			<div class="clearfix"></div>
+			<div class="row">
+				{% for post in news %}
+					<div class="col-xs-6 col-md-4 col-lg-2">
+						{% embed "news.twig.html" %}{% endembed %}
+					</div>
+					{% if loop.index is divisibleby(6) %}
+						<div class="clearfix visible-sm visible-md visible-lg"></div>
+					{% endif %}
+					{% if loop.index is divisibleby(2) %}
+						<div class="clearfix visible-xs"></div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#<div class="wrap" id="UKMWP_wrapper">
 	<h1>
 		UKM arrangørsystem
 		{% if post is defined %}
@@ -18,11 +76,6 @@
 		{% endif %}
 	</h1>
 
-	{% if post is defined %}
-		<div class="col-xs-12">
-			{% embed "post.twig.html" %}{% endembed %}
-		</div>
-	{% else %}
 		
 		{% if block_pre_messages is defined %}
 			{% for block in block_pre_messages %}
@@ -42,17 +95,7 @@
 
 			<div id="UKMWP_tabcontent">
 				<div id="content_nytt">
-					{% for post in news %}
-						<div class="col-xs-6 col-sm-4">
-							{% embed "news.twig.html" %}{% endembed %}
-						</div>
-						{% if loop.index is divisibleby(3) %}
-							<div class="clearfix visible-sm visible-md visible-lg"></div>
-						{% endif %}
-						{% if loop.index is divisibleby(2) %}
-							<div class="clearfix visible-xs"></div>
-						{% endif %}
-					{% endfor %}
+					
 					
 					<div class="cleafix"></div>
 					{% if pagination_prev is defined %}
@@ -69,3 +112,4 @@
 		<div class="clearfix"></div>
 	{% endif %}
 </div>
+#}

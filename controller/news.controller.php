@@ -18,7 +18,7 @@ if(isset($_GET['post'])) {
 	$TWIGdata['post'] = new WPOO_Post( $post );
 } else {
 	$page = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
-	$limit = isset($_GET['limit']) ? $_GET['limit'] : 12;
+	$limit = isset($_GET['limit']) ? $_GET['limit'] : 6;
 	$posts = query_posts( (isset($POST_QUERY) ? $POST_QUERY.'&' : '' ). 'post_status=publish&posts_per_page='.$limit.'&paged='.$page );
 	
 	if(sizeof($posts) == $limit)

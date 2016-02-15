@@ -1,0 +1,20 @@
+<table class="table table-dashboard noborder">
+	<thead>
+		<tr>
+			<th colspan="2">Kalender</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for event in kalender %}
+		    <tr class="{{message.level}}">
+				<td scope="row">
+					<a href="?UKMkalender">{{event.header}}</a>
+				</td>
+				<td width="10%">
+					{{ start|date('d') }}
+					<small>{{ start|dato('M') }}</small>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
