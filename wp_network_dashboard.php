@@ -23,7 +23,6 @@ $TWIGdata['base_path'] = 'http://'. UKM_HOSTNAME .'/';
 #error_reporting(E_ALL);
 #ini_set('display_errors',true);
 
-
 require_once('controller/network/innhold_tema.controller.php');
 require_once('controller/network/innhold_sites.controller.php');
 require_once('controller/network/support.controller.php');

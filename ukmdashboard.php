@@ -11,6 +11,7 @@ Author URI: http://mariusmandal.no
 add_action( 'admin_init', 'UKMWP_dash' );
 add_action( 'admin_enqueue_scripts', 'UKMWP_dash_scriptsandstyles' );
 add_action('admin_menu', 'UKMwpd_menu');
+add_action('network_admin_menu', 'UKMwpd_network_menu');
 
 function UKMwpd_menu() {
 	if( in_array( get_option('site_type'), array('kommune','fylke','land')) ) {
@@ -27,9 +28,19 @@ function UKMwpd_menu() {
 		add_action( 'admin_print_styles-' . $subpage3, 'UKMWP_support_scriptsandstyles' );	
 	
 		$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
-		add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );	
+		add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );
+
+		// Add notification about dates!
+		add_filter('UKMWPDASH_messages', 'UKMstimulering_message');
 	}
+	
 }
+
+function UKMwpd_network_menu() {
+	$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'superadmin', 'UKMsmadmin', 'UKMsmadmin');
+	add_action( 'admin_print_styles-' . $page, 'UKMWP_support_scriptsandstyles' );
+}
+
 
 function UKMdokumenter_sns() {
 	wp_enqueue_script('WPbootstrap3_js');
@@ -43,6 +54,52 @@ function UKMstimulering() {
 	require_once('controller/page.controller.php');
 	echo TWIG('page.twig.html', $TWIGdata, dirname(__FILE__));
 }
+
+function UKMsmadmin() {
+	$TWIGdata = array();
+	require_once('controller/network/smadmin.controller.php');
+	$TWIGdata['frister'] = UKMstimulering_frister();
+	$TWIGdata['f'] = UKMsmadmin_page();
+	#var_dump($TWIGdata);
+	echo TWIG('network/smadmin.twig.html', $TWIGdata, dirname(__FILE__));
+
+}
+
+function UKMstimulering_message() {
+	$MESSAGES = array();
+	require_once('controller/network/smadmin.controller.php');
+	$frister = UKMstimulering_frister();
+
+	#var_dump($frister);
+
+	$today = date("c");
+	#$d = new DateTime();
+	#$d->setDate(date("Y"), "12", "27");
+	#$today = $d->getTimestamp();
+	$redDate = $today+7*3600*24; // 7 days from today
+	$yellowDate = $today+21*3600*24; // 3 weeks from today
+	foreach ($frister as $frist) {
+		#echo '<br />';
+		#var_dump($frist->getTimestamp()); var_dump($today);
+		if ($today < $frist->getTimestamp() && $redDate >= $frist->getTimestamp()) {
+			$MESSAGES[] = array(
+				'level' => 'alert-danger',
+				'header' => 'Snart frist for stimuleringsmidler',
+				'body' => 'Under én uke til fristen går ut!<br />Søknadsfrist '.$frist->format("d.m").'.',
+			);
+		} 
+		elseif ($today < $frist->getTimestamp() && $yellowDate >= $frist->getTimestamp()) {
+			$MESSAGES[] = array(
+				'level' => 'alert-warning',
+				'header' => 'Snart frist for stimuleringsmidler',
+				'body' => 'Søknadsfrist '.$frist->format("d.m").'.'
+			);
+		}
+	}
+
+	return $MESSAGES;
+}
+
 
 function UKMstimulering_idebank() {
 	require_once('UKM/inc/twig-admin.inc.php');
