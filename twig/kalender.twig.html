@@ -15,6 +15,10 @@
 					<small>{{ start|dato('M') }}</small>
 				</td>
 			</tr>
+		{% else %}
+			<tr>
+				<td>ingen hendelser</td>
+			</tr>
 		{% endfor %}
 	</tbody>
 </table>
