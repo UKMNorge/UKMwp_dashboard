@@ -20,6 +20,7 @@ if(isset($_GET['post'])) {
 	$page = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 	$limit = isset($_GET['limit']) ? $_GET['limit'] : 6;
 	$posts = query_posts( (isset($POST_QUERY) ? $POST_QUERY.'&' : '' ). 'post_status=publish&posts_per_page='.$limit.'&paged='.$page );
+	$TWIGdata['page'] = $page;
 	
 	if(sizeof($posts) == $limit)
 		$TWIGdata['pagination_next'] = $page+1;

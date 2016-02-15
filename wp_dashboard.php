@@ -35,12 +35,15 @@ foreach($MESSAGES as $key => $MESSAGE) {
 $KALENDER = array();
 $KALENDER = apply_filters('UKMWPDASH_calendar', $KALENDER);
 
-/* STATISTIKK */
-require_once('UKM/monstring.class.php');
-$pl = new monstring( get_option('pl_id' ) );
-$stat = $pl->statistikk();										  
-$STATISTIKK = $stat->getTotal($pl->get('season'));
-
+if( in_array( get_option('site_type'), array('kommune','fylke','land') ) ) {
+	/* STATISTIKK */
+	require_once('UKM/monstring.class.php');
+	$pl = new monstring( get_option('pl_id' ) );
+	$stat = $pl->statistikk();										  
+	$STATISTIKK = $stat->getTotal($pl->get('season'));
+} else {
+	$STATISTIKK = null;
+}	
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter(),
 				  'messages'  => $MESSAGES,
@@ -50,6 +53,7 @@ $TWIGdata = array('site_type' => get_option('site_type'),
 				  'statistikk' => $STATISTIKK,
 				  'kommune' => $TWIG['statistikk_detaljert'],
 				  );
+
 /* NEWS */
 $POST_QUERY = 'cat=-2,-74';
 require_once(dirname(__FILE__).'/controller/news.controller.php');
