@@ -37,7 +37,7 @@ function UKMwpd_menu() {
 }
 
 function UKMwpd_network_menu() {
-	$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'superadmin', 'UKMsmadmin', 'UKMsmadmin');
+	$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'superadmin', 'UKMsmadmin', 'UKMsmadmin', 'http://ico.ukm.no/cash-menu.png');
 	add_action( 'admin_print_styles-' . $page, 'UKMWP_support_scriptsandstyles' );
 }
 
