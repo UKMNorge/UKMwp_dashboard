@@ -6,13 +6,13 @@
 	</thead>
 	<tbody>
 		{% for event in kalender %}
-		    <tr class="{{message.level}}">
+		    <tr class="{{event.level}}">
 				<td scope="row">
-					<a href="?UKMkalender">{{event.header}}</a>
+					<a href="admin.php?page=UKMkalender">{{event.header}}</a>
 				</td>
 				<td width="10%">
-					{{ start|date('d') }}
-					<small>{{ start|dato('M') }}</small>
+					{{ event.start|date('d') }}
+					<small>{{ event.start|dato('M') }}</small>
 				</td>
 			</tr>
 		{% else %}
