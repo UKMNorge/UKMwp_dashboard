@@ -43,13 +43,16 @@
 		<div class="content">
 			<div class="row">
 				{% for post in news %}
-					<div class="col-xs-6 col-md-4 {{ page == 1 ? 'col-lg-2' : '' }}">
+					<div class="col-xs-6 col-sm-4 {{ page == 1 ? 'col-lg-2' : 'col-md-3' }}">
 						{% embed "news.twig.html" %}{% endembed %}
 					</div>
-					{% if loop.index is divisibleby(6) %}
+					{% if page == 1 and loop.index is divisibleby(6) %}
 						<div class="clearfix visible-sm visible-md visible-lg"></div>
-					{% endif %}
-					{% if loop.index is divisibleby(2) %}
+					{% elseif page > 1 and loop.index is divisibleby(4) %}
+						<div class="clearfix visible-md visible-lg"></div>
+					{% elseif page > 1 and loop.index is divisibleby(3) %}
+						<div class="clearfix visible-sm"></div>
+					{% elseif page > 1 and loop.index is divisibleby(2) %}
 						<div class="clearfix visible-xs"></div>
 					{% endif %}
 				{% endfor %}

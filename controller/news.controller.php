@@ -19,7 +19,17 @@ if(isset($_GET['post'])) {
 } else {
 	$page = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 	$limit = isset($_GET['limit']) ? $_GET['limit'] : 6;
-	$posts = query_posts( (isset($POST_QUERY) ? $POST_QUERY.'&' : '' ). 'post_status=publish&posts_per_page='.$limit.'&paged='.$page );
+	if ($page > 1) {
+		$limit = 12;
+		$offset = $limit*($page-1)-6; // 6 stk på forsiden
+	    $post_query = (isset($POST_QUERY) ? $POST_QUERY.'&' : '' ). 'post_status=publish&posts_per_page='.$limit.'&&offset='.$offset.'&paged='.$page;
+	}
+	else {	 
+	    $post_query = (isset($POST_QUERY) ? $POST_QUERY.'&' : '' ). 'post_status=publish&posts_per_page='.$limit.'&paged='.$page;
+	}
+
+	#$posts = query_posts( (isset($POST_QUERY) ? $POST_QUERY.'&' : '' ). 'post_status=publish&posts_per_page='.$limit.'&paged='.$page );
+	$posts = query_posts($post_query);
 	$TWIGdata['page'] = $page;
 	
 	if(sizeof($posts) == $limit)
