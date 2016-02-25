@@ -111,3 +111,12 @@ table.table.table-dashboard {
     font-weight: 300;
     line-height: 12px;
 }
+
+.kalenderdetaljer {
+	opacity:0.8;
+	display:block;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	max-width: 90%;
+}
