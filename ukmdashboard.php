@@ -65,8 +65,7 @@ function UKMsmadmin() {
 
 }
 
-function UKMstimulering_message() {
-	$MESSAGES = array();
+function UKMstimulering_message( $MESSAGES ) {
 	require_once('controller/network/smadmin.controller.php');
 	$frister = UKMstimulering_frister();
 
