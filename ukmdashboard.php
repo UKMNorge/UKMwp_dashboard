@@ -27,7 +27,7 @@ function UKMwpd_menu() {
 		add_action( 'admin_print_styles-' . $subpage2, 'UKMdokumenter_sns' );	
 		add_action( 'admin_print_styles-' . $subpage3, 'UKMWP_support_scriptsandstyles' );	
 	
-		$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
+		$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'subscriber', 'UKMwpd_support', 'UKMwpd_support');
 		add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );
 
 		// Add notification about dates!
