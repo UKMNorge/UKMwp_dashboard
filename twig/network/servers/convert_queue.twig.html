@@ -23,8 +23,8 @@
 		}
 	{% else %}
 		jQuery(document).ready(function(){
-			var warning = jQuery('<div>').addClass('alert alert-danger').html('Videokonvertereren (http://videoconverter.ukm.no) ser ut til å være offline!');
-			jQuery('#videoconverter_graph').html( warning );
+			var warning = jQuery('<div>').addClass('alert alert-danger').html('Videokonvertereren (http://videoconverter.{{ UKM_HOSTNAME }}) ser ut til å være offline!');
+			jQuery('#videoconverter_queue_graph').html( warning );
 		});
 	{% endif %}
 </script>
@@ -40,6 +40,7 @@
 		<tr>
 			<td align="center">
 				<div id="videoconverter_queue_graph" style="width:90%; max-width: 95%; height: 120px; min-height:100px; max-height:150px;">Laster inn...</div>
+				{% if videoconverter.online %}
 				<p>
 					<small>
 						{% if videoconverter.time.total is defined and videoconverter.time.total > 0 %}
@@ -49,6 +50,7 @@
 						{% endif %}
 					</small>
 				</p>
+				{% endif %}
 			</td>
 		</tr>
 

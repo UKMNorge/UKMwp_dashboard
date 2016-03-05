@@ -5,7 +5,7 @@ require_once('UKM/curl.class.php');
 // Videoconverter
 $curl = new UKMCurl();
 $curl->timeout(2);
-$result = $curl->request('http://videoconverter.'. /*UKM_HOSTNAME*/'ukm.no' .'/api/status.php');
+$result = $curl->request('http://videoconverter.'. UKM_HOSTNAME .'/api/status.php');
 $TWIGdata['videoconverter'] = new stdClass;
 
 if( is_object($result) ) {
@@ -19,7 +19,7 @@ if( is_object($result) ) {
 // Videoconverter
 $curl = new UKMCurl();
 $curl->timeout(2);
-$result = $curl->request('http://video.'. /*UKM_HOSTNAME*/'ukm.no' .'/api/status.php');
+$result = $curl->request('http://video.'. UKM_HOSTNAME .'/api/status.php');
 $TWIGdata['video'] = new stdClass;
 
 if( is_object($result) ) {
@@ -35,7 +35,7 @@ if( is_object($result) ) {
 // Playback-server
 $curl = new UKMCurl();
 $curl->timeout(2);
-$result = $curl->request('http://playback.'. /*UKM_HOSTNAME*/'ukm.no' .'/api/status.php');
+$result = $curl->request('http://playback.'. UKM_HOSTNAME .'/api/status.php');
 $TWIGdata['playback'] = new stdClass;
 
 if( is_object($result) ) {

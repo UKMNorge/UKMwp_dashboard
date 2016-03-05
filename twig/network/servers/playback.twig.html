@@ -21,7 +21,7 @@
 		}
 	{% else %}
 		jQuery(document).ready(function(){
-			var warning = jQuery('<div>').addClass('alert alert-danger').html('Playbackserver (http://playback.ukm.no) ser ut til å være offline!');
+			var warning = jQuery('<div>').addClass('alert alert-danger').html('Playbackserver (http://playback.{{ UKM_HOSTNAME }}) ser ut til å være offline!');
 			jQuery('#playback_graph').html( warning );
 		});
 	{% endif %}
