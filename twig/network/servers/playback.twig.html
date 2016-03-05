@@ -1,0 +1,54 @@
+<script>
+	{% if playback.online %}
+		google.charts.setOnLoadCallback(playback_status);
+	
+		function playback_status() {
+			var data = google.visualization.arrayToDataTable([
+				['Diskplass','Tilgjengelig'],
+				['Brukt (GB)', {{ playback.space.used|round(1) }}],
+				['Ledig (GB)', {{ playback.space.free|round(1) }}],
+			]);
+			
+			var options = {
+			  chartArea: {'width': '100%', 'height': '88%'},
+			  pieHole: 0.4,
+			  legend: 'none',
+			  colors: [ '#d9534f', '#5cb85c']
+			};
+			
+			var chart = new google.visualization.PieChart(document.getElementById('playback_graph'));
+			chart.draw(data, options);
+		}
+	{% else %}
+		jQuery(document).ready(function(){
+			var warning = jQuery('<div>').addClass('alert alert-danger').html('Playbackserver (http://playback.ukm.no) ser ut til å være offline!');
+			jQuery('#playback_graph').html( warning );
+		});
+	{% endif %}
+</script>
+<table class="table table-dashboard {{ site.status }}">
+	<thead>
+		<tr class="">
+			<th colspan="2">
+				Playback
+			</th>
+		</tr>
+	</thead>
+	<tbody>						
+		<tr>
+			<td align="center">
+				{% if playback.online %}
+					<p>
+						{{ ( (100/playback.space.total) * playback.space.free )|round(1) }}% ledig
+						<br />
+						<small>
+							{{ playback.diskspace|filesize(0) }} av {{ playback.total_diskspace|filesize(0) }}
+						</small>
+					</p>
+				{% endif %}
+				<div id="playback_graph" style="width:90%; max-width: 95%; height: 120px; min-height:100px; max-height:150px;">Laster inn...</div>
+			</td>
+		</tr>
+
+	</tbody>
+</table>
