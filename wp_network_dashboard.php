@@ -28,6 +28,7 @@ require_once('controller/network/innhold_tema.controller.php');
 require_once('controller/network/innhold_sites.controller.php');
 require_once('controller/network/support.controller.php');
 require_once('controller/network/server_status.controller.php');
+require_once('controller/network/sveve.controller.php');
 
 $MESSAGES = array();
 $MESSAGES = apply_filters('UKMWPNETWDASH_messages', $MESSAGES);
