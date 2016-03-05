@@ -5,8 +5,8 @@
 		function playback_status() {
 			var data = google.visualization.arrayToDataTable([
 				['Diskplass','Tilgjengelig'],
-				['Brukt (GB)', {{ playback.space.used|round(1) }}],
-				['Ledig (GB)', {{ playback.space.free|round(1) }}],
+				['Brukt (GB)', {{ playback.space.used|round(1)|replace(',','.') }}],
+				['Ledig (GB)', {{ playback.space.free|round(1)|replace(',','.') }}],
 			]);
 			
 			var options = {

@@ -5,8 +5,8 @@
 		function video_status() {
 			var data = google.visualization.arrayToDataTable([
 				['Diskplass','Tilgjengelig'],
-				['Brukt (GB)', {{ video.space.used|round(1) }}],
-				['Ledig (GB)', {{ video.space.free|round(1) }}],
+				['Brukt (GB)', {{ video.space.used|round(1)|replace(',','.') }}],
+				['Ledig (GB)', {{ video.space.free|round(1)|replace(',','.') }}],
 			]);
 			
 			var options = {

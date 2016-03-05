@@ -5,8 +5,8 @@
 		function videoconverter_status() {
 			var data = google.visualization.arrayToDataTable([
 				['Diskplass','Tilgjengelig'],
-				['Brukt (GB)', {{ videoconverter.space.used|round(1) }}],
-				['Ledig (GB)', {{ videoconverter.space.free|round(1) }}],
+				['Brukt (GB)', {{ videoconverter.space.used|round(1)|replace(',','.') }}],
+				['Ledig (GB)', {{ videoconverter.space.free|round(1)|replace(',','.') }}],
 			]);
 			
 			var options = {
