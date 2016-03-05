@@ -26,7 +26,7 @@
 		});
 	{% endif %}
 </script>
-<table class="table table-dashboard {{ site.status }}">
+<table class="table table-dashboard {{ playback.space.free_percentage < 50 ? 'danger' }}">
 	<thead>
 		<tr class="">
 			<th colspan="2">
@@ -39,7 +39,7 @@
 			<td align="center">
 				{% if playback.online %}
 					<p>
-						{{ ( (100/playback.space.total) * playback.space.free )|round(1) }}% ledig
+						{{ playback.space.free_percentage|round(1) }}% ledig
 						<br />
 						<small>
 							{{ playback.diskspace|filesize(0) }} av {{ playback.total_diskspace|filesize(0) }}

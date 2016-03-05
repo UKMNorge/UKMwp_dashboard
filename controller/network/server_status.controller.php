@@ -56,5 +56,8 @@ function graph_diskspace( $result ) {
 	$space->free = $space->free / (1024*1024*1024);
 	$space->used = $space->used / (1024*1024*1024);
 	$space->total = $space->total / (1024*1024*1024);
+	
+	$space->free_percentage = (100 / $space->total) * $space->free;
+	
 	return $space;
 }
