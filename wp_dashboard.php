@@ -44,6 +44,18 @@ if( in_array( get_option('site_type'), array('kommune','fylke','land') ) ) {
 } else {
 	$STATISTIKK = null;
 }	
+
+/* DELTAKERBRUKER ELLER ARRANGØR? */
+$qry = new SQL("SELECT COUNT(*) FROM `#table`
+				WHERE `wp_id` = '#id'",
+				array('table' => 'ukm_wp_deltakerbrukere', 'id' => $current_user->ID)
+			);
+$res = $qry->run('field', 'COUNT(*)');
+if ($res)
+	$shortcuts_available = false;
+else 
+	$shortcuts_available = true;
+
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter(),
 				  'messages'  => $MESSAGES,
@@ -52,6 +64,7 @@ $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kalender' => $KALENDER,
 				  'statistikk' => $STATISTIKK,
 				  'kommune' => $TWIG['statistikk_detaljert'],
+				  'user' => $current_user,
 				  );
 
 /* NEWS */

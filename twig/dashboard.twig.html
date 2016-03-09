@@ -8,7 +8,7 @@
 		<div class="header-dashboard">UKM arrangørsystem</div>
 		<div class="header-shortcuts hidden-xs" style="text-align:center;">
 			<ul class="list-inline">
-				{% for shortcut in shortcuts %}
+				{% for shortcut in shortcuts if shortcuts_available %}
 					<li>
 						<a href="{{ shortcut.url }}">
 							<img class="icon" src="{{ shortcut.icon }}" />
