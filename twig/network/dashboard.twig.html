@@ -1,3 +1,6 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>google.charts.load('current', {'packages':['corechart']});</script>
+
 <div class="clearfix"></div>
 <div class="header-dashboard">UKM Norge-admin</div>
 <div class="header-shortcuts hidden-xs" style="text-align:center;">
@@ -37,8 +40,10 @@
 				{% embed "network/support.twig.html" %}{% endembed %}
 			</div>
 		</div>
-		
-		<hr class="m-b-1 m-t-1" />
+				
+		<hr />
 		{% embed "network/innhold.twig.html" %}{% endembed %}
+		
+		{% embed "network/servers/dashboard.twig.html" %}{% endembed %}
 	</div>
 </div>
