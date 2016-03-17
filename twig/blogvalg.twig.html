@@ -1,0 +1,19 @@
+<table class="table table-dashboard noborder">
+	<thead>
+		<tr>
+			<th>Velg mønstring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<p>Hvis brukeren din er tilknyttet flere mønstringer kan du velge hvilken du vil jobbe på her.</p>
+				<select id="blogvalg" class="form-control">
+					{% for blog in blogs %}
+						<option value="{{ blog.siteurl }}/wp-admin/" {{ blog.userblog_id == current_blog_id ? 'selected' : ''}}>{{ blog.blogname }}</option>
+					{% endfor %}
+				</select>
+			</td>
+		</tr>
+	</tbody>
+</table>

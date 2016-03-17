@@ -233,6 +233,7 @@ function UKMWP_dash_scriptsandstyles() {
 			wp_enqueue_script('jqueryGoogleUI', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js');
 			
 			wp_enqueue_script('pushtofront', plugin_dir_url( __FILE__ ).'/js/pushtofront.jquery.js');
+			wp_enqueue_script('blogvalg', plugin_dir_url( __FILE__ ) .'/js/blogvalg.jquery.js');
 
 		}
 		if( $screen->base == 'dashboard-network' ) {

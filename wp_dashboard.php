@@ -51,10 +51,14 @@ $qry = new SQL("SELECT COUNT(*) FROM `#table`
 				array('table' => 'ukm_wp_deltakerbrukere', 'id' => $current_user->ID)
 			);
 $res = $qry->run('field', 'COUNT(*)');
-if ($res)
+if ($res) {
 	$shortcuts_available = false;
-else 
+	$deltakerbruker = true;
+}
+else { 
 	$shortcuts_available = true;
+	$deltakerbruker = false;
+}
 
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter(),
@@ -65,7 +69,17 @@ $TWIGdata = array('site_type' => get_option('site_type'),
 				  'statistikk' => $STATISTIKK,
 				  'kommune' => $TWIG['statistikk_detaljert'],
 				  'user' => $current_user,
+				  'deltakerbruker' => $deltakerbruker,
 				  );
+
+if ($deltakerbruker) {
+	// Liste over blogger brukeren har rettigheter til.
+	$blogs = get_blogs_of_user($current_user->ID);
+	#var_dump($blogs);
+	$TWIGdata['blogs'] = $blogs;
+	#var_dump(get_current_blog_id());
+	$TWIGdata['current_blog_id'] = get_current_blog_id();
+}
 
 /* NEWS */
 $POST_QUERY = 'cat=-2,-74';
