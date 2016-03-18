@@ -235,6 +235,10 @@ function UKMWP_dash_scriptsandstyles() {
 			wp_enqueue_script('pushtofront', plugin_dir_url( __FILE__ ).'/js/pushtofront.jquery.js');
 			wp_enqueue_script('blogvalg', plugin_dir_url( __FILE__ ) .'/js/blogvalg.jquery.js');
 
+			wp_enqueue_media();
+			wp_enqueue_style('UKMresources_tabs');
+			wp_enqueue_script('profil', plugin_dir_url(__FILE__) .'/js/profil.jquery.js');
+
 		}
 		if( $screen->base == 'dashboard-network' ) {
 			wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_network_dashboard.css');

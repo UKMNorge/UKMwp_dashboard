@@ -13,6 +13,11 @@ global $current_user;
 
 update_user_option($current_user->ID, 'admin_color', 'light', true);
 
+// If update user data-query
+if (isset($_POST['form_display_name'])) {
+	require_once('controller/profil.controller.php');
+
+}
 require_once('UKM/inc/twig-admin.inc.php');
 require_once('UKM/monstring.class.php');
 require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
@@ -79,7 +84,13 @@ if ($deltakerbruker) {
 	$TWIGdata['blogs'] = $blogs;
 	#var_dump(get_current_blog_id());
 	$TWIGdata['current_blog_id'] = get_current_blog_id();
+	$TWIGdata['user_avatar'] = get_avatar($current_user->ID);
+	#var_dump($current_user);
+	#echo '<br>';
+	#var_dump(get_avatar($current_user->ID));
 }
+
+$TWIGdata['user_avatar'] = get_avatar($current_user->ID);
 
 /* NEWS */
 $POST_QUERY = 'cat=-2,-74';

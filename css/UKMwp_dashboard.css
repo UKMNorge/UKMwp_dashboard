@@ -1,3 +1,11 @@
+/** Skjul SCREEN META-boks for alle 
+ * Lagt til 18.03.2016
+ * fordi deltakerbrukere-dashboard fikk opp boksen.
+**/
+#screen-meta-links {
+	display:none!important;
+}
+
 div.infos div{
 	float: left;
 	font-weight: bold;

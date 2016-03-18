@@ -1,0 +1,38 @@
+<table class="table table-dashboard noborder">
+	<thead>
+		<tr>
+			<th>Profil</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<form method="POST" action="#">
+					<div class="row">
+
+						<div class="col-xs-6">
+							<p>Her kan du endre hva som vises på artikler og bilder du er kreditert på.</p>
+							<div class="form-group">
+								<label for="form_display_name">Visningsnavn</label>
+								<input class="form-control" id="form_display_name" name="form_display_name" value="{{ user.display_name }}">
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Velg bilde</label><br>
+								<div id="insertMedia">{{ user_avatar|raw }}</div>
+								<input type="hidden" id="avatar_image" name="avatar_image">
+								{# <div class="btn btn-info" id="insertMedia"></div> #}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="description">Kort beskrivelse</label>
+						<input class="form-control" id="description" name="description" value="{{ user.description }}">
+					</div>
+
+					<input type="submit" class="btn btn-info btn-block" value="Lagre">
+			</td>
+		</tr>
+	</tbody>
+</table>
