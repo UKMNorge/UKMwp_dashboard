@@ -27,13 +27,9 @@ function UKMwpd_menu() {
 		add_action( 'admin_print_styles-' . $subpage2, 'UKMdokumenter_sns' );	
 		add_action( 'admin_print_styles-' . $subpage3, 'UKMWP_support_scriptsandstyles' );	
 	
-		$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'subscriber', 'UKMwpd_support', 'UKMwpd_support');
-		$supportpage2 = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'author', 'UKMwpd_support', 'UKMwpd_support');
-		$supportpage2 = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
-		#$supportpage2 = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'administrator', 'UKMwpd_support', 'UKMwpd_support');
+		$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'read', 'UKMwpd_support', 'UKMwpd_support');
 
 		add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );
-		add_action( 'admin_print_styles-' . $supportpage2, 'UKMWP_support_scriptsandstyles' );
 
 		// Add notification about dates!
 		add_filter('UKMWPDASH_messages', 'UKMstimulering_message');
