@@ -30,7 +30,7 @@ function UKMwpd_menu() {
 		$supportpage = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'subscriber', 'UKMwpd_support', 'UKMwpd_support');
 		$supportpage2 = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'author', 'UKMwpd_support', 'UKMwpd_support');
 		$supportpage2 = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'editor', 'UKMwpd_support', 'UKMwpd_support');
-		$supportpage2 = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'administrator', 'UKMwpd_support', 'UKMwpd_support');
+		#$supportpage2 = add_submenu_page('index.php', 'Brukerstøtte', 'Brukerstøtte', 'administrator', 'UKMwpd_support', 'UKMwpd_support');
 
 		add_action( 'admin_print_styles-' . $supportpage, 'UKMWP_support_scriptsandstyles' );
 		add_action( 'admin_print_styles-' . $supportpage2, 'UKMWP_support_scriptsandstyles' );
