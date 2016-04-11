@@ -93,7 +93,7 @@ if ($deltakerbruker) {
 $TWIGdata['user_avatar'] = get_avatar($current_user->ID);
 
 /* NEWS */
-$POST_QUERY = 'cat=-2,-74';
+$POST_QUERY = 'cat=-2';
 require_once(dirname(__FILE__).'/controller/news.controller.php');
 
 
