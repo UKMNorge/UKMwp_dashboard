@@ -2,7 +2,7 @@
 
 require_once('UKM/sql.class.php');
 
-$monday = new DateTime('this monday');
+$monday = new DateTime('monday this week');
 $qry = new SQL("SELECT COUNT(*) FROM `ukm_insta_bilder` WHERE `created_time` > '#weekstart'", array('weekstart' => $monday->format("U")));
 #echo $qry->debug();
 $UKMinsta = new stdClass();
