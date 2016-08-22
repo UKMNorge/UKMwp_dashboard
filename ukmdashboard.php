@@ -12,6 +12,12 @@ add_action( 'admin_init', 'UKMWP_dash' );
 add_action( 'admin_enqueue_scripts', 'UKMWP_dash_scriptsandstyles' );
 add_action('admin_menu', 'UKMwpd_menu');
 add_action('network_admin_menu', 'UKMwpd_network_menu');
+add_action( 'admin_head', 'UKMwpd_favicon' );
+
+function UKMwpd_favicon() {
+	echo '<link rel="shortcut icon" href="http://ico.ukm.no/wp-admin_favicon.png" />';
+}
+
 
 function UKMwpd_menu() {
 	if( in_array( get_option('site_type'), array('kommune','fylke','land')) ) {
