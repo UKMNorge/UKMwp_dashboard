@@ -31,7 +31,6 @@ if( is_object($result) ) {
 }
 
 
-
 // Playback-server
 $curl = new UKMCurl();
 $curl->timeout(2);
@@ -45,6 +44,13 @@ if( is_object($result) ) {
 } else {
 	$TWIGdata['playback']->online = false;
 }
+
+// UKMno-server
+$curl = new UKMCurl();
+$curl->timeout(2);
+$result = $curl->request('http://api.'. UKM_HOSTNAME .'/server:diskspace/');
+$result->space = graph_diskspace( $result );
+$TWIGdata['ukmno'] = $result; 
 
 
 function graph_diskspace( $result ) {
