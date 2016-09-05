@@ -1,7 +1,7 @@
 <table class="table table-dashboard noborder">
 	<thead>
 		<tr>
-			<th colspan="2">Kalender</th>
+			<th colspan="4">Kalender</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -10,10 +10,22 @@
 				<td scope="row">
 					<a href="admin.php?page=UKMkalender">{{event.header}}</a>
 				</td>
-				<td width="10%">
-					{{ event.start|dato('d') }}
-					<small>{{ event.start|dato('M') }}</small>
-				</td>
+				{% if (event.stop is not defined) or (event.start == event.stop) %}
+					<td width="10%">
+						{{ event.start|dato('d') }}
+						<small>{{ event.start|dato('M') }}</small>
+					</td>
+				{% else %}
+					<td width="10%">
+						{{ event.start|dato('d') }}
+						<small>{{ event.start|dato('M') }}</small>
+					</td>
+					<td width="2%">-</td>
+					<td width="10%">
+						{{ event.stop|dato('d') }}
+						<small>{{ event.stop|dato('M') }}</small>
+					</td>
+				{% endif %}
 			</tr>
 		{% else %}
 			<tr>
