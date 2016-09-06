@@ -44,5 +44,20 @@
 		</div>
 	</div>
 	{% endfor %}
+{% endif %}
+
+{% if gjestekommune is defined and if gjestekommune is not empty %}
+	<div class="well col-xs-12 col-sm-5 col-md-4 UKMSUPPORT_contact">
+		<h4>Gjestekommune</h4>
+		<p>Fylket har en "gjestekommune" det går an å logge inn på for å vise frem eller teste systemet.</p>
+		
+		<p>Målet med denne er at lokal- og fylkeskontakter kan logge inn som arrangøren "Gjester" og sette opp en hel mønstring hvis ønskelig i forbindelse med en demo, eller at lokalkontakter kan logge inn og prøve seg frem i systemet.</p>
+		<div class="well">
+			<span>Brukernavn: <strong>{{ gjestekommune.brukernavn }}</strong></span><br>
+			<span>Passord: <strong>{{ gjestekommune.passord }}</strong></span>
+		</div>
+		<p>Logg inn som vanlig på <a href="http://ukm.no/">ukm.no</a> -> for arrangører.</p>
+		<p>OBS: Dette er en delt bruker, så andre kan være innlogget samtidig og gjøre endringer.</p>
+	</div>
 
 {% endif %}

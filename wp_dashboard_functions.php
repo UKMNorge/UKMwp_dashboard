@@ -20,4 +20,22 @@ function UKMWP_kontakter() {
 	}
 	return $kontaktpersoner;		 
 }
+
+function UKMWP_gjestekommune() {
+	$m = new monstring(get_option('pl_id'));
+	$db = 'ukmno_wp2012';
+	if(UKM_HOSTNAME == 'ukm.dev')
+		$db = 'ukmdev_dev_wp';
+	$sql = new SQL("SELECT `b_name` AS 'brukernavn', `b_password` AS 'passord'
+					FROM `#db`.`ukm_brukere`
+					WHERE `b_fylke` = '#fylke_id' 
+					AND `b_name` LIKE 'gjest_%'
+					AND `b_name` NOT LIKE 'Gjester'
+					LIMIT 1", array('db' => $db, 'fylke_id' => $m->g('fylke_id')));
+
+	#echo $sql->debug();
+	$res = $sql->run('array');
+	#var_dump($res);
+	return $res;
+}
 ?>

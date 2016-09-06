@@ -141,7 +141,8 @@ function UKMwpd_support() {
 	require_once('UKM/inc/twig-admin.inc.php');
 	require_once('wp_dashboard_functions.php');
 	$TWIGdata = array('site_type' => get_option('site_type'),
-					  'kontakter' => UKMWP_kontakter()
+					  'kontakter' => UKMWP_kontakter(),
+					  'gjestekommune' => UKMWP_gjestekommune()
 					 );
 	echo TWIG('kontakt.twig.html', $TWIGdata, dirname(__FILE__));
 }
