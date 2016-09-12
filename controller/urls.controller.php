@@ -11,7 +11,7 @@ function get_urls() {
 
 		$res = $sql->run();
 		$urls = array();
-		while($row = mysql_fetch_assoc($res)) {
+		while($row = @mysql_fetch_assoc($res)) {
 			$url = new stdClass();
 			$url->name = 'http://ukm.no'.$row['path'];
 			$url->realpath = $row['realpath'];
