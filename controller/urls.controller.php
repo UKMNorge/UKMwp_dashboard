@@ -1,6 +1,7 @@
 <?php
 
 function get_urls() {
+	$urls = array();
 	# Fetch this places paths:
 	if(get_option('site_type') == 'kommune') {
 		$realpath = '/pl'.get_option('pl_id').'/';
@@ -9,7 +10,6 @@ function get_urls() {
 						array("realpath" => $realpath));
 		$res = $sql->run();
 		
-		$urls = array();
 		if(false == $res) 
 			return false;
 		while($row = mysql_fetch_assoc($res)) {
@@ -18,7 +18,7 @@ function get_urls() {
 			$url->realpath = $row['realpath'];
 			$urls[] = $url;
 		}
-	} else {
+	} elseif(get_option('site_type') == 'fylke') {
 		require_once('UKM/monstring.class.php');
 		$pl_id = get_option('pl_id');
 		$pl = new monstring_v2($pl_id);
