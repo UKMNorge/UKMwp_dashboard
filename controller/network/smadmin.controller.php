@@ -36,8 +36,6 @@ function UKMstimulering_frister() {
 	$d->setDate(date("Y"), "10", "15");
 	$frister[] = clone $d;
 
-	if(is_super_admin())
-		var_dump($frister);
 	return $frister;
 }
 
