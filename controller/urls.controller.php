@@ -5,8 +5,8 @@ function get_urls() {
 	if(get_option('site_type') == 'kommune') {
 		$realpath = '/pl'.get_option('pl_id').'/';
 		$sql = new SQL("SELECT * FROM `ukmno_wp2012`.`ukm_uri_trans`
-						WHERE `realpath` = '#realpath'
-						GROUP BY `realpath`", array("realpath" => $realpath));
+						WHERE `realpath` = '#realpath'", 
+						array("realpath" => $realpath));
 		$res = $sql->run();
 		
 		$urls = array();
