@@ -24,15 +24,20 @@ function UKMsmadmin_page() {
 function UKMstimulering_frister() {
 	$d = new DateTime();
 	$frister = array();
-	$d->setDate(date("Y")+1, "01", "01");
+	// 1. januar
+	$d->setDate(date("Y")+1, "01", "15");
 	$d->setTime("01", "00", "00");
 	// Clone ensures that PHP assigns by value, not reference.
 	$frister[] = clone $d;
-	$d->setDate(date("Y"), "05", "01");
+	// 15. april
+	$d->setDate(date("Y"), "04", "15");
 	$frister[] = clone $d;
-	$d->setDate(date("Y"), "10", "3");
+	// 15. oktober
+	$d->setDate(date("Y"), "10", "15");
 	$frister[] = clone $d;
 
+	if(is_super_admin())
+		var_dump($frister);
 	return $frister;
 }
 
