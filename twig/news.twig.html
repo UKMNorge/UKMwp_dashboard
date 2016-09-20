@@ -2,7 +2,7 @@
 	{% set link = post.meta.redirect %}
 	{% set target = 'target="_blank"' %}
 {% else %}
-	{% set link = '?post='~ post.ID %}
+	{% set link = 'index.php?post='~ post.ID %}
 	{% set target = '' %}
 {% endif %}
 
