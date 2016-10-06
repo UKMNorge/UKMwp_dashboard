@@ -112,6 +112,19 @@ table.table.table-dashboard {
     line-height: 12px;
 }
 
+#pameldte .helarsPersoner {
+    font-size: 26px;
+    font-weight: 594;
+    text-align: center;
+}
+
+#pameldte .explanation {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 12px;
+}
+
 .kalenderdetaljer {
 	opacity:0.8;
 	display:block;

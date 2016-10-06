@@ -65,6 +65,24 @@ else {
 	$deltakerbruker = false;
 }
 
+/* HELÅRS-DELTAKERE */
+$helarsDeltakere = 0;
+if(file_exists(__DIR__.'/../UKMrsvp_admin/class/SecretFinder.php')) {
+	require_once(__DIR__.'/../UKMrsvp_admin/class/SecretFinder.php');
+	require_once(__DIR__.'/../UKMrsvp_admin/class/EventManager.php');
+
+	$api_key = 'ukmno_rsvp';
+	if(get_option('site_type') == 'land')
+		$owner = 'UKMNorge';
+	else
+		$owner = get_option('pl_id');
+	$secretFinder = new SecretFinder();
+	$eventManager = new EventManager($api_key, $secretFinder->getSecret($api_key));
+	$participants = $eventManager->findAllAttending($owner);
+	$helarsDeltakere = count($participants->data);
+	#var_dump($participants);
+}
+
 $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kontakter' => UKMWP_kontakter(),
 				  'messages'  => $MESSAGES,
@@ -75,6 +93,7 @@ $TWIGdata = array('site_type' => get_option('site_type'),
 				  'kommune' => $TWIG['statistikk_detaljert'],
 				  'user' => $current_user,
 				  'deltakerbruker' => $deltakerbruker,
+				  'helarsDeltakere' => $helarsDeltakere
 				  );
 
 if ($deltakerbruker) {
