@@ -80,12 +80,17 @@ table.table.table-dashboard {
     font-weight: 400;
     text-transform: uppercase;
 }
+@media(max-width:767px){
+    .table.table-dashboard > thead > tr > th {
+        font-size: 13px;
+    }
+}
 .table.table-dashboard > thead > tr > th img {
     margin: -1px 0px 0px 0px;
 }
 
 .table.table-dashboard > thead > tr > th {
-    padding: 9px 20px;
+    padding: 9px 0px 9px 20px;
     border-bottom: none;
 }
 

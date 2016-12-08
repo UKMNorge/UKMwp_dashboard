@@ -21,7 +21,14 @@
 		}
 	{% else %}
 		jQuery(document).ready(function(){
-			var warning = jQuery('<div>').addClass('alert alert-danger').html('Videokonvertereren (http://videoconverter.{{ UKM_HOSTNAME }}) ser ut til å være offline!');
+			var warning = jQuery('<div>')
+			    .css('margin-left', '-8px')
+			    .css('margin-right', '-8px')
+                .css('padding-left', '2px')
+                .css('padding-right', '2px')
+                .css('overflow-x', 'hidden')
+                .addClass('alert alert-danger')
+                .html('Videokonvertereren ser ut til å være offline! <br /><span class="hidden-xs small">(http://videoconverter.{{ UKM_HOSTNAME }})</span>');
 			jQuery('#videoconverter_graph').html( warning );
 		});
 	{% endif %}
@@ -31,7 +38,7 @@
 	<thead>
 		<tr class="">
 			<th colspan="2">
-				UKM-TV Konverterer
+				Konverterer
 			</th>
 		</tr>
 	</thead>
