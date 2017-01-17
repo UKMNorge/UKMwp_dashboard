@@ -78,7 +78,7 @@
 	
 	$sites[] = $site;
 	
-	// ambassadører
+/*	// ambassadører
 	$site = new stdClass();
 	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 12 : 377;
 	$site->title = 'ambassadører';
@@ -89,7 +89,7 @@
 	$site->status = post_status( $site );
 	
 	$sites[] = $site;
-	
+*/	
 /*
 	// UKM internasjonalt
 	$site = new stdClass();
