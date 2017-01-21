@@ -10,6 +10,7 @@ $TWIGdata['image_path'] = 'http://arrangor.ukm.no/';
 require_once('WPOO/WPOO/Post.php');
 require_once('WPOO/WPOO/Author.php');
 
+$num_on_frontpage = 8;
 switch_to_blog($ID_ARRANGOR);
 if(isset($_GET['post'])) {
 	$posts = query_posts( 'p='.$_GET['post'] );
@@ -18,10 +19,10 @@ if(isset($_GET['post'])) {
 	$TWIGdata['post'] = new WPOO_Post( $post );
 } else {
 	$page = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
-	$limit = isset($_GET['limit']) ? $_GET['limit'] : 6;
+	$limit = isset($_GET['limit']) ? $_GET['limit'] : $num_on_frontpage;
 	if ($page > 1) {
 		$limit = 12;
-		$offset = $limit*($page-1)-6; // 6 stk på forsiden
+		$offset = $limit*($page-1)-$num_on_frontpage; // 6 stk på forsiden
 	    $post_query = (isset($POST_QUERY) ? $POST_QUERY.'&' : '' ). 'post_status=publish&posts_per_page='.$limit.'&&offset='.$offset.'&paged='.$page;
 	}
 	else {	 
