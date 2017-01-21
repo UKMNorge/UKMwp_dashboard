@@ -138,3 +138,12 @@ table.table.table-dashboard {
 	text-overflow:ellipsis;
 	max-width: 90%;
 }
+
+#single-post-view, 
+#single-post-view p {
+	font-size: 15px;
+}
+
+#single-post-view p.lead {
+	font-size: 20px;
+}
