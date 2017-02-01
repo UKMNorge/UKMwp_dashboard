@@ -49,6 +49,9 @@ if( is_object($result) ) {
 $curl = new UKMCurl();
 $curl->timeout(2);
 $result = $curl->request('http://api.'. UKM_HOSTNAME .'/server:diskspace/');
+if( !is_object( $result ) ) {
+	$result = new stdClass();
+}
 $result->space = graph_diskspace( $result );
 $TWIGdata['ukmno'] = $result; 
 
@@ -63,7 +66,11 @@ function graph_diskspace( $result ) {
 	$space->used = $space->used / (1024*1024*1024);
 	$space->total = $space->total / (1024*1024*1024);
 	
-	$space->free_percentage = (100 / $space->total) * $space->free;
+	if( $space->total == 0 || $space->free == 0 ) {
+		$space->free_percentage = 0;
+	} else {
+		$space->free_percentage = (100 / $space->total) * $space->free;
+	}
 	
 	return $space;
 }
