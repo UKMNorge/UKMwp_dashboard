@@ -24,6 +24,7 @@
 
 	// ungdom	
 	$site = new stdClass();
+	$site->key = 'ungdom';
 	$site->ID = 1;
 	$site->title = 'ungdom';
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/wp-admin/post-new.php';
@@ -36,6 +37,7 @@
 
 	// arrangorer
 	$site = new stdClass();
+	$site->key = 'arrangor';
 	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 13 : 881;
 	$site->title = 'arrangører';
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/arrangor/wp-admin/post-new.php';
@@ -52,6 +54,7 @@
 	
 	// voksne og presse
 	$site = new stdClass();
+	$site->key = 'voksneogpresse';
 	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 12 : 880;
 	$site->title = 'voksne og presse';
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/om/wp-admin/post-new.php';
@@ -64,12 +67,13 @@
 
 	// UKM-festivalen
 	$site = new stdClass();
+	$site->key = 'festivalen';
 	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 60 : 2173;
 	$site->title = 'UKM-festivalen';
 	$site->link_add = 'http://'. UKM_HOSTNAME .'/festivalen/wp-admin/post-new.php';
 	$site->link_panel = 'http://'. UKM_HOSTNAME .'/festivalen/wp-admin/';
 	if( date('m') < 7 && date('m') > 4 ) {
-		$site->frequency = 7; #days
+		$site->frequency = 10; #days
 	} else {
 		$site->frequency = 365; #days
 	}

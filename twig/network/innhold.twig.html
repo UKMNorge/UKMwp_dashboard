@@ -19,7 +19,11 @@
 				{% for post in site.posts %}
 					<tr>
 						<td width="*%">
-							<a href="{{post.url}}" target="_blank">{{post.title}}</a>
+							{% if site.key == 'arrangor' %}
+								{{post.title}}
+							{% else %}
+								<a href="{{post.url}}" target="_blank">{{post.title}}</a>
+							{% endif %}
 						</td>
 						<td class="text-xs-center" width="15%" style="min-width:35px;">
 							<small><div class="timeago" title="{{post.date}}">{{post.date|date('d.M')}}</div></small>
