@@ -30,7 +30,7 @@ function UKMstimulering_frister() {
 	// Clone ensures that PHP assigns by value, not reference.
 	$frister[] = clone $d;
 	// 15. april
-	$d->setDate(date("Y"), "04", "15");
+	$d->setDate(date("Y"), "04", "20");
 	$frister[] = clone $d;
 	// 15. oktober
 	$d->setDate(date("Y"), "10", "15");
