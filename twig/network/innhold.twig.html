@@ -20,9 +20,9 @@
 					<tr>
 						<td width="*%">
 							{% if site.key == 'arrangor' %}
-								{{post.title}}
+								{{post.title|raw}}
 							{% else %}
-								<a href="{{post.url}}" target="_blank">{{post.title}}</a>
+								<a href="{{post.url}}" target="_blank">{{post.title|raw}}</a>
 							{% endif %}
 						</td>
 						<td class="text-xs-center" width="15%" style="min-width:35px;">
