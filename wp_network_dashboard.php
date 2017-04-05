@@ -5,7 +5,7 @@ Omkring linje 14 i wp-admin/network/index.php skal require dashboard
 -------------
 /* Load WordPress dashboard API 
 #require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
-require_once(ABSPATH . 'wp-content/plugins/UKMNorge/wp_network_dashboard.php');
+require_once(ABSPATH . 'wp-content/plugins/UKMwp_dashboard/wp_network_dashboard.php');
 -------------
 *******************************************************************
 */

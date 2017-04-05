@@ -5,7 +5,7 @@ Omkring linje 12 i wp-admin/index.php skal require dashboard
 -------------
 /* Load WordPress dashboard API 
 #require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
-require_once(ABSPATH . 'wp-content/plugins/UKMNorge/wp_dashboard.php');
+require_once(ABSPATH . 'wp-content/plugins/UKMwp_dashboard/wp_dashboard.php');
 -------------
 *******************************************************************
 */
