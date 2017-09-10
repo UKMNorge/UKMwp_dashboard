@@ -38,7 +38,7 @@
 			<td width="col-xs-12 col-sm-7">
 				<b>Lokalmønstringer</b>
 				<ol class="list-unstyled" id="lokalmonstringer">
-					{% for site in monstringer.lokal %}
+					{% for site in monstringer.kommune %}
 						<li filter="{{ site.name }} {{ site.fylke }}" class="monstringSok">
 							{{ site.name }} <small>({{ site.fylke }})</small>
 							<br />

@@ -1,39 +1,22 @@
 <?php
-require_once('UKM/sql.class.php');
+require_once('UKM/monstringer.collection.php');
 
-$fylker = new SQL("SELECT * FROM `smartukm_fylke` ORDER BY `name` ASC");
-$fylker = $fylker->run();
+$TWIGdata['monstringer'] = [];
 
-$monstringer = array('lokal' => array(), 'fylke' => array() );
+$monstringer = new monstringer_v2( get_site_option('season') );
+foreach( $monstringer->getAllBySesong() as $monstring ) {
 
-while( $fylke = mysql_fetch_assoc( $fylker ) ) {
-	$monstring = new fylke_monstring( $fylke['id'], get_site_option('season') );
-	$monstring = $monstring->monstring_get();
-	
-	if( $monstring->get('pl_id') == 0)
-		continue;
-	
-	$fylke = new stdClass();
-	$fylke->blog_url = 'http://'. UKM_HOSTNAME .'/'. $monstring->get('url').'/';
-	$fylke->blog_path = str_replace('http://'. UKM_HOSTNAME, '', $fylke->blog_url );
-	$fylke->blog_id = get_blog_id_from_url( UKM_HOSTNAME, $fylke->blog_path);
-	$fylke->name = $monstring->get('pl_name');
-	
-	$monstringer['fylke'][$fylke->blog_path] = $fylke;
-	
-	$lokalmonstringer = $monstring->hent_lokalmonstringer();
-	foreach( $lokalmonstringer as $plid ) {
-		$lokalmonstring = new stdClass();
-		$lokalmonstring->blog_url = 'http://'. UKM_HOSTNAME .'/pl'. $plid .'/';
-		$lokalmonstring->blog_path = '/pl'. $plid .'/';
-		$lokalmonstring->blog_id = get_blog_id_from_url(UKM_HOSTNAME,$lokalmonstring->blog_path );
-		$blog_details = get_blog_details( $lokalmonstring->blog_id, 'blogname' );
-		$lokalmonstring->name = $blog_details->blogname;
-		$lokalmonstring->fylke = $fylke->name;
-		
-		$monstringer['lokal'][$lokalmonstring->blog_path] = $lokalmonstring;
+	$path = '/'. str_replace('//'.UKM_HOSTNAME.'/', '', $monstring->getLink() );
+
+	$data = new stdClass();
+	$data->blog_url 	= $monstring->getLink();
+	$data->blog_id 		= get_blog_id_from_url( UKM_HOSTNAME, $path );
+	$data->name 		= $monstring->getNavn();
+	try {
+		$data->fylke 	= $monstring->getFylke()->getNavn();
+	} catch( Exception $e ) {
+		$data->fylke	= 'Ukjent';
 	}
-	
-}
 
-$TWIGdata['monstringer'] = $monstringer;
+	$TWIGdata['monstringer'][ $monstring->getType() ][ $path ] = $data;
+}
