@@ -109,10 +109,6 @@ if ($deltakerbruker) {
 	#var_dump(get_avatar($current_user->ID));
 }
 
-/* BRUKER-URLER */
-require_once(__DIR__.'/controller/urls.controller.php');
-$TWIGdata['urls'] = get_urls();
-
 $TWIGdata['user_avatar'] = get_avatar($current_user->ID);
 
 /* NEWS */

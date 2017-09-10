@@ -34,11 +34,6 @@
 					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 						{% embed "kalender.twig.html" %}{% endembed %}
 					</div>
-					{% if urls is defined and not (urls is empty) %}
-						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-							{% embed "urls.twig.html" %}{% endembed %}
-						</div>
-					{% endif %}
 					{% if block_pre_messages is defined %}
 						{% for bm in block_pre_messages %}
 							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
