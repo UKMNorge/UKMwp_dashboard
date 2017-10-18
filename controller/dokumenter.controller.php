@@ -1,67 +1,67 @@
 <?php
 
 $TWIGdata['dokumenter']['info_presse'][] = array('navn' => 'Informasjon og pressearbeid',
-												 'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/INFORMASJON-OG-PRESSEARBEID.docx',
-												 'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/INFORMASJON-OG-PRESSEARBEID.pdf'
+												 'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/INFORMASJON-OG-PRESSEARBEID.docx',
+												 'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/INFORMASJON-OG-PRESSEARBEID.pdf'
 												 );
 $TWIGdata['dokumenter']['info_presse'][] = array('navn' => 'Eksempel på pressemelding lokalmønstring',
-												 'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Eksempel-pressemelding-1-lokal-UKM-2011.docx',
-												 'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Eksempel-pressemelding-1-lokal-UKM-2011.pdf'
+												 'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Eksempel-pressemelding-1-lokal-UKM-2011.docx',
+												 'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Eksempel-pressemelding-1-lokal-UKM-2011.pdf'
 												 );
 $TWIGdata['dokumenter']['info_presse'][] = array('navn' => 'Mal for pressemelding',
-												 'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-for-pressemelding.docx',
-												 'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-for-pressemelding.pdf'
+												 'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-for-pressemelding.docx',
+												 'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-for-pressemelding.pdf'
 												 );
 $TWIGdata['dokumenter']['info_presse'][] = array('navn' => 'Eksempel på PR-plan',
-												 'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/PR-plan.docx',
-												 'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-PR-plan.pdf'
+												 'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/PR-plan.docx',
+												 'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-PR-plan.pdf'
 												 );
 $TWIGdata['dokumenter']['info_presse'][] = array('navn' => 'Mal for PR-plan',
-												 'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-PR-plan.docx',
-												 'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-PR-plan.pdf'
+												 'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-PR-plan.docx',
+												 'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-PR-plan.pdf'
 												 );
 $TWIGdata['dokumenter']['info_presse'][] = array('navn' => 'Eksempel på pressemelding Stovner live',
-												 'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Eksempel-pressemelding-2-stovner-live.doc',
-												 'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Eksempel-pressemelding-2-stovner-live.pdf'
+												 'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Eksempel-pressemelding-2-stovner-live.doc',
+												 'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Eksempel-pressemelding-2-stovner-live.pdf'
 												 );
 												 
 												 
 												 
 $TWIGdata['dokumenter']['nettredaksjon'][] = array('navn' => 'Rekrutteringstekst ungdomsredaksjon',
-												   'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/rekrutteringstekst-ungdomsredaksjon.docx',
-												   'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/rekrutteringstekst-ungdomsredaksjon.pdf'
+												   'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/rekrutteringstekst-ungdomsredaksjon.docx',
+												   'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/rekrutteringstekst-ungdomsredaksjon.pdf'
 												 );
 $TWIGdata['dokumenter']['nettredaksjon'][] = array('navn' => 'Eksempel på rekrutteringsplan',
-												   'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Rekrutteringsplan-UKM.docx',
-												   'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Rekrutteringsplan-UKM.pdf'
+												   'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Rekrutteringsplan-UKM.docx',
+												   'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Rekrutteringsplan-UKM.pdf'
 												 );
 $TWIGdata['dokumenter']['nettredaksjon'][] = array('navn' => 'Mal rekrutteringsplan ungdomsredaksjon',
-												   'dok'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-Rekrutteringsplan-UKM.docx',
-												   'pdf'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-Rekrutteringsplan-UKM.pdf'
+												   'dok'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-Rekrutteringsplan-UKM.docx',
+												   'pdf'	=> '//ukm.no/wp-content/blogs.dir/881/files/2011/07/Mal-Rekrutteringsplan-UKM.pdf'
 												 );
 												 
 												 
 $TWIGdata['dokumenter']['arrangorweekend'][] = array('navn' => 'Bakgrunn til fagkurs på seminar',
-													 'fil'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2013/01/Arrangorskolen-bakgrunn-til_fagkurs_pa_seminar.pdf',
+													 'fil'	=> '//ukm.no/wp-content/blogs.dir/881/files/2013/01/Arrangorskolen-bakgrunn-til_fagkurs_pa_seminar.pdf',
 													 );
 $TWIGdata['dokumenter']['arrangorweekend'][] = array('navn' => 'Kræsjtest for unge arrangører',
-													 'fil'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2013/01/Krasjtest_for_unge_arrangorer.pdf',
+													 'fil'	=> '//ukm.no/wp-content/blogs.dir/881/files/2013/01/Krasjtest_for_unge_arrangorer.pdf',
 													 );
 $TWIGdata['dokumenter']['arrangorweekend'][] = array('navn' => 'Kræsjtest: retningslinjer forlokalsamfunnet',
-													 'fil'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2013/01/Krasjtest_Lokalsamfunnet_retningslinjer.pdf',
+													 'fil'	=> '//ukm.no/wp-content/blogs.dir/881/files/2013/01/Krasjtest_Lokalsamfunnet_retningslinjer.pdf',
 													 );
 $TWIGdata['dokumenter']['arrangorweekend'][] = array('navn' => 'Program arrangørweekend lør-søn',
-													 'fil'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2013/01/Program_arrangorweekend_lor_son.doc',
+													 'fil'	=> '//ukm.no/wp-content/blogs.dir/881/files/2013/01/Program_arrangorweekend_lor_son.doc',
 													 );
 $TWIGdata['dokumenter']['arrangorweekend'][] = array('navn' => 'Kræsjtest: kopibehov',
-													 'fil'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2013/11/kopibehov.xlsx',
+													 'fil'	=> '//ukm.no/wp-content/blogs.dir/881/files/2013/11/kopibehov.xlsx',
 													 );
 $TWIGdata['dokumenter']['arrangorweekend'][] = array('navn' => 'Kræsjtest: vedlegg',
-													 'fil'	=> 'http://ukm.no/wp-content/blogs.dir/881/files/2013/01/Krasjtest_vedlegg.zip',
+													 'fil'	=> '//ukm.no/wp-content/blogs.dir/881/files/2013/01/Krasjtest_vedlegg.zip',
 													 );
 													 
 $TWIGdata['dokumenter']['konferansierer'][] = array('navn' => 'Konferansierens rolle på UKM',
-													 'fil'	=> 'http://ukm.no/arrangor/files/2015/02/Konfransierhefte.pdf',
+													 'fil'	=> '//ukm.no/arrangor/files/2015/02/Konfransierhefte.pdf',
 													 );
 													 
 $ID_ARRANGOR = 881;

@@ -4,7 +4,7 @@ if( UKM_HOSTNAME == 'ukm.dev' ) {
 } else {
 	$ID_ARRANGOR = 881;
 }
-$TWIGdata['image_path'] = 'http://arrangor.ukm.no/';
+$TWIGdata['image_path'] = '//arrangor.ukm.no/';
 
 require_once('WPOO/WPOO/Post.php');
 require_once('WPOO/WPOO/Author.php');

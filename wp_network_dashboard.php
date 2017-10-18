@@ -19,7 +19,7 @@ require(ABSPATH . 'wp-admin/admin-header.php');
 $TWIGdata = array();
 $TWIGdata['UKM_HOSTNAME'] = UKM_HOSTNAME;
 $TWIGdata['plugin_path'] = plugin_dir_url( __FILE__ ).'/';
-$TWIGdata['base_path'] = 'http://'. UKM_HOSTNAME .'/';
+$TWIGdata['base_path'] = '//'. UKM_HOSTNAME .'/';
 
 #error_reporting(E_ALL);
 #ini_set('display_errors',true);

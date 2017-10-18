@@ -15,16 +15,16 @@ add_action('network_admin_menu', 'UKMwpd_network_menu');
 add_action( 'admin_head', 'UKMwpd_favicon' );
 
 function UKMwpd_favicon() {
-	echo '<link rel="shortcut icon" href="http://ico.ukm.no/wp-admin_favicon.png" />';
+	echo '<link rel="shortcut icon" href="//ico.ukm.no/wp-admin_favicon.png" />';
 }
 
 
 function UKMwpd_menu() {
 	if( in_array( get_option('site_type'), array('kommune','fylke','land')) ) {
-		#$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', 'http://ico.ukm.no/news-16.png',3);
+		#$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', '//ico.ukm.no/news-16.png',3);
 		#add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
 	
-		$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'editor', 'UKMstimulering', 'UKMstimulering', 'http://ico.ukm.no/cash-menu.png',4);
+		$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'editor', 'UKMstimulering', 'UKMstimulering', '//ico.ukm.no/cash-menu.png',4);
 		$subpage1 = add_submenu_page('UKMstimulering', 'Søknadsskjema', 'Søknadsskjema', 'editor', 'UKMstimulering_sok', 'UKMstimulering_sok');
 		$subpage2 = add_submenu_page('UKMstimulering', 'Rapport', 'Rapportskjema', 'editor', 'UKMstimulering_rapport', 'UKMstimulering_rapport');
 		$subpage3 = add_submenu_page('UKMstimulering', 'Inspirasjon', 'Inspirasjon', 'editor', 'UKMstimulering_idebank', 'UKMstimulering_idebank');
@@ -44,7 +44,7 @@ function UKMwpd_menu() {
 }
 
 function UKMwpd_network_menu() {
-	$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'superadmin', 'UKMsmadmin', 'UKMsmadmin', 'http://ico.ukm.no/cash-menu.png');
+	$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'superadmin', 'UKMsmadmin', 'UKMsmadmin', '//ico.ukm.no/cash-menu.png');
 	add_action( 'admin_print_styles-' . $page, 'UKMWP_support_scriptsandstyles' );
 }
 
@@ -238,7 +238,7 @@ function UKMWP_dash_scriptsandstyles() {
 			wp_enqueue_style('UKMwp_dashboard_css', plugin_dir_url( __FILE__ ) .'/css/UKMwp_dashboard.css');
 			wp_enqueue_script('GOOGLEchart', 'https://www.google.com/jsapi');
 			wp_enqueue_script('jquery');
-			wp_enqueue_script('jqueryGoogleUI', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js');
+			wp_enqueue_script('jqueryGoogleUI', '//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js');
 			
 			wp_enqueue_script('pushtofront', plugin_dir_url( __FILE__ ).'/js/pushtofront.jquery.js');
 			wp_enqueue_script('blogvalg', plugin_dir_url( __FILE__ ) .'/js/blogvalg.jquery.js');
