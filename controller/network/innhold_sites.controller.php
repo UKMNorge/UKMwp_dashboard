@@ -54,12 +54,12 @@
 	
 	// voksne og presse
 	$site = new stdClass();
-	$site->key = 'voksneogpresse';
-	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 12 : 880;
-	$site->title = 'voksne og presse';
-	$site->link_add = '//'. UKM_HOSTNAME .'/om/wp-admin/post-new.php';
-	$site->link_panel = '//'. UKM_HOSTNAME .'/om/wp-admin/';
-	$site->frequency = 21; # days
+	$site->key = 'organisasjonen';
+	$site->ID = 3447;
+	$site->title = 'organisasjonen';
+	$site->link_add = '//'. UKM_HOSTNAME .'/org/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME .'/org/wp-admin/';
+	$site->frequency = 10; # days
 	$site->posts = posts( $site->ID );
 	$site->status = post_status( $site );
 	
