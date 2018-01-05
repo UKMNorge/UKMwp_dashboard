@@ -24,11 +24,11 @@
 
 	// ungdom	
 	$site = new stdClass();
-	$site->key = 'ungdom';
-	$site->ID = 1;
-	$site->title = 'ungdom';
-	$site->link_add = '//'. UKM_HOSTNAME .'/wp-admin/post-new.php';
-	$site->link_panel = '//'. UKM_HOSTNAME .'/wp-admin/';
+	$site->key = 'redaksjonelt';
+	$site->ID = 3449;
+	$site->title = 'redaksjonelt';
+	$site->link_add = '//'. UKM_HOSTNAME .'/redaksjonelt/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME .'/redaksjonelt/wp-admin/';
 	$site->frequency = 7; #days
 	$site->posts = posts( $site->ID );
 	$site->status = post_status( $site );
@@ -79,6 +79,17 @@
 	}
 	$site->posts = posts( $site->ID, 1 );
 	$site->status = post_status( $site );
+	
+	$sites[] = $site;
+	
+	// ungdom	
+	$site = new stdClass();
+	$site->key = 'ungdom';
+	$site->ID = 1;
+	$site->title = 'ungdom';
+#	$site->link_add = '//'. UKM_HOSTNAME .'/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME .'/wp-admin/';
+	$site->frequency = false; #days
 	
 	$sites[] = $site;
 	
