@@ -24,16 +24,24 @@ function UKMsmadmin_page() {
 function UKMstimulering_frister() {
 	$d = new DateTime();
 	$frister = array();
+	
+	// Få riktig frist etter ny sesong er satt opp (sept/okt)
+	if( (int)get_site_option('season') > (int) date('Y') ) {
+		$year = get_site_option('season');
+	} else {
+		$year = (int)date('Y');
+	}
+	
 	// 1. januar
-	$d->setDate(date("Y")+1, "01", "15");
+	$d->setDate($year, "01", "15");
 	$d->setTime("01", "00", "00");
 	// Clone ensures that PHP assigns by value, not reference.
 	$frister[] = clone $d;
 	// 15. april
-	$d->setDate(date("Y"), "04", "20");
-	$frister[] = clone $d;
+#	$d->setDate($year, "04", "15");
+#	$frister[] = clone $d;
 	// 15. oktober
-	$d->setDate(date("Y"), "10", "15");
+	$d->setDate($year, "10", "15");
 	$frister[] = clone $d;
 
 	return $frister;

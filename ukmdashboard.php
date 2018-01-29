@@ -75,10 +75,8 @@ function UKMsmadmin() {
 function UKMstimulering_message( $MESSAGES ) {
 	require_once('controller/network/smadmin.controller.php');
 	$frister = UKMstimulering_frister();
-
-	#var_dump($frister);
-
-	$today = date("c");
+	
+	$today = date('U');
 	#$d = new DateTime();
 	#$d->setDate(date("Y"), "12", "27");
 	#$today = $d->getTimestamp();
@@ -90,15 +88,15 @@ function UKMstimulering_message( $MESSAGES ) {
 		if ($today < $frist->getTimestamp() && $redDate >= $frist->getTimestamp()) {
 			$MESSAGES[] = array(
 				'level' => 'alert-danger',
-				'header' => 'Snart frist for stimuleringsmidler',
-				'body' => 'Under én uke til fristen går ut!<br />Søknadsfrist '.$frist->format("d.m").'.',
+				'header' => 'Under én uke til frist for stimuleringsmidler!',
+				'body' => 'Søknadsfrist: '.$frist->format("d.m").'.',
 			);
 		} 
 		elseif ($today < $frist->getTimestamp() && $yellowDate >= $frist->getTimestamp()) {
 			$MESSAGES[] = array(
 				'level' => 'alert-warning',
 				'header' => 'Snart frist for stimuleringsmidler',
-				'body' => 'Søknadsfrist '.$frist->format("d.m").'.'
+				'body' => 'Søknadsfrist: '.$frist->format("d.m").'.'
 			);
 		}
 	}
