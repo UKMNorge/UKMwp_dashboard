@@ -16,7 +16,12 @@ if(isset($_GET['post'])) {
 	$posts = query_posts( 'p='.$_GET['post'] );
 	$post = $posts[0];
 	the_post();
-	$TWIGdata['post'] = new WPOO_Post( $post );
+	$wpoo_post = new WPOO_Post( $post );
+	$wpoo_post->arrangor = new arrangor_news( $ID_ARRANGOR, $post->ID );
+	$TWIGdata['post'] = $wpoo_post;
+
+	$user = wp_get_current_user();
+	$TWIGdata['current_user_name'] = empty( $user->display_name ) ? $user->user_login : $user->display_name;
 } else {
 	$page = isset($_GET['pagination']) ? $_GET['pagination'] : 1;
 	$limit = isset($_GET['limit']) ? $_GET['limit'] : $num_on_frontpage;
@@ -41,7 +46,9 @@ if(isset($_GET['post'])) {
 	global $post;
 	foreach( $posts as $key => $post ) {
 		the_post();
-		$TWIGdata['news'][] = new WPOO_Post( $post );
+		$wpoo_post = new WPOO_Post( $post );
+		$wpoo_post->arrangor = new arrangor_news( $ID_ARRANGOR, $post->ID );
+		$TWIGdata['news'][] = $wpoo_post;
 	}
 }
 restore_current_blog();

@@ -18,6 +18,35 @@ if (isset($_POST['form_display_name'])) {
 	require_once('controller/profil.controller.php');
 
 }
+
+if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+	if( isset( $_POST['comment'] ) ) {
+		global $current_user;
+		$current_user_name = empty( $current_user->data->user_nicename ) ? $current_user->data->user_login : $current_user->data->user_nicename;
+
+		$news = new arrangor_news( $_POST['blog_id'], $_POST['post_id'] );
+		$res = $news->doComment( $current_user->ID, $current_user_name, $_POST['comment'] );	
+	}
+}
+
+if( isset( $_GET['comment'] ) && isset( $_GET['action'] ) ) {
+	global $current_user;
+	$current_user_id = $current_user->ID;
+
+	switch( $_GET['action'] ) {
+		case 'delete':
+			$news = new arrangor_news( $_GET['blog_id'], $_GET['post'] );
+			$res = $news->deleteComment( $_GET['comment'], $current_user_id );
+
+			if( $res ) {
+				echo '<div class="alert alert-success" style="margin-top: 2em;">Kommentaren er slettet</div>';
+			} else {
+				echo '<div class="alert alert-danger" style="margin-top: 2em;">Beklager, klarte ikke å slette kommentaren. <a href="mailto:support@ukm.no">Kontakt UKM Norge</a>.</div>';
+			}
+		break;
+	}
+}
+
 require_once('UKM/inc/twig-admin.inc.php');
 require_once('UKM/monstring.class.php');
 require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
@@ -110,7 +139,7 @@ if ($deltakerbruker) {
 }
 
 $TWIGdata['user_avatar'] = get_avatar($current_user->ID);
-
+$TWIGdata['current_user'] = $current_user->ID;
 /* NEWS */
 $POST_QUERY = 'cat=-2';
 require_once(dirname(__FILE__).'/controller/news.controller.php');

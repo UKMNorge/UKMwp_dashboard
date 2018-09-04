@@ -14,6 +14,32 @@ add_action('admin_menu', 'UKMwpd_menu');
 add_action('network_admin_menu', 'UKMwpd_network_menu');
 add_action( 'admin_head', 'UKMwpd_favicon' );
 
+add_action( 'wp_ajax_UKMdashboard_ajax', 'UKMdashboard_ajax' );
+
+require_once('class/arrangor_news.class.php');
+
+function UKMdashboard_ajax() {
+	$news = new arrangor_news( $_POST['blog_id'], $_POST['post_id'] );
+
+	global $current_user;
+
+	if( $_POST['newsAction'] == 'like' ) {
+		$res = $news->doLike( $current_user->ID );
+	} else {
+		$res = $news->doDislike( $current_user->ID );
+	}
+
+	$data = [
+		'success' => $res,
+		'newCount' => $news->getLikeCount(),
+	];
+
+	header('Content-Type: application/json');
+	echo json_encode( $data );
+	die();
+}
+
+
 function UKMwpd_favicon() {
 	echo '<link rel="shortcut icon" href="//ico.ukm.no/wp-admin_favicon.png" />';
 }
