@@ -29,7 +29,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 		require_once('UKM/mail.class.php');
 		$epost = new UKMmail();
-		$epost->subject('ARRANGØRSYSTEMET: Ny kommentar fra '. $current_user_name)
+		$epost->subject('Ny kommentar fra '. $current_user_name)
 			->text( $_POST['comment'] )
 			->to('support@ukm.no')
 			->setFrom('arrangorsystemet@ukm.no', 'Arrangørsystemet')
