@@ -29,7 +29,7 @@
 	$site->title = 'redaksjonelt';
 	$site->link_add = '//'. UKM_HOSTNAME .'/redaksjonelt/wp-admin/post-new.php';
 	$site->link_panel = '//'. UKM_HOSTNAME .'/redaksjonelt/wp-admin/';
-	$site->frequency = 7; #days
+	$site->frequency = 14; #days
 	$site->posts = posts( $site->ID );
 	$site->status = post_status( $site );
 	
@@ -44,7 +44,7 @@
 	$site->link_panel = '//'. UKM_HOSTNAME .'/arrangor/wp-admin/';
 	$site->posts = posts( $site->ID, 3 );
 	if( date('m') > 4 && date('m') < 11 ) {
-		$site->frequency = 21; #days
+		$site->frequency = 14; #days
 	} else {
 		$site->frequency = 7; #days
 	}
@@ -65,6 +65,19 @@
 	
 	$sites[] = $site;
 
+	// UKM Media
+	$site = new stdClass();
+	$site->key = 'media';
+	$site->ID = 2174;
+	$site->title = 'Media';
+	$site->link_add = '//'. UKM_HOSTNAME .'/media/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME .'/media/wp-admin/';
+	$site->frequency = 21; # days
+	$site->posts = posts( $site->ID );
+	$site->status = post_status( $site );
+	
+	$sites[] = $site;
+
 	// UKM-festivalen
 	$site = new stdClass();
 	$site->key = 'festivalen';
@@ -74,11 +87,12 @@
 	$site->link_panel = '//'. UKM_HOSTNAME .'/festivalen/wp-admin/';
 	if( date('m') < 7 && date('m') > 4 ) {
 		$site->frequency = 10; #days
+		$site->status = post_status( $site );
 	} else {
 		$site->frequency = 365; #days
+		$site->status = 'info';
 	}
 	$site->posts = posts( $site->ID, 1 );
-	$site->status = post_status( $site );
 	
 	$sites[] = $site;
 	
