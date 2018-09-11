@@ -25,7 +25,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		$current_user_name = empty( $current_user->data->user_nicename ) ? $current_user->data->user_login : $current_user->data->user_nicename;
 
 		$news = new arrangor_news( $_POST['blog_id'], $_POST['post_id'] );
-		$res = $news->doComment( $current_user->ID, $current_user_name, utf8_encode($_POST['comment']) );
+		$res = $news->doComment( $current_user->ID, $current_user_name, $_POST['comment'] );
 
 		require_once('UKM/mail.class.php');
 		$epost = new UKMmail();
