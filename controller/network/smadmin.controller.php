@@ -33,7 +33,7 @@ function UKMstimulering_frister() {
 	}
 	
 	// 1. januar
-	$d->setDate($year, "01", "15");
+	$d->setDate($year, "04", "01");
 	$d->setTime("01", "00", "00");
 	// Clone ensures that PHP assigns by value, not reference.
 	$frister[] = clone $d;
@@ -41,7 +41,7 @@ function UKMstimulering_frister() {
 #	$d->setDate($year, "04", "15");
 #	$frister[] = clone $d;
 	// 15. oktober
-	$d->setDate($year, "10", "15");
+	$d->setDate($year, "10", "01");
 	$frister[] = clone $d;
 
 	return $frister;
