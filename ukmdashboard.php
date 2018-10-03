@@ -50,7 +50,7 @@ function UKMwpd_menu() {
 		#$page = add_menu_page('Dokumenter', 'Dokumenter', 'editor', 'UKMdokumenter', 'UKMdokumenter', '//ico.ukm.no/news-16.png',3);
 		#add_action( 'admin_print_styles-' . $page, 'UKMdokumenter_sns' );	
 	
-		$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'editor', 'UKMstimulering', 'UKMstimulering', '//ico.ukm.no/cash-menu.png',4);
+		$page = add_menu_page('Stimuleringsmidler', 'Stimuleringsmidler', 'editor', 'UKMstimulering', 'UKMstimulering', '//ico.ukm.no/cash-menu.png',5);
 		$subpage1 = add_submenu_page('UKMstimulering', 'Søknadsskjema', 'Søknadsskjema', 'editor', 'UKMstimulering_sok', 'UKMstimulering_sok');
 		$subpage2 = add_submenu_page('UKMstimulering', 'Rapport', 'Rapportskjema', 'editor', 'UKMstimulering_rapport', 'UKMstimulering_rapport');
 		$subpage3 = add_submenu_page('UKMstimulering', 'Inspirasjon', 'Inspirasjon', 'editor', 'UKMstimulering_idebank', 'UKMstimulering_idebank');
