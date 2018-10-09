@@ -116,8 +116,11 @@ if(file_exists(__DIR__.'/../UKMrsvp_admin/class/SecretFinder.php')) {
 	$secretFinder = new SecretFinder();
 	$eventManager = new EventManager($api_key, $secretFinder->getSecret($api_key));
 	$participants = $eventManager->findAllAttending($owner);
-	$helarsDeltakere = count($participants->data);
-	#var_dump($participants);
+	if( is_array( $participants->data ) ) {
+		$helarsDeltakere = sizeof( $participants->data );
+	} else {
+		$helarsDeltakere = 0;
+	}
 }
 
 $TWIGdata = array('site_type' => get_option('site_type'),
