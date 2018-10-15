@@ -25,7 +25,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		$current_user_name = empty( $current_user->data->user_nicename ) ? $current_user->data->user_login : $current_user->data->user_nicename;
 
 		$news = new arrangor_news( $_POST['blog_id'], $_POST['post_id'] );
-		$res = $news->doComment( $current_user->ID, $current_user_name, utf8_encode($_POST['comment']) );
+		$res = $news->doComment( $current_user->ID, $current_user_name, $_POST['comment'] );
 
 		require_once('UKM/mail.class.php');
 		$epost = new UKMmail();
@@ -116,8 +116,11 @@ if(file_exists(__DIR__.'/../UKMrsvp_admin/class/SecretFinder.php')) {
 	$secretFinder = new SecretFinder();
 	$eventManager = new EventManager($api_key, $secretFinder->getSecret($api_key));
 	$participants = $eventManager->findAllAttending($owner);
-	$helarsDeltakere = count($participants->data);
-	#var_dump($participants);
+	if( is_array( $participants->data ) ) {
+		$helarsDeltakere = sizeof( $participants->data );
+	} else {
+		$helarsDeltakere = 0;
+	}
 }
 
 $TWIGdata = array('site_type' => get_option('site_type'),
