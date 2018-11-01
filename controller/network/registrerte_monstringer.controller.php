@@ -1,9 +1,9 @@
 <?php
 require_once('UKM/monstringer.class.php');
-#$monstringer = new monstringer( get_site_option('season') );
+$monstringer = new monstringer( get_site_option('season') );
 
-$registrert = monstringer_v2::getAntallUregistrerte( get_site_option('season') );#$monstringer->antall_registrerte();
-$uregistrert = monstringer_v2::getAntallRegistrerte( get_site_option('season') );#$monstringer->antall_uregistrerte();
+$registrert = $monstringer->antall_registrerte();
+$uregistrert = $monstringer->antall_uregistrerte();
 
 if( $uregistrert >= $registrert ) {
 	$status = 'danger';
