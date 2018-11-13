@@ -16,6 +16,7 @@ require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
 
 require(ABSPATH . 'wp-admin/admin-header.php');
 
+$MESSAGES = array();
 $TWIGdata = array();
 $TWIGdata['UKM_HOSTNAME'] = UKM_HOSTNAME;
 $TWIGdata['plugin_path'] = plugin_dir_url( __FILE__ ).'/';
@@ -32,7 +33,6 @@ require_once('controller/network/sveve.controller.php');
 require_once('controller/network/insta.controller.php');
 require_once('controller/network/registrerte_monstringer.controller.php');
 
-$MESSAGES = array();
 $MESSAGES = apply_filters('UKMWPNETWDASH_messages', $MESSAGES);
 
 foreach($MESSAGES as $key => $msg) {
