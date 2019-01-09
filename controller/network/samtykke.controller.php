@@ -12,7 +12,14 @@ $sql = new SQL("
 );
 $res = $sql->run();
 
-$data = [];
+$data = [
+    'ikke_send' => 0,
+    'ikke_sendt' => 0,
+    'ikke_sett' => 0,
+    'ikke_svart' => 0,
+    'ikke_godkjent' => 0,
+    'godkjent' => 0
+];
 while( $row = SQL::fetch( $res ) ) {
     $data[ $row['status'] ] = $row['antall'];
 }
