@@ -4,13 +4,13 @@
 	function samtykke_status() {
 		var data = google.visualization.arrayToDataTable([
 			['Status','Antall'],
+            ['Ikke send', {{ samtykke.ikke_send }}],
             ['Ikke sendt', {{ samtykke.ikke_sendt }}],
             ['Ikke sett', {{ samtykke.ikke_sett }}],
             ['Ikke svart', {{ samtykke.ikke_svart }}],
             ['Ikke godtatt', {{ samtykke.ikke_godkjent }}],
-            ['Godtatt', {{ samtykke.godkjent }}],
-            ['Masse-kontakt', {{ samtykke.ikke_send }}]
-		]);
+            ['Godtatt', {{ samtykke.godkjent }}]
+        ]);
 		
 		var options = {
 		  chartArea: {'width': '100%', 'height': '88%'},
@@ -25,15 +25,6 @@
               '#28a745', // godkjent
               ]
 		};
-
-        /**
-        send' => 0,
-    'ikke_sendt' => 0,
-    'ikke_sett' => 0,
-    'ikke_svart' => 0,
-    'ikke_godkjent' => 0,
-    'godkj
-    **/
 		
 		var chart = new google.visualization.PieChart(document.getElementById('samtykke_graph'));
 		chart.draw(data, options);
