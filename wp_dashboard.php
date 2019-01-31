@@ -27,20 +27,35 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		$news = new arrangor_news( $_POST['blog_id'], $_POST['post_id'] );
 		$res = $news->doComment( $current_user->ID, $current_user_name, $_POST['comment'] );
 
+        $melding = $_POST['comment'];
+        $sendtoall = strpos( $_POST['comment'], '@channel' ) !== false;
+
 		require_once('UKM/mail.class.php');
 		$epost = new UKMmail();
 		$epost->subject('Ny kommentar fra '. $current_user_name .' på '. $_POST['post_title'])
-			->text( $_POST['comment'] )
 			->to('support@ukm.no')
             ->setFrom('arrangorsystemet@ukm.no', 'Arrangørsystemet')
             ->setReplyTo('support@ukm.no', 'UKM Norge support');
         
+        $gotMentions = false;
+        $mentionList = '';
         foreach( $news->getCommenters() as $user ) {
-            if( strpos( $_POST['comment'], '@'.$user['username'] ) !== false ) {
+            if( $sendtoall || strpos( $_POST['comment'], '@'.$user['username'] ) !== false ) {
                 $userdata = get_userdata( $user['id'] );
                 $epost->addBlindcopy( $userdata->user_email, $user['name'] );
+                $gotMentions = true;
+                
+                $mentionList = $userdata->user_nicename .', ';
             }
         }
+
+        if( $gotMentions ) {
+            $mentionList = rtrim( $mentionList, ', ' );
+            $melding .= '<p>&nbsp;</p>'.
+                '<hr />'.
+                '<p>E-postvarsel er sendt til '. $mentionList .'</p>';
+        }
+        $epost->text( $melding );
 
         $epost->ok();
     }
