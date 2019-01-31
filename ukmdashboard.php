@@ -271,6 +271,8 @@ function UKMWP_dash_scriptsandstyles() {
 			wp_enqueue_style('UKMresources_tabs');
 			wp_enqueue_script('profil', plugin_dir_url(__FILE__) .'/js/profil.jquery.js');
 
+            wp_enqueue_style('UKMWPdash_tribute_css', plugin_dir_url(__FILE__) .'/css/tribute.css');
+            wp_enqueue_script('UKMWPdash_tribute_js', plugin_dir_url(__FILE__) .'/js/tribute.min.js');
 		}
 		if( $screen->base == 'dashboard-network' ) {
 			wp_enqueue_style('UKMwp_network_dashboard_css', plugin_dir_url( __FILE__ ) .'css/UKMwp_network_dashboard.css');

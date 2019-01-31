@@ -21,6 +21,21 @@
 			<h4>KOMMENTARER <small>({{ post.arrangor.getCommentCount()}})</small></h4>
 
 
+            <script>
+                var tribute = new Tribute({
+                    values: [
+                        {% for user in post.arrangor.getCommenters() %}
+                            {key: '{{ user.username }}', value: '{{ user.name }}'},
+                        {% endfor %}
+                        {key: 'Alle som har kommentert', value: 'channel'}
+                    ]
+                });
+
+                $(document).ready( function(){
+                    tribute.attach(document.getElementById('comment'));
+                });
+            </script>
+
 			<ol class="list-unstyled">
 				
 				<li class="panel panel-default">
@@ -28,9 +43,10 @@
 						<form action="?post={{ post.arrangor.getPostId() }}#kommentarer" method="POST">
 							<input type="hidden" name="post_id" value="{{ post.arrangor.getPostId() }}" />
 							<input type="hidden" name="blog_id" value="{{ post.arrangor.getBlogId() }}" />
+							<input type="hidden" name="post_title" value="{{ post.title }}" />
 
 							<div class="form-group commentContainer">
-								<textarea class="form-control" name="comment" rows="3" placeholder="Skriv din kommentar her..."></textarea>
+								<textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Skriv din kommentar her..."></textarea>
 							</div>
 
 							<p class="small postByContainer">

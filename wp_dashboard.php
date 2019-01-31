@@ -21,20 +21,29 @@ if (isset($_POST['form_display_name'])) {
 
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	if( isset( $_POST['comment'] ) ) {
-		global $current_user;
+        global $current_user;
 		$current_user_name = empty( $current_user->data->user_nicename ) ? $current_user->data->user_login : $current_user->data->user_nicename;
-
+    
 		$news = new arrangor_news( $_POST['blog_id'], $_POST['post_id'] );
 		$res = $news->doComment( $current_user->ID, $current_user_name, $_POST['comment'] );
 
 		require_once('UKM/mail.class.php');
 		$epost = new UKMmail();
-		$epost->subject('Ny kommentar fra '. $current_user_name)
+		$epost->subject('Ny kommentar fra '. $current_user_name .' på '. $_POST['post_title'])
 			->text( $_POST['comment'] )
 			->to('support@ukm.no')
-			->setFrom('arrangorsystemet@ukm.no', 'Arrangørsystemet')
-			->ok();
-	}
+            ->setFrom('arrangorsystemet@ukm.no', 'Arrangørsystemet')
+            ->setReplyTo('support@ukm.no', 'UKM Norge support');
+        
+        foreach( $news->getCommenters() as $user ) {
+            if( strpos( $_POST['comment'], '@'.$user['username'] ) !== false ) {
+                $userdata = get_userdata( $user['id'] );
+                $epost->addBlindcopy( $userdata->user_email, $user['name'] );
+            }
+        }
+
+        $epost->ok();
+    }
 }
 
 if( isset( $_GET['comment'] ) && isset( $_GET['action'] ) ) {

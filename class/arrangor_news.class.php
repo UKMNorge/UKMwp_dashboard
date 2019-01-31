@@ -104,6 +104,21 @@ class arrangor_news {
 
 
 
+    public function getCommenters() {
+        $has = [];
+        $commenters = [];
+        foreach( $this->getComments() as $comment ) {
+            if( !in_array( $comment->getAuthorId(), $has ) ) {
+                $commenters[] = [
+                    'id' => $comment->getAuthorId(),
+                    'username' => $comment->getAuthor(),
+                    'name' => $comment->getAuthorNiceName()
+                ];
+                $has[] = $comment->getAuthorId();
+            }
+        }
+        return $commenters;
+    }
 
     public function getCommentCount() {
         if( null == $this->comment_count ) {
@@ -218,5 +233,9 @@ class arrangor_news_comment {
     }
     public function getTimestamp() {
         return $this->timestamp;
+    }
+    public function getAuthorNiceName() {
+        $userdata = get_userdata( $this->getAuthorId() );
+        return $userdata->user_nicename;
     }
 }

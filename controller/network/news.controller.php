@@ -1,4 +1,6 @@
 <?php
+
+
 require_once('WPOO/WPOO/Post.php');
 require_once('WPOO/WPOO/Author.php');
 	
