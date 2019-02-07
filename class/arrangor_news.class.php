@@ -181,6 +181,7 @@ class arrangor_news {
             ]
         );
 
+        $this->comments = [];
         $res = $sql->run();
         while( $row = $sql->fetch( $res ) ) {
             $this->comments[] = new arrangor_news_comment( $row );
