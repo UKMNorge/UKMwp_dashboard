@@ -1,42 +1,35 @@
-<h2>Tjenestestatus</h2>
-<div class="row">
-	<div class="col-xs-6 col-md-4 col-lg-2">
-		{% embed "network/servers/sveve.html.twig" %}{% endembed %}
-	</div>
+<table class="table table-dashboard">
+    <thead>
+        <tr>
+            <th colspan="2">Tjenestestatus</th>
+        </tr>
+    </thead>
 
-	<div class="col-xs-6 col-md-4 col-lg-2">
-		{% embed "network/servers/convert_queue.html.twig" %}{% endembed %}
-	</div>
-
-	<div class="clearfix visible-xs"></div>
-	
-	<div class="col-xs-6 col-md-4 col-lg-2">
-		{% embed "network/servers/videoconverter.html.twig" %}{% endembed %}
-	</div>
-
-	<div class="clearfix visible-md"></div>
-		
-	<div class="col-xs-6 col-md-4 col-lg-2">
-		{% embed "network/servers/video.html.twig" %}{% endembed %}
-	</div>
-	
-	<div class="clearfix visible-xs"></div>
-
-	<div class="col-xs-6 col-md-4 col-lg-2">
-		{% embed "network/servers/playback.html.twig" %}{% endembed %}
-	</div>
-
-	<div class="col-xs-6 col-md-4 col-lg-2">
-		{% embed "network/servers/ukmno.html.twig" %}{% endembed %}
-	</div>
-	
-	<div class="clearfix visible-md"></div>
-	
-	<div class="col-xs-6 col-md-4 col-lg-2">
-		{% embed "network/servers/registrerte_monstringer.html.twig" %}{% endembed %}
-	</div>
-
-	<div class="col-xs-6 col-md-4 col-lg-2">
-		{% embed "network/samtykke.html.twig" %}{% endembed %}
-	</div>
-</div>
+    <tbody>
+        <tr>
+			<td>SMS-credits</td>
+            <td>{{ sveve }}</td>
+        </tr>
+        <tr>
+			{% include "network/servers/convert_queue.html.twig" %}
+        </tr>
+        <tr>
+            {% embed "network/servers/videoconverter.html.twig" %}{% endembed %}
+        </tr>
+        <tr>
+            {% embed "network/servers/video.html.twig" %}{% endembed %}
+        </tr>
+        <tr>
+            {% embed "network/servers/playback.html.twig" %}{% endembed %}
+        </tr>
+        <tr>
+            {% embed "network/servers/ukmno.html.twig" %}{% endembed %}
+        </tr>
+        <tr>
+            {% embed "network/servers/registrerte_monstringer.html.twig" %}{% endembed %}
+        </tr>
+        <tr>
+            {% embed "network/samtykke.html.twig" %}{% endembed %}
+        </tr>
+    </tbody>
+</table>

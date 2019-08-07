@@ -1,61 +1,43 @@
-<script>
-	{% if videoconverter.online %}
+<td class="{{ videoconverter.space.free_percentage < 10 or not videoconverter.online ? 'text-danger' : ''}}">
+	Converter
+</td>
+{% if not videoconverter.online %}
+	<td>
+		OFFLINE
+	</td>
+{% else %}
+	<script>
 		google.charts.setOnLoadCallback(videoconverter_status);
 	
 		function videoconverter_status() {
 			var data = google.visualization.arrayToDataTable([
-				['Diskplass','Tilgjengelig'],
-				['Brukt (GB)', {{ videoconverter.space.used|round(1)|replace(',','.') }}],
-				['Ledig (GB)', {{ videoconverter.space.free|round(1)|replace(',','.') }}],
+				['','Brukt (GB)','Ledig (GB)'],
+				['', {{ videoconverter.space.used|round(1)|replace(',','.') }}, {{ videoconverter.space.free|round(1)|replace(',','.') }}],
 			]);
 			
 			var options = {
-			  chartArea: {'width': '100%', 'height': '88%'},
-			  pieHole: 0.4,
-			  legend: 'none',
-			  colors: [ '#dc3545', '#28a745']
+			chartArea: {'width': '100%', 'height': '100%'},
+			//pieHole: 0.4,
+			isStacked: 'percent',
+			orientation: 'vertical',
+			bar: { groupWidth: '100%' },
+			legend: 'none',
+			colors: [ '#dc3545', '#28a745']
 			};
 			
-			var chart = new google.visualization.PieChart(document.getElementById('videoconverter_graph'));
+			var chart = new google.visualization.ColumnChart(document.getElementById('videoconverter_graph'));
 			chart.draw(data, options);
 		}
-	{% else %}
-		jQuery(document).ready(function(){
-			var warning = jQuery('<div>')
-			    .css('margin-left', '-8px')
-			    .css('margin-right', '-8px')
-                .css('padding-left', '2px')
-                .css('padding-right', '2px')
-                .css('overflow-x', 'hidden')
-                .addClass('alert alert-danger')
-                .html('Videokonvertereren ser ut til å være offline! <br /><span class="hidden-xs small">(https://videoconverter.{{ UKM_HOSTNAME }})</span>');
-			jQuery('#videoconverter_graph').html( warning );
-		});
-	{% endif %}
-</script>
+	</script>
 
-<table class="table table-dashboard {{ videoconverter.space.free_percentage < 10 ? 'danger' }}">
-	<thead>
-		<tr class="">
-			<th colspan="2">
-				Konverterer
-			</th>
-		</tr>
-	</thead>
-	<tbody>						
-		<tr>
-			<td align="center">
-				{% if videoconverter.online %}
-					<p>
-						{{ videoconverter.space.free_percentage|round(1) }}% ledig
-						<br />
-						<small>
-							{{ videoconverter.diskspace|filesize(0) }} av {{ videoconverter.total_diskspace|filesize(0) }}
-						</small>
-					</p>
-				{% endif %}
-				<div id="videoconverter_graph" style="width:90%; max-width: 95%; height: 120px; min-height:100px; max-height:150px;">Laster inn...</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+
+	<td style="padding-bottom:0;">
+		<div id="videoconverter_graph" style="width:100%; height: 1.6em;">Laster inn...</div>
+		<p class="m-0">
+			{{ videoconverter.space.free_percentage|round(1) }}% ledig
+			<small>
+				({{ videoconverter.diskspace|filesize(0) }} av {{ videoconverter.total_diskspace|filesize(0) }})
+			</small>
+		</p>
+	</td>
+{% endif %}

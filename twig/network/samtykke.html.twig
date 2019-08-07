@@ -1,20 +1,21 @@
+<td>
+	Samtykke
+</td>
 <script>
 	google.charts.setOnLoadCallback(samtykke_status);
 
 	function samtykke_status() {
 		var data = google.visualization.arrayToDataTable([
-			['Status','Antall'],
-            ['Ikke send', {{ samtykke.ikke_send }}],
-            ['Ikke sendt', {{ samtykke.ikke_sendt }}],
-            ['Ikke sett', {{ samtykke.ikke_sett }}],
-            ['Ikke svart', {{ samtykke.ikke_svart }}],
-            ['Ikke godtatt', {{ samtykke.ikke_godkjent }}],
-            ['Godtatt', {{ samtykke.godkjent }}]
+			['','Ikke send', 'Ikke sendt','Ikke sett','Ikke svart','Ikke godtatt','Godtatt'],
+            ['', {{ samtykke.ikke_send }}, {{ samtykke.ikke_sendt }}, {{ samtykke.ikke_sett }}, {{ samtykke.ikke_svart }}, {{ samtykke.ikke_godkjent }}, {{ samtykke.godkjent }}]
         ]);
 		
 		var options = {
-		  chartArea: {'width': '100%', 'height': '88%'},
-		  pieHole: 0.4,
+		  chartArea: {'width': '100%', 'height': '100%'},
+		  isStacked: 'percent',
+		  orientation: 'vertical',
+          bar: { groupWidth: '100%' },
+		  //pieHole: 0.4,
 		  legend: 'none',
 		  colors: [ 
               '#f8f9fa', // ikke send
@@ -26,24 +27,26 @@
               ]
 		};
 		
-		var chart = new google.visualization.PieChart(document.getElementById('samtykke_graph'));
+		var chart = new google.visualization.ColumnChart(document.getElementById('samtykke_graph'));
 		chart.draw(data, options);
 	}
 </script>
-
-<table class="table table-dashboard info">
-	<thead>
-		<tr class="">
-			<th colspan="2">
-				Samtykke
-			</th>
-		</tr>
-	</thead>
-	<tbody>						
-		<tr>
-			<td align="center">
-				<div id="samtykke_graph" style="width:90%; max-width: 95%; height: 120px; min-height:100px; max-height:150px;">Laster inn...</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<style>
+	.samtykke-label {
+		font-size: .8em;
+		line-height: 1.2em;
+		padding: .3em;
+	}
+</style>
+<td style="padding-bottom: 0;">
+	<div id="samtykke_graph" style="width:100%; height: 1.6em;">Laster inn...</div>
+	<p class="small">
+		<span class="label samtykke-label" style="background: #28a745;">{{ samtykke.ikke_send }}</span> godkjent,
+		<span class="label samtykke-label" style="background: #dc3545;">{{ samtykke.ikke_godkjent }}</span> ikke godkjent
+		<br />
+		<span class="label samtykke-label" style="background: #f8f9fa; color: #000">{{ samtykke.ikke_send }}</span> ikke send,
+		<span class="label samtykke-label" style="background: #ffc107;">{{ samtykke.ikke_sendt }}</span> ikke sendt, 
+		<span class="label samtykke-label" style="background: #17a2b8;">{{ samtykke.ikke_sett }}</span> ikke sett, 
+		<span class="label samtykke-label" style="background: #6c757d;">{{ samtykke.ikke_svart }}</span> ikke svart
+	</p>
+</td>
