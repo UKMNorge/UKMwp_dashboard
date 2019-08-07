@@ -31,15 +31,15 @@ require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
 
 require(ABSPATH . 'wp-admin/admin-header.php');
 
-
 if( is_user_admin() ) {
 	require_once('controller/user/dashboard.controller.php');
+	echo TWIG('user/dashboard.html.twig', $TWIGdata, dirname(__FILE__));
 } else {
 	require_once('controller/monstring/dashboard.controller.php');
+	echo TWIG('dashboard.html.twig', $TWIGdata, dirname(__FILE__));
 }
 
 
-echo TWIG('dashboard.html.twig', $TWIGdata, dirname(__FILE__));
 
 require(ABSPATH . 'wp-admin/admin-footer.php');
 die();

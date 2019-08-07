@@ -45,19 +45,21 @@ class UKMwp_dashboard extends UKMWPmodul
 	 */
 	public static function meny()
 	{
-		$support = add_submenu_page(
-			'index.php',
-			'Brukerstøtte',
-			'Brukerstøtte',
-			'read',
-			'UKMwpd_support',
-			['UKMwp_dashboard', 'renderSupport']
-		);
+		if( is_user_admin() ) {
+			$support = add_submenu_page(
+				'index.php',
+				'Brukerstøtte',
+				'Brukerstøtte',
+				'read',
+				'UKMwpd_support',
+				['UKMwp_dashboard', 'renderSupport']
+			);
 
-		add_action(
-			'admin_print_styles-' . $support,
-			['UKMwp_dashboard', 'support_scripts_and_styles']
-		);
+			add_action(
+				'admin_print_styles-' . $support,
+				['UKMwp_dashboard', 'support_scripts_and_styles']
+			);
+		}
 	}
 
 	/**
