@@ -207,13 +207,13 @@ class UKMwp_dashboard extends UKMWPmodul
 		$admind_content = str_replace($admind_dash_orig, $admind_dash_ukm, $admind_content);
 
 		if (!is_writable($admind_path))
-			static::error('File not writeable');
+			static::update_error('File not writeable');
 		$fp = fopen($admind_path, 'w');
 
 		if (!$fp)
-			static::error('File open denied');
+			static::update_error('File open denied');
 		if (!fwrite($fp, $admind_content))
-			static::error('File write error');
+			static::update_error('File write error');
 
 		fclose($fp);
 
@@ -228,13 +228,13 @@ class UKMwp_dashboard extends UKMWPmodul
 		$admind_content = str_replace($admind_dash_orig, $admind_dash_ukm, $admind_content);
 
 		if (!is_writable($admind_path))
-			static::error('File not writeable');
+			static::update_error('File not writeable');
 		$fp = fopen($admind_path, 'w');
 
 		if (!$fp)
-			static::error('File open denied');
+			static::update_error('File open denied');
 		if (!fwrite($fp, $admind_content))
-			static::error('File write error');
+			static::update_error('File write error');
 
 		fclose($fp);
 
