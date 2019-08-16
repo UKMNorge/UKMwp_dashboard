@@ -102,17 +102,19 @@ class UKMwp_dashboard extends UKMWPmodul
 	 */
 	public static function scripts_and_styles()
 	{
-		$screen = get_current_screen();
+        wp_register_style(
+            'UKMwp_dash_css',
+            plugin_dir_url(__FILE__) . 'css/UKMwp_dash.css'
+        );
+
+        $screen = get_current_screen();
 
 		/**
 		 * ALLE DASHBOARD
 		 */
 		if (in_array($screen->base, ['dashboard', 'dashboard-network', 'dashboard-user'])) {
-			wp_enqueue_style(
-				'UKMwp_dash_css',
-				plugin_dir_url(__FILE__) . 'css/UKMwp_dash.css'
-			);
-			wp_enqueue_style('UKMwp_innhold_style');
+            wp_enqueue_style('UKMwp_dash_css');
+            wp_enqueue_style('UKMwp_innhold_style');
 			wp_enqueue_script('WPbootstrap3_js');
 			wp_enqueue_style('WPbootstrap3_css');
 

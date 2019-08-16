@@ -33,6 +33,7 @@ require_once('controller/network/sveve.controller.php');
 require_once('controller/network/insta.controller.php');
 require_once('controller/network/registrerte_monstringer.controller.php');
 require_once('controller/network/samtykke.controller.php');
+require_once('controller/network/delta.controller.php');
 
 $MESSAGES = apply_filters('UKMWPNETWDASH_messages', $MESSAGES);
 

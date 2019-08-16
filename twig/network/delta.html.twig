@@ -1,0 +1,21 @@
+<td class="{{ deltaStatus == 'danger' ? 'text-danger' }}">
+    Delta
+</td>
+<td>
+    Testet og godkjent for
+    <span class="label label-{{ deltaStatus == 'danger' ? 'warning' : deltaStatus }}">{{ deltaApproved }}</span>-sesongen.
+
+    {% if deltaStatus == 'danger' %}
+        <p>
+            Påmeldingssystemet må testes manuelt for hver sesong. 
+            Vanligvis holder det å gjennonmføre én påmelding for innslag med titler,
+            og én for innslag uten titler (UKM Media/konferansier++).
+        </p>
+        <p>
+            Når systemet er manuelt testet og godkjent for en ny sesong trykker du på knappen nedenfor
+        </p>
+        <p>
+            <a class="btn btn-xs btn-warning" href="?deltaApproved=true">Godkjenn delta for ny sesong</a>
+        </p>
+    {% endif %}
+</td>

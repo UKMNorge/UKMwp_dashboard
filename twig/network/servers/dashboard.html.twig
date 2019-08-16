@@ -29,7 +29,10 @@
             {% embed "network/servers/registrerte_monstringer.html.twig" %}{% endembed %}
         </tr>
         <tr>
-            {% embed "network/samtykke.html.twig" %}{% endembed %}
+            {% include "network/samtykke.html.twig" %}
+        </tr>
+        <tr>
+            {% include "network/delta.html.twig" %}
         </tr>
     </tbody>
 </table>
