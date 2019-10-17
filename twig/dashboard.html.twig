@@ -1,11 +1,11 @@
 {% if post is defined %}
 	{% embed "post.html.twig" %}{% endembed %}
 {% else %}
-	{#% if page == 1 %}
+	{% if page == 1 %}
 		<div class="clearfix"></div>
-		<div class="header-dashboard" style="margin: 0px 0px 1em -20px;">ARRANGØRSYSTEMET</div>
+		<div class="header-dashboard" style="margin: 0px 0px 1em -20px;">ARRANGEMENTSYSTEMET</div>
 		<div class="clearfix"></div>
-	{% endif %#}
+	{% endif %}
 	
 	<div class="container-fluid dashboard">
 		<div class="row">
