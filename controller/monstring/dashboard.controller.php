@@ -15,7 +15,7 @@ foreach($MESSAGES as $key => $MESSAGE) {
 $KALENDER = array();
 $KALENDER = apply_filters('UKMWPDASH_calendar', $KALENDER);
 
-if( in_array( get_option('site_type'), array('kommune','fylke','land') ) ) {
+if( get_option('pl_id') ) {
 	/* STATISTIKK */
 	require_once('UKM/monstring.class.php');
 	$pl = new monstring( get_option('pl_id' ) );
