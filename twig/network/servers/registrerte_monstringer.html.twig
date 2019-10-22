@@ -1,38 +1,36 @@
+<td class="text-{{registrerte_monstringer.status}}">
+	Mønstringer
+</td>
 <script>
 	google.charts.setOnLoadCallback(videoconverter_status);
 
 	function videoconverter_status() {
 		var data = google.visualization.arrayToDataTable([
-			['Antall','Antall'],
-			['Uregistrerte', {{ registrerte_monstringer.uregistrert }}],
-			['Registrerte', {{ registrerte_monstringer.registrert }}],
+			['','Uregistrerte','Uregistrerte'],
+			['',{{ registrerte_monstringer.uregistrert }},{{ registrerte_monstringer.registrert }}],
 		]);
 		
 		var options = {
-		  chartArea: {'width': '100%', 'height': '88%'},
-		  pieHole: 0.4,
+		  chartArea: {'width': '100%', 'height': '100%'},
+		  isStacked: 'percent',
+		  orientation: 'vertical',
+          bar: { groupWidth: '100%' },
+		  //pieHole: 0.4,
 		  legend: 'none',
-          colors: [ '#dc3545', '#28a745']
+          colors: [ '#dc3545', '#28a745'],
 		};
 		
-		var chart = new google.visualization.PieChart(document.getElementById('registrerte_graph'));
+		var chart = new google.visualization.ColumnChart(document.getElementById('registrerte_graph'));
 		chart.draw(data, options);
 	}
 </script>
 
-<table class="table table-dashboard {{ registrerte_monstringer.status }}">
-	<thead>
-		<tr class="">
-			<th colspan="2">
-				Registrerte mønstringer
-			</th>
-		</tr>
-	</thead>
-	<tbody>						
-		<tr>
-			<td align="center">
-				<div id="registrerte_graph" style="width:90%; max-width: 95%; height: 120px; min-height:100px; max-height:150px;">Laster inn...</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<td style="padding-bottom: 0;">
+	<div id="registrerte_graph" style="width:100%;height: 1.6em;">Laster inn...</div>
+	<p>
+		{{ registrerte_monstringer.registrert }} 
+		av 
+		{{ registrerte_monstringer.uregistrert+registrerte_monstringer.registrert }}
+		registrert
+	</p>
+</td>

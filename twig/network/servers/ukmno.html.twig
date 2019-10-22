@@ -1,54 +1,39 @@
+<td class="{{ ukmno.space.free_percentage < 10 or not ukmno ? 'text-danger' : ''}}">
+	UKM.no
+</td>
+{% if not video.online %}
+	<td>OFFLINE</td>
+{% else %}
 <script>
-	{% if ukmno == false %}
-		jQuery(document).ready(function(){
-			var warning = jQuery('<div>').addClass('alert alert-danger').html('UKM.no svarte ikke på API-kall');
-			jQuery('#ukmno_graph').html( warning );
-		});
-	{% else %}
 		google.charts.setOnLoadCallback(ukmno_status);
 	
 		function ukmno_status() {
 			var data = google.visualization.arrayToDataTable([
-				['Diskplass','Tilgjengelig'],
-				['Brukt (GB)', {{ ukmno.space.used|round(1)|replace(',','.') }}],
-				['Ledig (GB)', {{ ukmno.space.free|round(1)|replace(',','.') }}],
+				['','Brukt (GB)', 'Ledig (GB)'],
+				['', {{ ukmno.space.used|round(1)|replace(',','.') }}, {{ ukmno.space.free|round(1)|replace(',','.') }}],
 			]);
 			
 			var options = {
-			  chartArea: {'width': '100%', 'height': '88%'},
-			  pieHole: 0.4,
-			  legend: 'none',
-			  colors: [ '#dc3545', '#28a745']
+				chartArea: {'width': '100%', 'height': '88%'},
+				//pieHole: 0.4,
+				isStacked: 'percent',
+				orientation: 'vertical',
+				bar: { groupWidth: '100%' },
+				legend: 'none',
+				colors: [ '#dc3545', '#28a745']
 			};
 			
-			var chart = new google.visualization.PieChart(document.getElementById('ukmno_graph'));
+			var chart = new google.visualization.ColumnChart(document.getElementById('ukmno_graph'));
 			chart.draw(data, options);
 		}
-	{% endif %}
-</script>
-<table class="table table-dashboard {{ ukmno.space.free_percentage < 10 ? 'danger' }}">
-	<thead>
-		<tr class="">
-			<th colspan="2">
-				UKM.no
-			</th>
-		</tr>
-	</thead>
-	<tbody>						
-		<tr>
-			<td align="center">
-				{% if ukmno != false %}
-					<p>
-						{{ ukmno.space.free_percentage|round(1) }}% ledig
-						<br />
-						<small>
-							{{ ukmno.diskspace|filesize(0) }} av {{ ukmno.total_diskspace|filesize(0) }}
-						</small>
-					</p>
-				{% endif %}
-				<div id="ukmno_graph" style="width:90%; max-width: 95%; height: 120px; min-height:100px; max-height:150px;">Laster inn...</div>
-			</td>
-		</tr>
-
-	</tbody>
-</table>
+	</script>
+	<td style="padding-bottom: 0;">
+		<div id="ukmno_graph" style="width:100%; height: 1.6em;">Laster inn...</div>
+		<p>
+			{{ ukmno.space.free_percentage|round(1) }}% ledig
+			<small>
+				({{ ukmno.diskspace|filesize(0) }} av {{ ukmno.total_diskspace|filesize(0) }})
+			</small>
+		</p>
+	</td>
+{% endif %}

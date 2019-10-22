@@ -1,0 +1,38 @@
+<table class="table table-dashboard">
+    <thead>
+        <tr>
+            <th colspan="2">Tjenestestatus</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+			<td>SMS-credits</td>
+            <td>{{ sveve }}</td>
+        </tr>
+        <tr>
+			{% include "network/servers/convert_queue.html.twig" %}
+        </tr>
+        <tr>
+            {% include "network/servers/videoconverter.html.twig" %}
+        </tr>
+        <tr>
+            {% include "network/servers/video.html.twig" %}
+        </tr>
+        <tr>
+            {% include "network/servers/playback.html.twig" %}
+        </tr>
+        <tr>
+            {% include "network/servers/ukmno.html.twig" %}
+        </tr>
+        <tr>
+            {% include "network/servers/registrerte_monstringer.html.twig" %}
+        </tr>
+        <tr>
+            {% include "network/samtykke.html.twig" %}
+        </tr>
+        <tr>
+            {% include "network/delta.html.twig" %}
+        </tr>
+    </tbody>
+</table>

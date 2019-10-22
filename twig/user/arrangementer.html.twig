@@ -1,0 +1,15 @@
+{#
+<div class="card" id="arrangementer">
+<h3>Dine arrangementer</h3>
+    <ol class="list-group" style="margin-bottom: .5em;">
+        {% for blog in blogs if blog.userblog_id != 1 %}
+            <li class="list-group-item">
+                <a href="//{{UKM_HOSTNAME}}{{ blog.path }}wp-admin/">{{ blog.blogname }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+	<p style="margin-top:0;">
+		<a href="#">Opprett et nytt arrangement</a>
+	</p>
+</div>
+#}

@@ -25,16 +25,20 @@
 	<div class="content">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-4">
-				{% embed "network/messages.twig.html" %}{% endembed %}
+				{% embed "network/messages.html.twig" %}{% endembed %}
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4">
-				{% embed "network/support.twig.html" %}{% endembed %}
+				{% embed "network/support.html.twig" %}{% endembed %}
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				{% embed "network/servers/dashboard.html.twig" %}{% endembed %}
 			</div>
 		</div>
 				
 		<hr />
-		{% embed "network/innhold.twig.html" %}{% endembed %}
+		{% embed "network/innhold.html.twig" %}{% endembed %}
 		
-		{% embed "network/servers/dashboard.twig.html" %}{% endembed %}
+		
+		
 	</div>
 </div>

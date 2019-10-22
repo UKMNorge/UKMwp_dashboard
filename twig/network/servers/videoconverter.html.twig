@@ -1,0 +1,43 @@
+<td class="{{ videoconverter.space.free_percentage < 10 or not videoconverter.online ? 'text-danger' : ''}}">
+	Converter
+</td>
+{% if not videoconverter.online %}
+	<td>
+		OFFLINE
+	</td>
+{% else %}
+	<script>
+		google.charts.setOnLoadCallback(videoconverter_status);
+	
+		function videoconverter_status() {
+			var data = google.visualization.arrayToDataTable([
+				['','Brukt (GB)','Ledig (GB)'],
+				['', {{ videoconverter.space.used|round(1)|replace(',','.') }}, {{ videoconverter.space.free|round(1)|replace(',','.') }}],
+			]);
+			
+			var options = {
+			chartArea: {'width': '100%', 'height': '100%'},
+			//pieHole: 0.4,
+			isStacked: 'percent',
+			orientation: 'vertical',
+			bar: { groupWidth: '100%' },
+			legend: 'none',
+			colors: [ '#dc3545', '#28a745']
+			};
+			
+			var chart = new google.visualization.ColumnChart(document.getElementById('videoconverter_graph'));
+			chart.draw(data, options);
+		}
+	</script>
+
+
+	<td style="padding-bottom:0;">
+		<div id="videoconverter_graph" style="width:100%; height: 1.6em;">Laster inn...</div>
+		<p class="m-0">
+			{{ videoconverter.space.free_percentage|round(1) }}% ledig
+			<small>
+				({{ videoconverter.diskspace|filesize(0) }} av {{ videoconverter.total_diskspace|filesize(0) }})
+			</small>
+		</p>
+	</td>
+{% endif %}

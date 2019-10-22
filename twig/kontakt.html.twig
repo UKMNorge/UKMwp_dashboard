@@ -26,7 +26,7 @@
 
 <div class="clearfix"></div>
 
-{% if site_type == 'kommune' and kontakter|length > 0 %}
+{% if site_type in ['kommune','arrangement'] and kontakter|length > 0 %}
 	
 	<h2>Fylkeskontaktene</h2>
 	<p class="lead">Kontaktpersoner fra fylket kan hjelpe deg med generelle spørsmål om UKM, kvoter, spesialordninger i fylket osv</p>
