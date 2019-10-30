@@ -22,13 +22,17 @@
         <div class="dashicons dashicons-admin-users"></div>
     </div>
     <b>{{ current_user.display_name }}</b>
-    {% if current_user.user_phone is not empty %}
+    {% if current_user.user_phone is not empty and current_user.user_phone > 0 %}
         <br />
         📱 {{ current_user.user_phone }}
     {% endif %}
 	<br />
 	✉️ {{ current_user.user_email }}
 
+
+    {% if current_user.user_phone is empty or current_user.user_phone == 0 %}
+        <p class="mt-3">Vi vil veldig gjerne <a href="profile.php">vite mobilnummeret ditt</a>.</p>
+    {% endif %}
     <div class="clearfix" style="margin-bottom: 1.8em;"></div>
     <a href="profile.php" class="btn btn-block btn-ukm" >rediger informasjon</a>
 </div>
