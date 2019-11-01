@@ -12,7 +12,6 @@ require_once(ABSPATH . 'wp-content/plugins/UKMwp_dashboard/wp_network_dashboard.
 
 require_once('UKM/inc/twig-admin.inc.php');
 require_once('UKM/monstring.class.php');
-require_once(dirname(__FILE__).'/wp_dashboard_functions.php');
 
 require(ABSPATH . 'wp-admin/admin-header.php');
 

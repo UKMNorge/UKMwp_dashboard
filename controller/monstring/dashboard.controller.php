@@ -62,7 +62,6 @@ if(file_exists(__DIR__.'/../UKMrsvp_admin/class/SecretFinder.php')) {
 }
 
 $TWIGdata = array('site_type' => get_option('site_type'),
-				  /*'kontakter' => UKMWP_kontakter(),*/
 				  'messages'  => $MESSAGES,
 				  'block_pre_messages' => array(), // PUTT HTML her for å vise på topp av startsiden
 				  'shortcuts' => $SHORTCUTS,

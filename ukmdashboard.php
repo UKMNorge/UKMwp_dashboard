@@ -19,7 +19,7 @@ class UKMwp_dashboard extends UKMWPmodul
 	{
 		add_action('admin_init', ['UKMwp_dashboard', 'admin_init']);
 		add_action('admin_enqueue_scripts', ['UKMwp_dashboard', 'scripts_and_styles']);
-		add_action('admin_menu', ['UKMwp_dashboard', 'meny']);
+		add_action('user_admin_menu', ['UKMwp_dashboard', 'meny']);
 	}
 
 	/**
@@ -45,21 +45,19 @@ class UKMwp_dashboard extends UKMWPmodul
 	 */
 	public static function meny()
 	{
-		if( is_user_admin() ) {
-			$support = add_submenu_page(
-				'index.php',
-				'Brukerstøtte',
-				'Brukerstøtte',
-				'read',
-				'UKMwpd_support',
-				['UKMwp_dashboard', 'renderSupport']
-			);
+        $support = add_submenu_page(
+            'index.php',
+            'Brukerstøtte',
+            'Brukerstøtte',
+            'read',
+            'UKMwpd_support',
+            ['UKMwp_dashboard', 'renderSupport']
+        );
 
-			add_action(
-				'admin_print_styles-' . $support,
-				['UKMwp_dashboard', 'support_scripts_and_styles']
-			);
-		}
+        add_action(
+            'admin_print_styles-' . $support,
+            ['UKMwp_dashboard', 'support_scripts_and_styles']
+        );
 	}
 
 	/**
@@ -69,14 +67,7 @@ class UKMwp_dashboard extends UKMWPmodul
 	 */
 	function renderSupport()
 	{
-		require_once('UKM/inc/twig-admin.inc.php');
-		require_once('wp_dashboard_functions.php');
-		$TWIGdata = array(
-			'site_type' => get_option('site_type'),
-			'kontakter' => UKMWP_kontakter(),
-			'gjestekommune' => UKMWP_gjestekommune()
-		);
-		echo TWIG('kontakt.twig.html', $TWIGdata, dirname(__FILE__));
+		echo TWIG('kontakt.html.twig', [], dirname(__FILE__));
 	}
 
 	/**
