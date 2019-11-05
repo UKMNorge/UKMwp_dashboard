@@ -1,5 +1,9 @@
 <?php
 /* SHORTCUTS */
+
+use UKMNorge\Arrangement\Arrangement;
+require_once('UKM/Autoloader.php');
+
 $SHORTCUTS = array();
 $SHORTCUTS = apply_filters('UKMWPDASH_shortcuts', $SHORTCUTS);
 
@@ -14,16 +18,6 @@ foreach($MESSAGES as $key => $MESSAGE) {
 /* KALENDER */
 $KALENDER = array();
 $KALENDER = apply_filters('UKMWPDASH_calendar', $KALENDER);
-
-if( get_option('pl_id') ) {
-	/* STATISTIKK */
-	require_once('UKM/monstring.class.php');
-	$pl = new monstring( get_option('pl_id' ) );
-	$stat = $pl->statistikk();										  
-	$STATISTIKK = $stat->getTotal($pl->get('season'));
-} else {
-	$STATISTIKK = null;
-}	
 
 /* DELTAKERBRUKER ELLER ARRANGØR? */
 $qry = new SQL("SELECT COUNT(*) FROM `#table`
@@ -61,17 +55,34 @@ if(file_exists(__DIR__.'/../UKMrsvp_admin/class/SecretFinder.php')) {
 	}
 }
 
-$TWIGdata = array('site_type' => get_option('site_type'),
-				  'messages'  => $MESSAGES,
-				  'block_pre_messages' => array(), // PUTT HTML her for å vise på topp av startsiden
-				  'shortcuts' => $SHORTCUTS,
-				  'kalender' => $KALENDER,
-				  'statistikk' => $STATISTIKK,
-				  'kommune' => $TWIG['statistikk_detaljert'],
-				  'user' => $current_user,
-				  'deltakerbruker' => $deltakerbruker,
-				  'helarsDeltakere' => $helarsDeltakere
-				  );
+$TWIGdata = [
+    'site_type' => get_option('site_type'),
+    'messages'  => $MESSAGES,
+    'block_pre_messages' => array(), // PUTT HTML her for å vise på topp av startsiden
+    'shortcuts' => $SHORTCUTS,
+    'kalender' => $KALENDER,
+    'kommune' => $TWIG['statistikk_detaljert'],
+    'user' => $current_user,
+    'deltakerbruker' => $deltakerbruker,
+    'helarsDeltakere' => $helarsDeltakere
+];
+
+
+try {
+    $arrangement = new Arrangement( get_option('pl_id') );
+    $antall_innslag = 0;
+    $antall_personer = 0;
+    foreach( $arrangement->getInnslag()->getAll() as $innslag ) {
+        $antall_innslag++;
+        $antall_personer += $innslag->getPersoner()->getAntall();
+    }
+    $TWIGdata = array_merge( $TWIGdata, [
+        'arrangement' => $arrangement,
+        'antall_innslag' => $antall_innslag,
+        'antall_personer' => $antall_personer
+    ]);
+} catch ( Exception $e ) {}
+                
 
 if ($deltakerbruker) {
 	// Liste over blogger brukeren har rettigheter til.
