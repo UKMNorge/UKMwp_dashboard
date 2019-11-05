@@ -10,7 +10,7 @@
 				<td scope="row">
 					<span class="pull-right"><abbr title="{{message.body}}">i</abbr></span>
 					{% if message.link is defined and message.link is not empty %}
-						<a href="{{message.link}}">{{message.header}}</a>
+						<a href="{{message.link}}" {{ message.target is defined ? 'target="'~ target ~'"'}}>{{message.header}}</a>
 					{% else %}
 						{{ message.header }}
 					{% endif %}
