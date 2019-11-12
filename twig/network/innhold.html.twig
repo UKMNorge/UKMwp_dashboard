@@ -1,7 +1,5 @@
-<h2 class="m-t-0">Innhold <small class="text-muted">TEMA: {{ innhold.tema }}</small></h2>
-<div class="row">
 {% for site in sites %}
-	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+	<div class="col-xs-12 col-sm-6 col-md-4">
 		<table class="table table-dashboard {{ site.status }}">
 			<thead>
 				<tr class="">
@@ -35,12 +33,9 @@
 			</tbody>
 		</table>
 	</div>
-	{% if loop.index is divisibleby(6) %}
-		<div class="clearfix visible-lg"></div>
-	{% elseif loop.index is divisibleby(3) %}
-		<div class="clearfix visible-md"></div>
+	{% if loop.index is divisibleby(3) %}
+		<div class="clearfix visible-md visible-lg"></div>
 	{% elseif loop.index is divisibleby(2) %}
 		<div class="clearfix visible-sm"></div>
 	{% endif %}
 {% endfor %}
-</div>
