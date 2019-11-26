@@ -49,7 +49,7 @@ class UKMwp_dashboard extends UKMWPmodul
             'index.php',
             'Brukerstøtte',
             'Brukerstøtte',
-            'read',
+            'subscriber',
             'UKMwpd_support',
             ['UKMwp_dashboard', 'renderSupport']
         );
