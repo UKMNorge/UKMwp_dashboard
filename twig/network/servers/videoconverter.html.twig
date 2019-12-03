@@ -12,7 +12,7 @@
 		function videoconverter_status() {
 			var data = google.visualization.arrayToDataTable([
 				['','Brukt (GB)','Ledig (GB)'],
-				['', {{ videoconverter.space.used|round(1)|replace(',','.') }}, {{ videoconverter.space.free|round(1)|replace(',','.') }}],
+				['', {{ videoconverter.space.used|round(1)|replace({',':'.'}) }}, {{ videoconverter.space.free|round(1)|replace({',':'.'}) }}],
 			]);
 			
 			var options = {

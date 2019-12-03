@@ -10,7 +10,7 @@
 		function ukmno_status() {
 			var data = google.visualization.arrayToDataTable([
 				['','Brukt (GB)', 'Ledig (GB)'],
-				['', {{ ukmno.space.used|round(1)|replace(',','.') }}, {{ ukmno.space.free|round(1)|replace(',','.') }}],
+				['', {{ ukmno.space.used|round(1)|replace({',':'.'}) }}, {{ ukmno.space.free|round(1)|replace({',':'.'}) }}],
 			]);
 			
 			var options = {

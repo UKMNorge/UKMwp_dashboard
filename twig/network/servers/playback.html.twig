@@ -10,7 +10,7 @@
 		function playback_status() {
 			var data = google.visualization.arrayToDataTable([
 				['','Brukt (GB)', 'Ledig (GB)'],
-				['', {{ playback.space.used|round(1)|replace(',','.') }}, {{ playback.space.free|round(1)|replace(',','.') }}],
+				['', {{ playback.space.used|round(1)|replace({',':'.'}) }}, {{ playback.space.free|round(1)|replace({',':'.'}) }}],
 			]);
 			
 			var options = {

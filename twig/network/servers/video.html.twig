@@ -10,7 +10,7 @@
 		function video_status() {
 			var data = google.visualization.arrayToDataTable([
 				['','Brukt (GB)','Ledig (GB)'],
-				['', {{ video.space.used|round(1)|replace(',','.') }},{{ video.space.free|round(1)|replace(',','.') }}],
+				['', {{ video.space.used|round(1)|replace({',':'.'}) }},{{ video.space.free|round(1)|replace({',':'.'}) }}],
 			]);
 			
 			var options = {
