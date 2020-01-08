@@ -19,7 +19,7 @@
 				<ol class="list-unstyled" id="fylkesmonstringer">
 					{% for fylke in fylker %}
 						<li filter="{{ fylke.getNavn() }}" class="monstringSok">
-							<a href="index.php?page=UKMnettverket_fylker&omrade={{ fylke.getId() }}&type=fylke">
+							<a href="index.php?page=UKMnettverket_fylker&omrade={{ fylke.getId() }}&type=fylke" target="_blank">
 								{{ fylke.getNavn() }}
 							</a>
 						</li>
@@ -33,7 +33,7 @@
 					{% for fylke in fylker %}
 						{% for kommune in fylke.getKommuner().getAll() %}
 							<li filter="{{ kommune.getNavn() }} {{ fylke.getNavn() }}" class="monstringSok">
-								<a href="index.php?page=UKMnettverket_kommune&omrade={{ kommune.getId() }}&type=kommune">
+								<a href="index.php?page=UKMnettverket_kommune&omrade={{ kommune.getId() }}&type=kommune" target="_blank">
 									{{ kommune.getNavn() }}
 								</a>
 								<small>({{ fylke.getNavn() }})</small>

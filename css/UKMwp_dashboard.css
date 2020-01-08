@@ -45,18 +45,7 @@ li.servstatus div.title {
 .kontaktpersontabell td.epost {
 	width: 250px;
 }
-.grid_post_image{
-	width: 100%;
-	padding-top: 66%;
-	width: 100%;
-	height: 30%;
-	background-repeat: no-repeat;
-	background-position: center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
+
 .wpdashright {
 	margin-top: 20px;
 }
