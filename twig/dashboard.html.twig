@@ -15,10 +15,6 @@
 						<div>
 							{% embed "blogvalg.html.twig" %}{% endembed %}
 						</div>
-					{% else %}
-						<div>
-							{% embed "meldinger.html.twig" %}{% endembed %}
-						</div>
 					{% endif %}
 					<div>
 						{% embed "kalender.html.twig" %}{% endembed %}
@@ -29,11 +25,6 @@
 								{{ bm|raw }}
 							</div>
 						{% endfor %}
-					{% endif %}
-					{% if site_type %}
-						<div>
-							{% embed "pameldte.html.twig" %}{% endembed %}
-						</div>
 					{% endif %}
 
 					{% if deltakerbruker is defined and deltakerbruker %}

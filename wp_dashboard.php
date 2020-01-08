@@ -16,7 +16,6 @@ update_user_option($current_user->ID, 'admin_color', 'light', true);
 // If update user data-query
 if (isset($_POST['form_display_name'])) {
 	require_once('controller/profil.controller.php');
-
 }
 
 if( !defined('UKM_WP_INNHOLD_PATH') ) {
@@ -34,8 +33,7 @@ if( is_user_admin() ) {
 	require_once('controller/user/dashboard.controller.php');
 	echo TWIG('user/dashboard.html.twig', $TWIGdata, dirname(__FILE__));
 } else {
-	require_once('controller/monstring/dashboard.controller.php');
-	echo TWIG('dashboard.html.twig', $TWIGdata, dirname(__FILE__));
+	UKMmonstring::renderAdmin();
 }
 
 

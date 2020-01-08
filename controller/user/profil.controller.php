@@ -35,3 +35,20 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		header('Location: '.$_SERVER['REDIRECT_URL']);
 	}
 }
+
+/*
+
+DETTE VAR TIDLIGERE I controller/monstring/dashboard
+
+if ($deltakerbruker) {
+	// Liste over blogger brukeren har rettigheter til.
+	$blogs = get_blogs_of_user($current_user->ID);
+	$TWIGdata['blogs'] = $blogs;
+	$TWIGdata['current_blog_id'] = get_current_blog_id();
+	$TWIGdata['user_avatar'] = get_avatar($current_user->ID);
+}
+
+$TWIGdata['user_avatar'] = get_avatar($current_user->ID);
+$TWIGdata['current_user'] = $current_user->ID;
+
+*/
