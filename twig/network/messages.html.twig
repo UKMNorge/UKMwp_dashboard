@@ -1,5 +1,9 @@
-<table class="table table-dashboard noborder">
-	<tbody>
+<table class="table table-dashboard">
+	<thead>
+		<tr>
+			<th colspan="2">Meldinger</th>
+		</tr>
+        <tbody>
 		{% for message in messages %}
 		    <tr class="{{message.level}}">
 				<td scope="row">
@@ -14,4 +18,7 @@
 			</tr>
 		{% endfor %}
 	</tbody>
+	</thead>
+
+
 </table>
