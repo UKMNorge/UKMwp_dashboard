@@ -1,57 +1,48 @@
 <table class="table table-dashboard">
 	<thead>
 		<tr>
-			<th colspan="2">Logg ned til fylke- eller lokalside</th>
+			<th colspan="2">Logg på fylke- eller lokalside</th>
 		</tr>
 	</thead>
-	
+
 	<tbody>
 		<tr>
 			<td colspan="2">
-				<input type="text" name="filtrer" id="filterMonstringer" placeholder="Skriv her for å filtrere listen...." class="form-control input-sm" />
+				<input type="text" name="filtrer" id="filterMonstringer" placeholder="Skriv her for å filtrere listen...." class="form-control input-sm"/>
 			</td>
 		</tr>
-		
+
 		<tr id="container_monstringer">
 			<td width="col-xs-12 col-sm-5">
-				<b>Fylkesmønstringer</b>
-				<br />
+				<b>Fylker</b>
+				<br/>
 				<ol class="list-unstyled" id="fylkesmonstringer">
-					{% for site in monstringer.fylke %}
-						<li filter="{{ site.name }}" class="monstringSok">
-							{{ site.name }}
-							<br />
-							<a href="{{ site.blog_url }}wp-admin/" target="_blank">kontrollpanel</a>
-							|
-							<a href="{{ site.blog_url }}" target="_blank">nettside</a>
-							|
-							<a href="site-users.php?id={{ site.blog_id }}" target="_blank">brukere</a>
-							|
-							<a href="{{ site.blog_url }}wp-admin/admin.php?page=UKMpassord" target="_blank">passordliste</a>
-							|
-							<a href="{{ site.blog_url }}wp-admin/admin.php?page=UKMpr_adresser" target="_blank">pressemelding</a>
-						</li>						
+					{% for fylke in fylker %}
+						<li filter="{{ fylke.getNavn() }}" class="monstringSok">
+							<a href="index.php?page=UKMnettverket_fylker&omrade={{ fylke.getId() }}&type=fylke">
+								{{ fylke.getNavn() }}
+							</a>
+						</li>
 					{% endfor %}
 				</ol>
 				<div class="clearfix"></div>
 			</td>
 			<td width="col-xs-12 col-sm-7">
-				<b>Lokalmønstringer</b>
+				<b>Kommuner</b>
 				<ol class="list-unstyled" id="lokalmonstringer">
-					{% for site in monstringer.kommune %}
-						<li filter="{{ site.name }} {{ site.fylke }}" class="monstringSok">
-							{{ site.name }} <small>({{ site.fylke }})</small>
-							<br />
-							<a href="{{ site.blog_url }}wp-admin/" target="_blank">kontrollpanel</a>
-							|
-							<a href="{{ site.blog_url }}" target="_blank">nettside</a>
-							|
-							<a href="site-users.php?id={{ site.blog_id }}" target="_blank">brukere</a>
-						</li>						
+					{% for fylke in fylker %}
+						{% for kommune in fylke.getKommuner().getAll() %}
+							<li filter="{{ kommune.getNavn() }} {{ fylke.getNavn() }}" class="monstringSok">
+								<a href="index.php?page=UKMnettverket_kommune&omrade={{ kommune.getId() }}&type=kommune">
+									{{ kommune.getNavn() }}
+								</a>
+								<small>({{ fylke.getNavn() }})</small>
+							</li>
+						{% endfor %}
 					{% endfor %}
 				</ol>
 				<div class="clearfix"></div>
-			</td>	
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
