@@ -13,7 +13,7 @@ $TWIGdata['current_user'] = $current_user;
 
 
 
-if ( $current_admin->erAdmin('fylke')) {
+if ( $current_admin->erAdmin('fylke') || $current_admin->erAdmin('kommuner') ) {
     $TWIGdata['fylke_eller_kommunebruker'] = true;
 } else {
     $TWIGdata['fylke_eller_kommunebruker'] = false;
