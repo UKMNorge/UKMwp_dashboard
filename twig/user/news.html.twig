@@ -1,0 +1,34 @@
+<div {{ page == 1 ? 'align="right"' : 'style="margin-top:1em;"'}}>
+	<h4 class="{{ page == 1 ? 'text-muted'}}">
+		NYHETER FRA UKM NORGE{{ page > 1 ? ': SIDE '~page}}
+	</h4>
+</div>
+<div class="row" style="padding-left:6px;">
+	{% for post in news %}
+		<div class="col-xs-6">
+			{% embed "news.html.twig" %}{% endembed %}
+		</div>
+		{% if loop.index is divisible by ( 2 ) %}
+			<div class="clearfix" style="margin-bottom: 2em;"></div>
+		{% endif %}
+	{% endfor %}
+</div>
+<div class="row" style="padding-left: 6px;">
+	<div class="col-xs-6" align="left">
+		{% if pagination_prev is defined %}
+			<a href="?pagination={{pagination_prev}}" class="btn btn-ukm btn-default pull-left">Nyere saker</a>
+		{% endif %}
+	</div>
+
+	<div class="col-xs-6" align="right">
+		{% if pagination_next is defined %}
+			<a href="?pagination={{pagination_next}}" class="btn btn-ukm btn-default pull-right">Eldre saker</a>
+		{% endif %}
+	</div>
+</div>
+
+{% if page > 1 %}
+	<div class="col-xs-12 col-sm-4" align="right">
+		<a href="/wp-admin/user/" class="btn btn-ukm btn-primary" style="margin-right: 1em;">Tilbake til forsiden</a>
+	</div>
+{% endif %}

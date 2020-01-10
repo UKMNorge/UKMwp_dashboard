@@ -1,14 +1,14 @@
 <table class="table table-dashboard">
 	<thead>
 		<tr>
-			<th colspan="2">Logg på fylke- eller lokalside</th>
+			<th colspan="2">Gå til fylke- eller lokalside</th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<tr>
 			<td colspan="2">
-				<input type="text" name="filtrer" id="filterMonstringer" placeholder="Skriv her for å filtrere listen...." class="form-control input-sm"/>
+				<input type="text" name="filtrer" id="filterMonstringer" placeholder="Skriv her for å filtrere listen...." class="form-control input-sm" autofocus/>
 			</td>
 		</tr>
 
@@ -19,7 +19,7 @@
 				<ol class="list-unstyled" id="fylkesmonstringer">
 					{% for fylke in fylker %}
 						<li filter="{{ fylke.getNavn() }}" class="monstringSok">
-							<a href="index.php?page=UKMnettverket_fylker&omrade={{ fylke.getId() }}&type=fylke">
+							<a href="index.php?page=UKMnettverket_fylker&omrade={{ fylke.getId() }}&type=fylke" target="_blank">
 								{{ fylke.getNavn() }}
 							</a>
 						</li>
@@ -33,7 +33,7 @@
 					{% for fylke in fylker %}
 						{% for kommune in fylke.getKommuner().getAll() %}
 							<li filter="{{ kommune.getNavn() }} {{ fylke.getNavn() }}" class="monstringSok">
-								<a href="index.php?page=UKMnettverket_kommune&omrade={{ kommune.getId() }}&type=kommune">
+								<a href="index.php?page=UKMnettverket_kommune&omrade={{ kommune.getId() }}&type=kommune" target="_blank">
 									{{ kommune.getNavn() }}
 								</a>
 								<small>({{ fylke.getNavn() }})</small>
@@ -47,7 +47,7 @@
 		<tr>
 			<td colspan="2">
 				<div id="plStartSearch">
-					Ingen mønstringer vises før du begynner å filtrere listen
+					Ingen fylker eller kommuner/bydeler vises før du begynner å filtrere listen
 				</div>
 				<div id="plNoneFound">
 					Beklager, ingen fylker eller kommuner/bydeler matcher søkeordet!

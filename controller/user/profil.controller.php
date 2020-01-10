@@ -1,11 +1,23 @@
 <?php
 
+use UKMNorge\Nettverk\Administrator;
+
 global $current_user;
+
 
 $current_user->meta = new stdClass();
 $current_user->meta->avatar = get_user_meta('user_avatar');
+$current_admin = new Administrator(get_current_user_id());
 
 $TWIGdata['current_user'] = $current_user;
+
+
+
+if ( $current_admin->erAdmin('fylke')) {
+    $TWIGdata['fylke_eller_kommunebruker'] = true;
+} else {
+    $TWIGdata['fylke_eller_kommunebruker'] = false;
+}
 
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$wp_id = $current_user->ID;
