@@ -6,6 +6,12 @@
             <li class="list-group-item">
                 <a href="//{{UKM_HOSTNAME}}{{ blog.path }}wp-admin/">{{ blog.blogname }}</a>
             </li>
+        {% else %}
+            <li class="list-group-item">
+                Beklager, du har ikke tilgang til å redigere informasjon for noen 
+                arrangementer enda. Hvis du mener du skal ha dette, kan du ta kontakt 
+                med lokalkontakten din.
+            </li>
         {% endfor %}
     </ol>
 </div>
