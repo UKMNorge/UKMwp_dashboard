@@ -22,6 +22,12 @@
 					{% include "user/current_user.html.twig" %}
 				</div>
 			</div>
-
+		{% else %}
+			<div class="row">
+				<div class="col-xs-12 col-md-8">
+					{% include "user/news.html.twig" %}
+				</div>
+			</div>
 		{% endif %}
-	{% endif %}
+    </div>
+{% endif %}
