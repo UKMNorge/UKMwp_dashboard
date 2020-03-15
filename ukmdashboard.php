@@ -142,15 +142,6 @@ class UKMwp_dashboard extends UKMWPmodul
 					'UKMWPdash_profil',
 					plugin_dir_url(__FILE__) . '/js/profil.jquery.js'
 				);
-
-				wp_enqueue_style(
-					'UKMWPdash_tribute_css',
-					plugin_dir_url(__FILE__) . '/css/tribute.css'
-				);
-				wp_enqueue_script(
-					'UKMWPdash_tribute_js',
-					plugin_dir_url(__FILE__) . '/js/tribute.min.js'
-				);
 			}
 			/**
 			 * NETTVERK-DASHBOARD
@@ -172,7 +163,20 @@ class UKMwp_dashboard extends UKMWPmodul
 					'UKMwp_network_dashboard_js',
 					plugin_dir_url(__FILE__)  . 'js/wp_network_dashboard.js'
 				);
-			}
+            }
+            /**
+             * USER-DASHBOARD
+             */
+            if ($screen->base == 'dashboard-user') {
+                wp_enqueue_style(
+                    'UKMWPdash_tribute_css',
+                    plugin_dir_url(__FILE__) . '/css/tribute.css'
+                );
+                wp_enqueue_script(
+                    'UKMWPdash_tribute_js',
+                    plugin_dir_url(__FILE__) . '/js/tribute.min.js'
+                );
+            }
 		}
 	}
 
