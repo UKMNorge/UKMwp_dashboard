@@ -33,7 +33,7 @@ if( is_user_admin() ) {
 	require_once('controller/user/dashboard.controller.php');
 	echo TWIG('user/dashboard.html.twig', $TWIGdata, dirname(__FILE__));
 } else {
-	if( get_option('pl_id') ) {
+	if( get_option('pl_id') && current_user_can('editor') ) {
         UKMmonstring::renderAdmin();
     } else {
         echo TWIG('dashboard.html.twig', [], dirname(__FILE__));
