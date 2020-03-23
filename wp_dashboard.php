@@ -25,7 +25,6 @@ require_once( UKM_WP_INNHOLD_PATH . 'controller/kommentarer.controller.php');
 
 
 require_once('UKM/inc/twig-admin.inc.php');
-require_once('UKM/monstring.class.php');
 
 require(ABSPATH . 'wp-admin/admin-header.php');
 

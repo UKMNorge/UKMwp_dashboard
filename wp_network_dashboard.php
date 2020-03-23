@@ -11,7 +11,6 @@ require_once(ABSPATH . 'wp-content/plugins/UKMwp_dashboard/wp_network_dashboard.
 */
 
 require_once('UKM/inc/twig-admin.inc.php');
-require_once('UKM/monstring.class.php');
 
 require(ABSPATH . 'wp-admin/admin-header.php');
 
@@ -30,7 +29,6 @@ require_once('controller/network/support.controller.php');
 require_once('controller/network/server_status.controller.php');
 require_once('controller/network/sveve.controller.php');
 require_once('controller/network/insta.controller.php');
-require_once('controller/network/registrerte_monstringer.controller.php');
 require_once('controller/network/samtykke.controller.php');
 require_once('controller/network/delta.controller.php');
 

@@ -1,6 +1,8 @@
 <?php
 
-$sql = new SQL("
+use UKMNorge\Database\SQL\Query;
+
+$sql = new Query("
     SELECT `status`,
         COUNT(`id`) AS `antall`
     FROM `samtykke_deltaker`
@@ -20,7 +22,7 @@ $data = [
     'ikke_godkjent' => 0,
     'godkjent' => 0
 ];
-while( $row = SQL::fetch( $res ) ) {
+while( $row = Query::fetch( $res ) ) {
     $data[ $row['status'] ] = $row['antall'];
 }
 
