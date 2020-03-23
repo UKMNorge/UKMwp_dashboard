@@ -28,7 +28,6 @@ require_once('controller/network/innhold_sites.controller.php');
 require_once('controller/network/support.controller.php');
 require_once('controller/network/server_status.controller.php');
 require_once('controller/network/sveve.controller.php');
-require_once('controller/network/insta.controller.php');
 require_once('controller/network/samtykke.controller.php');
 require_once('controller/network/delta.controller.php');
 
