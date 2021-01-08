@@ -19,7 +19,7 @@
 		<div style="margin-top: 1em; padding-top:.3em; padding-left: 3em;">
             <a href="{{ arrangement.getLink() }}">{{ arrangement.getNavn()}}</a>
         </div>
-		<small class="text-muted">
+		<small class="text-muted" style="margin-top: 1em; padding-top:.3em; padding-left: 1.9em;">
 			{% if arrangement.harKart() and arrangement.getKart().getName() %}
 				{{ arrangement.getKart().getName() }}
 			{% else %}
