@@ -1,6 +1,6 @@
 <div class="row-flex flex-row">
 	<div class="float-right mt-2 border" style="float:right;">
-		<a href="{{ arrangement.getLink() }}" class="btn btn-ukm btn-xs">Mer info</a>
+		<a target="_blank" rel="noopener noreferrer" href="{{ arrangement.getLink() }}" class="btn btn-ukm btn-xs">Mer info</a>
 	</div>
 	<div class="float-left mr-3 border" style="margin-top: .25em; float:left;">
 		<div class="mb-1" style="font-size: .7em;">
@@ -17,7 +17,7 @@
 	</div>
 	<div>
 		<div style="margin-top: 1em; padding-top:.3em; padding-left: 3em;">
-            <a href="{{ arrangement.getLink() }}">{{ arrangement.getNavn()}}</a>
+            <a target="_blank" rel="noopener noreferrer" href="{{ arrangement.getLink() }}">{{ arrangement.getNavn()}}</a>
         </div>
 		<small class="text-muted" style="margin-top: 1em; padding-top:.3em; padding-left: 1.9em;">
 			{% if arrangement.harKart() and arrangement.getKart().getName() %}
