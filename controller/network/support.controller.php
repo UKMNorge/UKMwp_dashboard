@@ -5,4 +5,4 @@ use UKMNorge\Geografi\Fylker;
 
 require_once('UKM/Autoloader.php');
 
-$TWIGdata['fylker'] = Fylker::getAll();
+$TWIGdata['fylker'] = Fylker::getAllInkludertFalske();
