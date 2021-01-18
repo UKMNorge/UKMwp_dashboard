@@ -24,7 +24,7 @@
 	<h4>Kurs og webinar</h4>
 	<p>
 		{% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
-			<h5 class="mb-3 mt-0">Ting som skjer</h5>
+			<div class="clearfix"></div>
 			{% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()} %}
 			<div class="clearfix"></div>
 			<div class="mb-5"></div>
