@@ -1,33 +1,35 @@
 <style>
-.img {
-    background: #ddd;
-    border: 2px solid #0073aa;
-    width: 1.5em;
-    height: 1.5em;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 0.15em;
-    font-size: 3em;
-}
-.img > .dashicons {
-    font-size: 1em;
-    width: 1em;
-    height: 1em;
-    line-height: 1em;
-    color: #0073aa;
-}
+	.img {
+		background: #ddd;
+		border: 2px solid #0073aa;
+		width: 1.5em;
+		height: 1.5em;
+		text-align: center;
+		vertical-align: middle;
+		padding-top: 0.15em;
+		font-size: 3em;
+	}
+	.img > .dashicons {
+		font-size: 1em;
+		width: 1em;
+		height: 1em;
+		line-height: 1em;
+		color: #0073aa;
+	}
 </style>
 <div class="card mt-0 mb-4" id="upcomingEvents">
-    <div class="img img-circle" style="float:right;">
-        <div class="dashicons dashicons-calendar"></div>
-    </div>
-    <h4>Kurs og webinar</h4>  
-    <p>{% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
-        <h5 class="mb-3 mt-0">Ting som skjer</h5>
-        {% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()} %}
-        <div class="clearfix"></div>
-        <div class="mb-5"></div>
-    {% else %}
-        <p>Ingen planlagte kurs og webinar akkurat nå.</p>
-    {% endif %}</p>
+	<div class="img img-circle" style="float:right;">
+		<div class="dashicons dashicons-calendar"></div>
+	</div>
+	<h4>Kurs og webinar</h4>
+	<p>
+		{% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
+			<h5 class="mb-3 mt-0">Ting som skjer</h5>
+			{% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()} %}
+			<div class="clearfix"></div>
+			<div class="mb-5"></div>
+		{% else %}
+			<p>Ingen planlagte kurs og webinar akkurat nå.</p>
+		{% endif %}
+	</p>
 </div>
