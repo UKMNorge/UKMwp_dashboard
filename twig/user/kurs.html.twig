@@ -18,11 +18,21 @@
 	}
 </style>
 <div class="card mt-0 mb-4" id="upcomingEvents">
-	<div class="img img-circle" style="float:right;">
+	{% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
+		<a target="_blank" rel="noopener noreferrer" href="" style="float:right; margin-top: 10px;">Se eldre arrangementer</a>	
+	{% endif %}
+	<div class="img img-circle" style="float:left;">
 		<div class="dashicons dashicons-calendar"></div>
 	</div>
-	<h4>Kurs og webinar</h4>
+	<h4>&nbsp;&nbsp;Kurs og webinar</h4>
 	<p>
+		{% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
+			<div class="clearfix"></div>
+			{% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getTidligereArrangementer().getAll()} %}
+			<div class="clearfix"></div>
+			<div class="mb-5"></div>	
+		{% endif %}
+
 		{% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
 			<div class="clearfix"></div>
 			{% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()} %}
