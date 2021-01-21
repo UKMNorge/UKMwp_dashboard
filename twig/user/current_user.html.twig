@@ -2,40 +2,38 @@
 .img {
     background: #ddd;
     border: 2px solid #0073aa;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.2em;
+    height: 1.2em;
+    padding-top: 0.3em;
+    font-size: 2.5em;
+    margin-left: -.3em;
     text-align: center;
-    vertical-align: middle;
-    padding-top: 0.15em;
-    font-size: 3em;
 }
 .img > .dashicons {
-    font-size: 1em;
-    width: 1em;
-    height: 1em;
-    line-height: 1em;
+    font-size: .7em;
+    width: .7em;
+    height: .7em;
+    line-height: .7em;
+    margin-right: .2em;
     color: #0073aa;
 }
 </style>
 <div class="card mt-0" id="currentUser">
-    <div class="img img-circle" style="float:right;">
+    <div class="img img-circle mt-2" style="float:left; margin-bottom: .8em; margin-right: .3em;">
         <div class="dashicons dashicons-admin-users"></div>
     </div>
-    <b>{{ current_user.display_name }}</b>
+    <h5 class="contact mt-4">{{ current_user.display_name }}</h5>
     {% if current_user.user_phone is not empty and current_user.user_phone > 0 %}
-        <br />
-        📱 {{ current_user.user_phone }}
+        {{ current_user.user_phone }}
     {% endif %}
-	<br />
-	✉️ {{ current_user.user_email }}
-
-
+        <br />
+        <a href = "mailto: {{ current_user.user_email }} "> {{ current_user.user_email }} </a>
     {% if current_user.user_phone is empty or current_user.user_phone == 0 %}
         <p class="mt-3">Vi vil veldig gjerne <a href="profile.php">vite mobilnummeret ditt</a>.</p>
     {% endif %}
     <div class="clearfix" style="margin-bottom: 1.8em;"></div>
     <p>
-    <a href="profile.php" class="btn btn-block btn-ukm" >rediger informasjon</a>
+    <a href="profile.php" class="btn btn-block btn-ukm" >Rediger informasjon</a>
     </p>
 
     <p class="mt-4">

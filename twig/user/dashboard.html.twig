@@ -1,5 +1,7 @@
 {% if post is defined %}
 	{% embed "post.html.twig" %}{% endembed %}
+{% elseif GET('visKurs') %}
+  {% include "user/arrangement/alle.html.twig" %}
 {% else %}
 	{% if page == 1 %}
 		<div class="clearfix"></div>

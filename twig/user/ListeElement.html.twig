@@ -6,11 +6,11 @@
 		<div class="mb-1" style="font-size: .7em;">
 			{{ arrangement.getStart()|dato('M')|upper }}
 		</div>
-		<div class="" style="font-size:1.26em;margin-top: -.1em; {{ arrangement.erFerdig() ? 'margin-bottom: -.3em'}}">
+		<div class="" style="font-size:1.26em; margin-top: -.1em; {{ arrangement.erFerdig() ? 'margin-bottom: -.10em;'}}">
 			{{ arrangement.getStart()|dato('d')}}
 		</div>
         {% if arrangement.erFerdig() %}
-            <div class="mb-1 badge badge-warning" style="font-size: .7em; background: rgba(255, 18, 139, 65%); color: #fff;">
+            <div class="mb-2 badge badge-warning" style="margin-left: -10px; font-size: .7em; background: rgba(255, 18, 139, 65%); color: #fff;">
                 {{ arrangement.getStart()|dato('Y')|upper }}
             </div>
         {% endif %}
@@ -19,7 +19,7 @@
 		<div style="margin-top: 1em; padding-top:.3em; padding-left: 3em;">
             <a target="_blank" rel="noopener noreferrer" href="{{ arrangement.getLink() }}">{{ arrangement.getNavn()}}</a>
         </div>
-		<small class="text-muted" style="margin-top: 1em; padding-top:.3em; padding-left: 1.9em;">
+		<small class="text-muted" style="margin-top: 1em; padding-top:.3em; padding-left: 1em;">
 			{% if arrangement.harKart() and arrangement.getKart().getName() %}
 				{{ arrangement.getKart().getName() }}
 			{% else %}
