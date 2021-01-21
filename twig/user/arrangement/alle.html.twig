@@ -1,11 +1,11 @@
 <div class="container-fluid">
 	<div class="row mt-5">
         <div class="col">
-            <a rel="noopener noreferrer" href="/wp-admin/user/" class="mt-5" style="margin-left: 1.2em;">Tilbake til kontrollpanelet</a>
-            <h3 style="margin-left: .6em;">Arrangementer</h3>
+            <h2 style="margin-left: .5em;" class="mb-0">Kurs og webinar</h2>
+            <a rel="noopener noreferrer" href="/wp-admin/user/" style="margin-left: 1.2em; margin-top: .5em">Tilbake til kontrollpanelet</a>
         </div>
         <div class="col-xs-12 col-sm-5 col-md-4">
-            <h5>Kommende arrangementer</h5>
+            <h4>Kommende arrangementer</h4>
             <div class="card">
                 {% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
                     <div class="clearfix"></div>
@@ -18,7 +18,7 @@
             </div>
     	</div>
         <div class="col-xs-12 col-sm-5 col-md-4">
-            <h5>Tidligere arrangementer</h5>
+            <h4>Tidligere arrangementer</h4>
             <div class="card">
                 {% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
                     <div class="clearfix"></div>
