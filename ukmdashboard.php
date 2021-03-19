@@ -81,7 +81,7 @@ class UKMwp_dashboard extends Modul
 	{
 		wp_enqueue_style(
 			'UKMwp_dashboard_css',
-			plugin_dir_url(__FILE__) . 'css/UKMwp_dashboard.css'
+			PLUGIN_PATH . 'UKMwp_dashboard/css/UKMwp_dashboard.css'
 		);
 
 		wp_enqueue_script('WPbootstrap3_js');
@@ -97,7 +97,7 @@ class UKMwp_dashboard extends Modul
 	{
         wp_register_style(
             'UKMwp_dash_css',
-            plugin_dir_url(__FILE__) . 'css/UKMwp_dash.css'
+            PLUGIN_PATH . 'UKMwp_dashboard/css/UKMwp_dash.css'
         );
 
         $screen = get_current_screen();
@@ -117,7 +117,7 @@ class UKMwp_dashboard extends Modul
 			if ($screen->base == 'dashboard') {
 				wp_enqueue_style(
 					'UKMwp_dashboard_css',
-					plugin_dir_url(__FILE__) . 'css/UKMwp_dashboard.css'
+					PLUGIN_PATH . 'UKMwp_dashboard/css/UKMwp_dashboard.css'
 				);
 				wp_enqueue_script(
 					'GOOGLEchart',
@@ -131,18 +131,18 @@ class UKMwp_dashboard extends Modul
 
 				wp_enqueue_script(
 					'pushtofront',
-					plugin_dir_url(__FILE__) . '/js/pushtofront.jquery.js'
+					PLUGIN_PATH . 'UKMwp_dashboard/js/pushtofront.jquery.js'
 				);
 				wp_enqueue_script(
 					'blogvalg',
-					plugin_dir_url(__FILE__) . '/js/blogvalg.jquery.js'
+					PLUGIN_PATH . 'UKMwp_dashboard/js/blogvalg.jquery.js'
 				);
 
 				wp_enqueue_media();
 				wp_enqueue_style('UKMresources_tabs');
 				wp_enqueue_script(
 					'UKMWPdash_profil',
-					plugin_dir_url(__FILE__) . '/js/profil.jquery.js'
+					PLUGIN_PATH . 'UKMwp_dashboard/js/profil.jquery.js'
 				);
 			}
 			/**
@@ -151,19 +151,19 @@ class UKMwp_dashboard extends Modul
 			if ($screen->base == 'dashboard-network') {
 				wp_enqueue_style(
 					'UKMwp_network_dashboard_css',
-					plugin_dir_url(__FILE__) . 'css/UKMwp_network_dashboard.css'
+					PLUGIN_PATH . 'UKMwp_dashboard/css/UKMwp_network_dashboard.css'
 				);
 				wp_enqueue_script(
 					'UKMwp_network_dashboard_timagojs',
-					plugin_dir_url(__FILE__)  . 'js/timeago.jquery.js'
+					PLUGIN_PATH  . 'UKMwp_dashboard/js/timeago.jquery.js'
 				);
 				wp_enqueue_script(
 					'UKMwp_network_dashboard_fastlivefilterjs',
-					plugin_dir_url(__FILE__)  . 'js/fastlivefilter.jquery.js'
+					PLUGIN_PATH  . 'UKMwp_dashboard/js/fastlivefilter.jquery.js'
 				);
 				wp_enqueue_script(
 					'UKMwp_network_dashboard_js',
-					plugin_dir_url(__FILE__)  . 'js/wp_network_dashboard.js'
+					PLUGIN_PATH  . 'UKMwp_dashboard/js/wp_network_dashboard.js'
 				);
             }
             /**
@@ -172,11 +172,11 @@ class UKMwp_dashboard extends Modul
             if ($screen->base == 'dashboard-user') {
                 wp_enqueue_style(
                     'UKMWPdash_tribute_css',
-                    plugin_dir_url(__FILE__) . '/css/tribute.css'
+                    PLUGIN_PATH . 'UKMwp_dashboard/css/tribute.css'
                 );
                 wp_enqueue_script(
                     'UKMWPdash_tribute_js',
-                    plugin_dir_url(__FILE__) . '/js/tribute.min.js'
+                    PLUGIN_PATH . 'UKMwp_dashboard/js/tribute.min.js'
                 );
             }
 		}
