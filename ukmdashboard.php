@@ -69,7 +69,7 @@ class UKMwp_dashboard extends Modul
 	 */
 	function renderSupport()
 	{
-		echo TWIG('kontakt.html.twig', [], dirname(__FILE__));
+		static::include('controller/support.controller.php'); 
 	}
 
 	/**
