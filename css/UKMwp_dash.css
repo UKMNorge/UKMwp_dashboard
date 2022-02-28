@@ -150,6 +150,7 @@ table.table.table-dashboard {
 #collapseVenteliste {
     overflow: hidden;
     background: #fff;
+    margin-top: -20px;
 }
 #collapseVenteliste .list {
     margin: 20px;
@@ -161,9 +162,6 @@ table.table.table-dashboard {
 }
 #collapseVenteliste .list .person .mobil {
     float: right;
-}
-.table-dashboard.venteliste {
-    margin-bottom: 0;
 }
 #toggleVenteliste {
     display: flex;
