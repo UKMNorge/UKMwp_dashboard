@@ -146,3 +146,43 @@ table.table.table-dashboard {
     margin-bottom: 20px;
     max-width: 100% !important;
 }
+
+#collapseVenteliste {
+    overflow: hidden;
+    background: #fff;
+    margin-top: -20px;
+}
+#collapseVenteliste .list {
+    margin: 20px;
+    margin-bottom: 35px;
+}
+#collapseVenteliste .list .person {
+    padding: 10px 2px;
+    border-top: solid 1px #bebebe;
+}
+#collapseVenteliste .list .person .mobil {
+    float: right;
+}
+#toggleVenteliste {
+    display: flex;
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
+#toggleVenteliste .btn {
+    margin: auto;
+    background: #0000;
+    border: solid 1px #6a6a6a;
+    padding: 4px 15px;
+}
+#toggleVenteliste {
+    margin-top: 10px;
+}
+#toggleVenteliste .btn .dashicons {
+    transition: .3s;
+    transform: rotate(180deg);
+}
+#toggleVenteliste.open .btn .dashicons {
+    transition: .3s;
+    transform: rotate(0deg);
+
+}
