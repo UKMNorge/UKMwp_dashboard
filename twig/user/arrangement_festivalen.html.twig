@@ -1,0 +1,14 @@
+{% if blog_festivalen is defined %}
+    {% for blog_fest in blog_festivalen %}
+        <div class="card card_full_bredde" id="arrangementer">
+        <h3>UKM Festivalen du har tilgang til</h3>
+            <ol class="list-group" style="margin-bottom: .5em;">
+                <li class="list-group-item">
+                    <a href="//{{UKM_HOSTNAME}}{{ blog_fest.path }}wp-admin/">{{ blog_fest.blogname }}</a>
+                </li>
+            </ol>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
