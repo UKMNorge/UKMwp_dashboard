@@ -25,7 +25,7 @@
 	// ungdom	
 	$site = new stdClass();
 	$site->key = 'redaksjonelt';
-	$site->ID = 3449;
+	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 586 : 3449;
 	$site->title = 'redaksjonelt';
 	$site->link_add = '//'. UKM_HOSTNAME .'/redaksjonelt/wp-admin/post-new.php';
 	$site->link_panel = '//'. UKM_HOSTNAME .'/redaksjonelt/wp-admin/';
@@ -55,7 +55,7 @@
 	// voksne og presse
 	$site = new stdClass();
 	$site->key = 'organisasjonen';
-	$site->ID = 3447;
+	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 535 : 3447;
 	$site->title = 'organisasjonen';
 	$site->link_add = '//'. UKM_HOSTNAME .'/org/wp-admin/post-new.php';
 	$site->link_panel = '//'. UKM_HOSTNAME .'/org/wp-admin/';
@@ -81,7 +81,7 @@
 	// UKM-festivalen
 	$site = new stdClass();
 	$site->key = 'festivalen';
-	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 60 : 2173;
+	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 580 : 2173;
 	$site->title = 'UKM-festivalen';
 	$site->link_add = '//'. UKM_HOSTNAME .'/festivalen/wp-admin/post-new.php';
 	$site->link_panel = '//'. UKM_HOSTNAME .'/festivalen/wp-admin/';
