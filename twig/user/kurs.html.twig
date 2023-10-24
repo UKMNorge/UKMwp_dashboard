@@ -1,4 +1,4 @@
-<div class="card mt-0 mb-4" id="upcomingEvents">
+<div class="nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 mt-0 mb-4" id="upcomingEvents">
 	{% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
 		<a rel="noopener noreferrer" href="?visKurs=true" style="float:right; margin-top: 1.8em;">Se eldre arrangementer</a>	
 	{% endif %}
@@ -7,13 +7,6 @@
 	</div>
 	<h4 style="margin-top: 1.2em;">&nbsp;&nbsp;Kurs og webinar</h4>
 	<p>
-		{% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
-			<div class="clearfix"></div>
-			{% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getTidligereArrangementer().getAll()|slice(0, 2)} %}
-			<div class="clearfix"></div>
-			<div class="mb-5"></div>	
-		{% endif %}
-
 		{% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
 			<div class="clearfix"></div>
 			{% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()} %}
