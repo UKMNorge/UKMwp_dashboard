@@ -15,17 +15,19 @@
             </div>
         </div>
         <div class="title as-padding-left-space-2">
-            <a class="title-link as-btn-hover-default" href="{{ arrangement.getLink() }}wp-admin/">{{ arrangement.getNavn()}}</a>
-            <p class="nom place">
-                {% if arrangement.harKart() and arrangement.getKart().getName() %}
-                    {{ arrangement.getKart().getName() }}
-                {% else %}
-                    {{ arrangement.getSted() }}
-                {% endif %}
-            </p>
-            <div class="info-with-icon">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 -2 24 30" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"></path></svg>
-                <p class="nom">{{ arrangement.getInnslag().getAntallPersonerSimple() }} påmeldte</p>
+            <div class="right-side">
+                <a class="title-link as-btn-hover-default" href="{{ arrangement.getLink() }}wp-admin/">{{ arrangement.getNavn()}}</a>
+                <p class="nom place">
+                    {% if arrangement.harKart() and arrangement.getKart().getName() %}
+                        {{ arrangement.getKart().getName() }}
+                    {% else %}
+                        {{ arrangement.getSted() }}
+                    {% endif %}
+                </p>
+                <div class="info-with-icon">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 -2 24 30" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"></path></svg>
+                    <p class="nom">{{ arrangement.getInnslag().getAntallPersonerSimple() }} påmeldte</p>
+                </div>
             </div>
         </div>
 
@@ -48,7 +50,12 @@
 .user-arrangementer .arrangement .title {
     border-left: solid 2px var(--color-primary-grey-light);
     align-self: center;
-    min-height: 57px;
+    min-height: 54px;
+    display: flex;
+}
+.user-arrangementer .arrangement .title .right-side {
+    margin: auto;
+    margin-left: 0;
 }
 .user-arrangementer .arrangement .title .place,
 .user-arrangementer .arrangement .title .info-with-icon {
