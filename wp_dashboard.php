@@ -1,4 +1,7 @@
 <?php
+
+use UKMNorge\Nettverk\Administrator;
+
 /* ****************************************************************
 Omkring linje 12 i wp-admin/index.php skal require dashboard
  kommenteres ut, og påfølgende linje legges til:
@@ -29,6 +32,17 @@ require_once('UKM/inc/twig-admin.inc.php');
 require(ABSPATH . 'wp-admin/admin-header.php');
 
 if( is_user_admin() ) {
+	$current_admin = new Administrator(get_current_user_id());
+	$omrader = $current_admin->getOmrader();
+	$user_arrangementer = [];
+	foreach($omrader as $omrade) {
+		foreach($omrade->getKommendeArrangementer()->getAll() as $arrangement) {
+			$user_arrangementer[$arrangement->getId()] = $arrangement;
+		}
+	}
+
+	$TWIGdata['user_arrangementer'] = $user_arrangementer;
+
 	require_once('controller/user/dashboard.controller.php');
 	echo TWIG('user/dashboard.html.twig', $TWIGdata, dirname(__FILE__));
 } else {

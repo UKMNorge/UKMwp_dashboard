@@ -1,0 +1,78 @@
+<div class="user-arrangementer nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 mt-0 mb-4">
+    <h4 class="nom as-margin-bottom-space-3">Aktive arrangementer</h4>
+{% for arrangement in user_arrangementer|sort((a, b) => a.getStart() <=> b.getStart())|slice(0, 3) %}
+    <div class="arrangement as-margin-top-space-1 as-padding-space-2">            
+        <div class="float-left overunder as-padding-right-space-2">
+            <div class="over" style="font-size: .7em;">
+                {{ arrangement.getStart()|dato('D')|upper }}
+            </div>
+            <div class="under" style="font-size:1.4em;">
+                {{ arrangement.getStart()|dato('d')}}
+            </div>
+            <div class="under" style="font-size: .7em; margin-top: 0.2em; white-space: nowrap;">
+                {{ arrangement.getStart()|dato('M')|upper }}
+                {{ arrangement.getStart()|dato('Y')|upper }}
+            </div>
+        </div>
+        <div class="title as-padding-left-space-2">
+            <a class="title-link as-btn-hover-default" href="{{ arrangement.getLink() }}wp-admin/">{{ arrangement.getNavn()}} {{ arrangement.getId() }}</a>
+            <p class="nom place">
+                {% if arrangement.harKart() and arrangement.getKart().getName() %}
+                    {{ arrangement.getKart().getName() }}
+                {% else %}
+                    {{ arrangement.getSted() }}
+                {% endif %}
+            </p>
+            <div class="info-with-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 -2 24 30" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"></path></svg>
+                <p class="nom">{{ arrangement.getInnslag().getAntallPersonerSimple() }} påmeldte</p>
+            </div>
+        </div>
+
+    </div>
+{% else %}
+    <p class="nom ingen-arrangement">Ingen arrangement!</p>
+{% endfor %}
+</div>
+
+<style>
+.user-arrangementer .arrangement {
+    display: flex;
+    background: var(--color-primary-bla-lightest);
+    border-radius: var(--radius-normal);
+}
+.user-arrangementer .arrangement .overunder {
+    align-self: center;
+    text-align: center;
+}
+.user-arrangementer .arrangement .title {
+    border-left: solid 2px var(--color-primary-grey-light);
+    align-self: center;
+    min-height: 50px;
+}
+.user-arrangementer .arrangement .title .place,
+.user-arrangementer .arrangement .title .info-with-icon {
+    margin-top: calc(var(--initial-space-box)/2);
+}
+.user-arrangementer .arrangement .title .title-link {
+    font-size: 14px;
+    color: var(--color-primary-black);
+}
+.user-arrangementer .arrangement .title .info-with-icon {
+    display: flex;
+}
+.user-arrangementer .arrangement .title .info-with-icon p {
+    color: var(--color-primary-grey-dark);
+    font-size: 11px;
+    margin-top: 1px;
+}
+.user-arrangementer .arrangement .title .info-with-icon .icon {
+    fill: rgb(160, 174, 192) !important;
+    margin-right: calc(var(--initial-space-box)/2);
+}
+.user-arrangementer .arrangement .title .place {
+    font-size: 11px;
+    color: var(--color-primary-grey-dark);
+}
+
+</style>
