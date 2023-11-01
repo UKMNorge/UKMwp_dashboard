@@ -81,7 +81,7 @@
 	// UKM-festivalen
 	$site = new stdClass();
 	$site->key = 'festivalen';
-	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 580 : 2173;
+	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 580 : 8012;
 	$site->title = 'UKM-festivalen';
 	$site->link_add = '//'. UKM_HOSTNAME .'/festivalen/wp-admin/post-new.php';
 	$site->link_panel = '//'. UKM_HOSTNAME .'/festivalen/wp-admin/';
@@ -96,6 +96,24 @@
 	
 	$sites[] = $site;
 	
+	// UKM-festivalen 2023
+	$site = new stdClass();
+	$site->key = 'festivalen-arkiv-2023';
+	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 580 : 7830;
+	$site->title = 'UKM-festivalen 2023';
+	$site->link_add = '//'. UKM_HOSTNAME .'/festivalen-arkiv-2023/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME .'/festivalen-arkiv-2023/wp-admin/';
+	if( date('m') < 7 && date('m') > 4 ) {
+		$site->frequency = 10; #days
+		$site->status = post_status( $site );
+	} else {
+		$site->frequency = 365; #days
+		$site->status = 'info';
+	}
+	$site->posts = posts( $site->ID, 1 );
+	
+	$sites[] = $site;
+
 	// ungdom	
 	$site = new stdClass();
 	$site->key = 'ungdom';
