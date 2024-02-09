@@ -67,7 +67,7 @@ class UKMwp_dashboard extends Modul
 	 *
 	 * @return void
 	 */
-	function renderSupport()
+	public static function renderSupport()
 	{
 		static::include('controller/support.controller.php'); 
 	}
