@@ -14,8 +14,8 @@
 
 	<div class="container-fluid as-padding-top-space-3">
 		{% if page == 1 %}
-			<div class="row ">
-				<div class="col-xs-12 col-md-8">
+			<div class="row min-side-main-div">
+				<div class="col-xs-12 col-md-8 nyheter-main">
 					{% if fylke_eller_kommunebruker %}
 						{% include "user/intro.html.twig" %}
 					{% else %}
@@ -24,29 +24,33 @@
 
 					{# Festivalen - brukeren kan være admin i en kommune og arrangør i festivalen #}
 					{% include "user/arrangement_festivalen.html.twig" with { blog_festivalen : blogs|filter(blog => blog.path == '/festivalen/' ) } %}
-					
+
 					{% include "user/news.html.twig" %}
 				</div>
 
-				<div class="col-xs-12 col-md-4">
-					{% include "user/user_arrangementer.html.twig" %}
-				</div>
-				<div class="col-xs-12 col-md-4">
-					{% include "user/kurs.html.twig" %}
-				</div>
-				<div class="col-xs-12 col-md-4">
-					{% include "user/current_user.html.twig" %}
-				</div>
-				
 
-				{# Spotify UKMpodden, UKM podden, UKM podkast #}
-				<div class="col-xs-12 col-md-4">
-					{% include "user/ukm_poddkast.html.twig" %}
+				<div class="main-side-left ol-xs-12 col-md-4 order-md-last">
+					<div class="col-xs-12 order-md-last">
+						{% include "user/user_arrangementer.html.twig" %}
+					</div>
+
+					<div class="col-xs-12 order-md-last">
+						{% include "user/kurs.html.twig" %}
+					</div>
+
+					<div class="col-xs-12 order-md-last">
+						{% include "user/current_user.html.twig" %}
+					</div>
+
+					{# Spotify UKMpodden, UKM podden, UKM podkast #}
+					<div class="col-xs-12 order-md-last">
+						{% include "user/ukm_poddkast.html.twig" %}
+					</div>
 				</div>
 			</div>
 		{% else %}
 			<div class="row">
-				<div class="col-xs-12 col-md-8">
+				<div class="col-xs-12 col-md-8 order-md-last">
 					{% include "user/news.html.twig" %}
 				</div>
 			</div>
