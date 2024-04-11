@@ -3,10 +3,12 @@
 		NYHETER FRA UKM NORGE{{ page > 1 ? ': SIDE '~page}}
 	</h4>
 </div>
-<div class="row" style="padding-left:6px;">
+<div class="row min-side-nyheter-row" style="">
 	{% for post in news %}
-		<div class="col-xs-6">
-			{% embed "news.html.twig" %}{% endembed %}
+		<div class="col-xs-6 news-item">
+			<div class="news-item-inner">
+				{% embed "news.html.twig" %}{% endembed %}
+			</div>
 		</div>
 		{% if loop.index is divisible by ( 2 ) %}
 			<div class="clearfix" style="margin-bottom: 2em;"></div>
