@@ -1,5 +1,5 @@
 <div class="user-arrangementer nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 mt-0 mb-4">
-    <h4 class="nom as-margin-bottom-space-3">Aktive arrangementer</h4>
+    <h4 class="nom as-margin-bottom-space-3">Mine aktive arrangementer</h4>
 {% for arrangement in user_arrangementer|sort((a, b) => a.getStart() <=> b.getStart())|slice(0, 5) %}
     <div class="arrangement as-margin-top-space-1 as-padding-space-2">            
         <div class="float-left overunder as-padding-right-space-2">
