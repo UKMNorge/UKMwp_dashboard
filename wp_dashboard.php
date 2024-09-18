@@ -1,6 +1,7 @@
 <?php
 
 use UKMNorge\Nettverk\Administrator;
+use UKMNorge\OAuth2\ArrSys\AccessControlArrSys;
 
 /* ****************************************************************
 Omkring linje 12 i wp-admin/index.php skal require dashboard
@@ -42,6 +43,8 @@ if( is_user_admin() ) {
 	}
 
 	$TWIGdata['user_arrangementer'] = $user_arrangementer;
+	$TWIGdata['isFylkeAdmin'] = AccessControlArrSys::hasFylkeAccess();
+
 
 	require_once('controller/user/dashboard.controller.php');
 	echo TWIG('user/dashboard.html.twig', $TWIGdata, dirname(__FILE__));
