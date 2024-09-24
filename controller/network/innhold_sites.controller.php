@@ -114,6 +114,20 @@
 	
 	$sites[] = $site;
 
+
+	// UKM-festivalen 2024
+	$site = new stdClass();
+	$site->key = 'festivalen-arkiv-2024';
+	$site->ID = UKM_HOSTNAME == 'ukm.dev' ? 580 : 8012;
+	$site->title = 'UKM-festivalen 2024';
+	$site->link_add = '//'. UKM_HOSTNAME .'/festivalen-arkiv-2024/wp-admin/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME .'/festivalen-arkiv-2024/wp-admin/wp-admin/';
+	$site->frequency = 365; #days
+	$site->status = 'info';
+	$site->posts = posts( $site->ID, 1 );
+	
+	$sites[] = $site;
+
 	// ungdom	
 	$site = new stdClass();
 	$site->key = 'ungdom';
