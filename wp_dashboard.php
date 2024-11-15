@@ -50,7 +50,21 @@ if( is_user_admin() ) {
 	echo TWIG('user/dashboard.html.twig', $TWIGdata, dirname(__FILE__));
 } else {
 	if( get_option('pl_id') && (current_user_can('editor') || current_user_can('administrator')) ) {
-        UKMmonstring::renderAdmin();
+
+		if(get_current_blog_id() != LANDSFESTIVALEN_ID) {
+			UKMmonstring::renderAdmin();
+		} else {
+			// Hvis blog erlandsfestivalen gjelder en anenn hjem
+			if (is_plugin_active('UKMArrangementAdmin/ukmarrangementadmin.php')) {
+				// Include the file
+				require_once WP_PLUGIN_DIR . '/UKMArrangementAdmin/ukmarrangementadmin.php';
+				UKMArrangementAdmin::renderAdmin();
+
+			} else {
+				// Plugin is not active
+				throw new Exception('Plugin UKMArrangementAdmin is not active');
+			}
+		}
     } else {
         echo TWIG('dashboard.html.twig', [], dirname(__FILE__));
     }
