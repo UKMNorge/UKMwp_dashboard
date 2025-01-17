@@ -1,10 +1,11 @@
-<ol class="list-unstyled">
+<div class="user-arrangementer nop as-margin-top-space-3">
 	{% for arrangement in arrangementer |filter(arrangement => arrangement.erRegistrert() and arrangement.erSynlig() and arrangement.getSesong() > 2019 ) %}
-		<li class="clearfix mb-3" style="{{ arrangement.erFerdig() ? 'opacity: .65' }}">
+		<div style="{{ arrangement.erFerdig() ? 'opacity: .65' }}" class="arrangement as-margin-top-space-1 as-padding-space-2">
+
 			{% include "user/ListeElement.html.twig" %}
-		</li>
+		</div>
 	{% else %}
-		<li>{{ kurskommune.getNavn() }}
-			har ingen arrangement.</li>
+		<p>{{ kurskommune.getNavn() }}
+			har ingen arrangement.</p>
 	{% endfor %}
-</ol>
+</div>

@@ -1,22 +1,33 @@
-<div class="row-flex flex-row">
-	<div class="float-left mr-3 border" style="margin-top: .25em; float:left;">
-		<div class="mb-1" style="font-size: .7em;">
-			{{ arrangement.getStart()|dato('M')|upper }}
-		</div>
-		<div class="" style="font-size:1.26em; margin-top: -.1em; {{ arrangement.erFerdig() ? 'margin-bottom: -.10em;'}}">
-			{{ arrangement.getStart()|dato('d')}}
-		</div>
+<div class="float-left overunder as-padding-right-space-2">
+	<div class="over" style="font-size: .7em;">
+		{{ arrangement.getStart()|dato('D')|upper }}
 	</div>
-	<div>
-		<div style="margin-top: 1em; padding-top:.3em; padding-left: 3em;">
-            <a target="_blank" rel="noopener noreferrer" href="{{ arrangement.getLink() }}">{{ arrangement.getNavn()}}</a>
-        </div>
-		<small class="text-muted" style="margin-top: 1em; padding-top:.3em; padding-left: 1.85em;">
-			{% if arrangement.harKart() and arrangement.getKart().getName() %}
-				{{ arrangement.getKart().getName() }}
-			{% else %}
-				{{ arrangement.getSted() }}
-			{% endif %}
-		</small>
+	<div class="under" style="font-size:1.4em;">
+		{{ arrangement.getStart()|dato('d')}}
+	</div>
+	<div class="under" style="font-size: .7em; margin-top: 0.2em; white-space: nowrap;">
+		{{ arrangement.getStart()|dato('M')|upper }}
+		{{ arrangement.getStart()|dato('Y')|upper }}
 	</div>
 </div>
+<div class="title title-arr-div as-padding-left-space-2">
+	<div class="right-side as-display-flex">
+		<div class="as-margin-auto as-margin-left-none">
+			<a class="title-link as-btn-hover-default" href="{{ arrangement.getLink() }}wp-admin/">{{ arrangement.getNavn()}}</a>
+			<p class="nom place">
+				{% if arrangement.harKart() and arrangement.getKart().getName() %}
+					{{ arrangement.getSted() }}
+				{% endif %}
+			</p>
+		</div>
+		<div class="as-margin-auto as-margin-right-none">
+			<a href="//delta.{{ UKM_HOSTNAME }}/login/arrsys/meldpa/{{ arrangement.getType() == 'fylke' ? 'fylke' : arrangement.getEierKommune().getId() }}-{{ arrangement.getId() }}/" target="_blank" class="btn as-padding-left-space-2 as-padding-right-space-2 btn-primary">Meld deg på</a>
+		</div>
+	</div>
+</div>
+<style>
+.title-arr-div, 
+.right-side {
+	width: 100%;
+}
+</style>
