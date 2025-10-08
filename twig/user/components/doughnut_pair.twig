@@ -13,7 +13,7 @@
   {% set L1 = c * (p1 / (p1 + p2 == 0 ? 1 : (p1 + p2))) %}
 
   {# Inner box for centered text (width/height of donut hole) #}
-  {% set inner = size - 4*s %}
+  {% set inner = size - 3.5*s %}
 
   {# Text sizing (adaptive) #}
   {% set pct_fs = (inner * 0.32)|round %}              {# Large % #}
