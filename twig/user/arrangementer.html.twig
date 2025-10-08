@@ -1,6 +1,6 @@
 
 <div class="arrangementer-liste as-card-2 as-padding-space-3 as-margin-bottom-space-2" id="arrangementer">
-<h3 class="nop nom as-margin-bottom-space-2">Nettsteder du har tilgang til</h3>
+    <h3 class="nop nom as-margin-bottom-space-2">Nettsteder du har tilgang til</h3>
     <ul class="list-group" style="margin-bottom: .5em;">
         {% for blog in blogs|filter( blog => blog.userblog_id != 1) %}
             <li class="nop as-card-2 as-padding-space-2 as-margin-bottom-space-1">
@@ -17,6 +17,14 @@
 </div>
 
 <style>
+.arrangementer-liste {
+    height: 300px;
+    overflow: hidden;
+}
+.arrangementer-liste .list-group {
+    height: 200px;
+    overflow-y: scroll;
+}
 .arrangementer-liste ul li.as-card-2 {
     box-shadow: none !important;
     background: var(--color-primary-bla-lightest);

@@ -1,5 +1,7 @@
+{% from 'user/components/doughnut_pair.twig' import doughnut_pair %}
+
 <div class="user-arrangementer nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 mt-0 mb-4">
-    <h4 class="nom as-margin-bottom-space-3">Mine aktive arrangementer</h4>
+    <h4 class="nom as-margin-bottom-space-3">Aktive arrangementer</h4>
 {% for arrangement in user_arrangementer|sort((a, b) => a.getStart() <=> b.getStart())|slice(0, 5) %}
     <div class="arrangement as-margin-top-space-1 as-padding-space-2">            
         <div class="float-left overunder as-padding-right-space-2">
@@ -29,6 +31,14 @@
                     <p class="nom">{{ arrangement.getInnslag().getAntallPersonerSimple() }} påmeldte</p>
                 </div>
             </div>
+            <div class="doughnut-fullforte-paameldinger">
+            {{ doughnut_pair(
+                '#16a34a', 20,     
+                '#ef4444', null,   
+                120, 10,           
+                'Fullførte', 'Ikke fullførte', 'Fullførte påmeldinger'
+            ) }}
+            </div>
         </div>
 
     </div>
@@ -52,6 +62,7 @@
     align-self: center;
     min-height: 54px;
     display: flex;
+    width: 100%;
 }
 .user-arrangementer .arrangement .title .right-side {
     margin: auto;
@@ -81,5 +92,7 @@
     font-size: 11px;
     color: var(--color-primary-grey-dark);
 }
-
+.doughnut-fullforte-paameldinger {
+    display: flex;
+}
 </style>

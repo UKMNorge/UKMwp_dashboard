@@ -1,0 +1,71 @@
+{# components/doughnut_pair.twig #}
+{% macro doughnut_pair(color1, progress1, color2, progress2=null, size=64, stroke=8, label1='Fulfilled', label2='Not fulfilled', center_text=null) %}
+  {# Inputs & clamping #}
+  {% set p1 = (progress1|default(0)) %}
+  {% set p1 = p1 < 0 ? 0 : (p1 > 100 ? 100 : p1) %}
+  {% set p2 = progress2 is not null ? progress2 : 100 - p1 %}
+  {% set p2 = p2 < 0 ? 0 : (p2 > 100 ? 100 : p2) %}
+
+  {# Geometry #}
+  {% set s = stroke|default(8) %}
+  {% set r = (size - s) / 2 %}
+  {% set c = 2 * 3.141592653589793 * r %}
+  {% set L1 = c * (p1 / (p1 + p2 == 0 ? 1 : (p1 + p2))) %}
+
+  {# Inner box for centered text (width/height of donut hole) #}
+  {% set inner = size - 4*s %}
+
+  {# Text sizing (adaptive) #}
+  {% set pct_fs = (inner * 0.32)|round %}              {# Large % #}
+  {% set base_label_fs = (inner * 0.22) %}             {# Start size for label #}
+  {% set label = center_text is not null ? center_text : label1 %}
+  {% set avg_char = 0.55 %}                            {# rough avg width in ems #}
+  {% set est_width = (label|length) * avg_char * base_label_fs %}
+  {% set label_fs = (est_width > inner*0.92) ? (base_label_fs * (inner*0.92/est_width)) : base_label_fs %}
+  {% set label_fs = (label_fs < inner*0.13) ? inner*0.13 : label_fs %} {# floor #}
+
+  <svg class="donut"
+       width="{{ size }}" height="{{ size }}"
+       viewBox="0 0 {{ size }} {{ size }}"
+       role="img"
+       aria-label="{{ label1 }} {{ p1|round }}%, {{ label2 }} {{ p2|round }}%">
+    {# Base ring = NOT fulfilled (full ring) #}
+    <circle cx="{{ size/2 }}" cy="{{ size/2 }}" r="{{ r }}"
+            fill="none" stroke="{{ color2 }}" stroke-width="{{ s }}" />
+
+    {# Fulfilled arc (on top), with round caps #}
+    <circle cx="{{ size/2 }}" cy="{{ size/2 }}" r="{{ r }}"
+            fill="none" stroke="{{ color1 }}" stroke-width="{{ s }}"
+            stroke-linecap="round"
+            stroke-dasharray="{{ L1 }} {{ c - L1 }}"
+            stroke-dashoffset="0"
+            transform="rotate(-90 {{ size/2 }} {{ size/2 }})" />
+
+    {# Center content: big % + wrapped label inside donut hole #}
+    <switch>
+      <foreignObject x="{{ (size - inner)/2 }}" y="{{ (size - inner)/2 }}"
+                     width="{{ inner }}" height="{{ inner }}"
+                     requiredExtensions="http://www.w3.org/1999/xhtml">
+        <div xmlns="http://www.w3.org/1999/xhtml"
+             style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;text-align:center;">
+          <div style="line-height: 1.2; max-width:100%;">
+            <div style="font-size: {{ pct_fs }}px;">{{ p1|round }}%</div>
+            <div style="
+                font-size: {{ (label_fs)|round }}px;
+                line-height:1.1;
+                word-break: break-word;
+                overflow-wrap:anywhere;">
+              {{ label }}
+            </div>
+          </div>
+        </div>
+      </foreignObject>
+
+      {# Fallback if foreignObject isn’t supported #}
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+            style="font-family: system-ui, sans-serif; font-weight:800; font-size: {{ (size*0.34)|round }}px;">
+        {{ p1|round }}%
+      </text>
+    </switch>
+  </svg>
+{% endmacro %}
