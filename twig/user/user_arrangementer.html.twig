@@ -32,8 +32,18 @@
                 </div>
             </div>
             <div class="doughnut-fullforte-paameldinger">
+            {# {{ arrangement.getInnslag().getAntall() }}
+            {{ arrangement.getAntallInnslag() }} #}
+
+            {% set allePaameldingerMedZero = arrangement.getInnslag().getAntall() + arrangement.getInnslag().getAllUfullstendige()|length %}
+            {% set allePaameldinger = allePaameldingerMedZero == 0 ? 1 : allePaameldingerMedZero %}
+            {% set ufullfortePaameldinger = arrangement.getInnslag().getAllUfullstendige()|length %}
+            {% set fullforingVal = (1 - (ufullfortePaameldinger / allePaameldinger)) * 100 %}
+
+
+
             {{ doughnut_pair(
-                '#00004c', 78,     
+                '#00004c', (ufullfortePaameldinger == 0 and allePaameldingerMedZero == 0 ? 0 : fullforingVal),
                 '#d9d9e4', null,   
                 100, 7,           
                 'Fullførte', 'Ikke fullførte', 'Fullførte påmeldinger'

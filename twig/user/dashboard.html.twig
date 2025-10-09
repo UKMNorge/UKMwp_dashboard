@@ -1,5 +1,3 @@
-{% from 'user/components/doughnut_pair.twig' import doughnut_pair %}
-
 {% if post is defined %}
 	{% embed "post.html.twig" %}{% endembed %}
 {% elseif GET('visKurs') %}
@@ -31,7 +29,7 @@
 						{# Festivalen - brukeren kan være admin i en kommune og arrangør i festivalen #}
 						{% include "user/arrangement_festivalen.html.twig" with { blog_festivalen : blogs|filter(blog => blog.path == '/festivalen/' ) } %}
 
-						<div class="col-xs-12 col-md-6 user-aktive-arrangementer nop">
+						<div class="col-xs-12 user-aktive-arrangementer nop">
 							{% include "user/user_arrangementer.html.twig" %}
 						</div>
 
