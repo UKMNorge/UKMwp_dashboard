@@ -60,6 +60,21 @@ class UKMwp_dashboard extends Modul
             'admin_print_styles-' . $support,
             ['UKMwp_dashboard', 'support_scripts_and_styles']
         );
+
+		// Fjern venstremeny på alle sider under /wp-admin/user/*
+		// Removing left menu on all /wp-admin/user/* pages
+		add_action('admin_enqueue_scripts', function ($hook_suffix) {
+			// return;
+			$screen = function_exists('get_current_screen') ? get_current_screen() : null;
+			if (is_user_admin() || ($screen && in_array($screen->id, ['users','profile','user-edit'], true))) {
+				wp_enqueue_style(
+					'UKMwp_dashboard_css_remove_wp_menu',
+					UKMwp_dashboard::getPluginUrl() . 'css/UKMwp_remove_wp_menu.css',
+					[],
+					filemtime( plugin_dir_path(__FILE__) . 'css/UKMwp_remove_wp_menu.css' )
+				);
+			}
+		}, 0);
 	}
 
 	/**
