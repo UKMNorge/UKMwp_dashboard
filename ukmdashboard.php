@@ -63,6 +63,7 @@ class UKMwp_dashboard extends Modul
 
 		// Fjern venstremeny på alle sider under /wp-admin/user/*
 		// Removing left menu on all /wp-admin/user/* pages
+		// Fjerning av venstremeny på min side (og undersider) skjer i forbindelse med rydding av min side før lansering av ny nettside (lansering skjer desember 2025)
 		add_action('admin_enqueue_scripts', function ($hook_suffix) {
 			// return;
 			$screen = function_exists('get_current_screen') ? get_current_screen() : null;
