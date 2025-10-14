@@ -1,0 +1,48 @@
+<div class="user-main-item fylker nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 mt-0 mb-4">
+    <div class="header-with-icon as-margin-bottom-space-4">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-land-plot-icon lucide-land-plot"><path d="m12 8 6-3-6-3v10"/><path d="m8 11.99-5.5 3.14a1 1 0 0 0 0 1.74l8.5 4.86a2 2 0 0 0 2 0l8.5-4.86a1 1 0 0 0 0-1.74L16 12"/><path d="m6.49 12.85 11.02 6.3"/><path d="M17.51 12.85 6.5 19.15"/></svg>
+        <h4 class="title">fylker</h4>
+    </div>
+    {% for fylke in admin_fylker|sort((a, b) => a.getStart() <=> b.getStart()) %}
+        <a href="admin.php?page=UKMnettverket_fylke&omrade={{fylke.getForeignId()}}&type={{fylke.getType()}}&flerefylker={{fylke.getType()=='fylke'}}" class="user-list-item fylke as-margin-top-space-1 as-padding-space-2">      
+            <span class="navn">{{ fylke.getNavn() }}</span>
+            <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-right-icon lucide-circle-arrow-right"><circle cx="12" cy="12" r="10"/><path d="m12 16 4-4-4-4"/><path d="M8 12h8"/></svg>
+        </a>
+    {% endfor %}
+</div>
+
+<style>
+    .user-list-item {
+        display: flex;
+        border-radius: var(--radius-normal);
+        text-decoration: none !important;
+        color: inherit !important;
+    }
+    .user-list-item .navn {
+        margin: auto;
+        margin-left: 0;
+    }
+    .user-list-item .nav-icon {
+        margin: auto;
+        margin-right: 0;
+    }
+    .user-list-item.fylke {
+        transition: 0.3s;
+        background: var(--as-color-primary-success-lightest);
+    }
+    .user-list-item.fylke:hover {
+        background: var(--as-color-primary-success-lighter);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .user-main-item.fylker .header-with-icon {
+        display: flex;
+    }
+    .user-main-item.fylker .header-with-icon .icon {
+        margin-right: 1em;
+    }
+    .user-main-item.fylker .header-with-icon .title {
+        margin: auto;
+        margin-left: 0;
+    }
+</style>
