@@ -1,0 +1,6 @@
+#adminmenuback, #adminmenuwrap, #adminmenu, #collapse-menu { display:none !important; }
+#wpcontent, #wpfooter { margin-left:0 !important; }
+.interface-interface-skeleton__content { margin-left:0 !important; }
+.auto-fold #wpcontent, .folded #wpcontent,
+.auto-fold #wpfooter, .folded #wpfooter { margin-left:0 !important; }
+#wp-responsive-toggle { display:none !important; }
