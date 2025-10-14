@@ -1,11 +1,15 @@
 <div class="nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 mt-0 mb-4" id="upcomingEvents">
-	{% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
-		<a rel="noopener noreferrer" href="?visKurs=true" style="float:right; margin-top: 1.8em;">Se eldre arrangementer</a>	
-	{% endif %}
-	<div class="img img-circle" style="float:left; margin-top: 0.4em;">
-		<div class="dashicons dashicons-calendar"></div>
-	</div>
-	<h4 style="margin-top: 1.2em;">&nbsp;&nbsp;Kurs og webinar</h4>
+	<div class="header-with-icon">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-projector-icon lucide-projector"><path d="M5 7 3 5"/><path d="M9 6V3"/><path d="m13 7 2-2"/><circle cx="9" cy="13" r="3"/><path d="M11.83 12H20a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h2.17"/><path d="M16 16h2"/></svg>
+        <h4 class="title">Kurs og webinar</h4>
+		{% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
+		<div>
+			<a class="title-link as-btn-hover-default" rel="noopener noreferrer" href="?visKurs=true">Se eldre arrangementer</a>	
+		</div>
+		{% endif %}
+    </div>
+
+
 	<p>
 		{% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
 			<div class="clearfix"></div>
@@ -17,3 +21,16 @@
 		{% endif %}
 	</p>
 </div>
+
+<style>
+.header-with-icon {
+	display: flex;
+}
+.header-with-icon .icon {
+	margin-right: 1em;
+}
+.header-with-icon .title {
+	margin: auto;
+	margin-left: 0;
+}
+</style>
