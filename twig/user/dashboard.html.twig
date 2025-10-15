@@ -22,12 +22,14 @@
 				{# Main left #}
 				<div class="container-left col-xs-12 col-md-8 nop">
 					<div class="col-xs-12 nyheter-main">
-						{% if not fylke_eller_kommunebruker and blogs|length < 1 %}
+						{% if not fylke_eller_kommunebruker and blogs|length > 1 %}
 							{% include "user/arrangementer.html.twig" with { blogs : blogs|filter(blog => blog.path != '/festivalen/' ) } %}
 						{% endif %}
 
+						
 						{# Festivalen - brukeren kan være admin i en kommune og arrangør i festivalen #}
 						{% include "user/arrangement_festivalen.html.twig" with { blog_festivalen : blogs|filter(blog => blog.path == '/festivalen/' ) } %}
+
 
 						<div class="col-xs-12 user-aktive-arrangementer nop">
 							{% include "user/user_arrangementer.html.twig" %}
@@ -46,6 +48,14 @@
 						<div class="col-xs-12 nop order-md-last">
 							{% include "user/kurs.html.twig" %}
 						</div>
+						
+						<div class="col-xs-12 nop order-md-last">
+							{% include "user/user_fylker.html.twig" %}
+						</div>
+						
+						<div class="col-xs-12 nop order-md-last">
+							{% include "user/user_kommuner.html.twig" %}
+						</div>
 
 						<div class="col-xs-12 nop order-md-last">
 							{% include "user/current_user.html.twig" %}
@@ -55,6 +65,8 @@
 						{# <div class="col-xs-12 nop order-md-last">
 							{% include "user/ukm_poddkast.html.twig" %}
 						</div> #}
+
+						
 					</div>
 				</div>
 			</div>

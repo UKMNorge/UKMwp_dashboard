@@ -1,35 +1,19 @@
-
-<div class="arrangementer-liste as-card-2 as-padding-space-3 as-margin-bottom-space-2" id="arrangementer">
-    <h3 class="nop nom as-margin-bottom-space-2">Nettsteder du har tilgang til</h3>
-    <ul class="list-group" style="margin-bottom: .5em;">
-        {% for blog in blogs|filter( blog => blog.userblog_id != 1) %}
-            <li class="nop as-card-2 as-padding-space-2 as-margin-bottom-space-1">
-                <a class="as-btn-hover-default" href="//{{UKM_HOSTNAME}}{{ blog.path }}wp-admin/">{{ blog.blogname }}</a>
-            </li>
-        {% else %}
-            <li class="nop as-card-2 as-padding-space-2 as-margin-bottom-space-1">
-                Beklager, du har ikke tilgang til å redigere informasjon for noen 
-                arrangementer enda. Hvis du mener du skal ha dette, kan du ta kontakt 
-                med lokalkontakten din.
-            </li>
+{% if blogs is defined and blogs|length > 0 %}
+    <div class="as-container">
+        <div class="nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 user-arrangementer" id="arrangementer">
+        <div class="header-with-icon">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-spotlight-icon lucide-spotlight"><path d="M15.295 19.562 16 22"/><path d="m17 16 3.758 2.098"/><path d="m19 12.5 3.026-.598"/><path d="M7.61 6.3a3 3 0 0 0-3.92 1.3l-1.38 2.79a3 3 0 0 0 1.3 3.91l6.89 3.597a1 1 0 0 0 1.342-.447l3.106-6.211a1 1 0 0 0-.447-1.341z"/><path d="M8 9V2"/></svg>
+            <h4 class="title">Nettsteder</h4>
+        </div>
+        {% for blog_fest in blogs %}
+            <ol class="list-group user-arrangementer nom-impt" style="margin-top: calc(var(--initial-space-box)*2) !important;">
+                <li class="list-group-item arrangement as-margin-top-space-1 noborder-impt">
+                    <a class="as-btn-hover-default" href="//{{UKM_HOSTNAME}}{{ blog_fest.path }}wp-admin/">{{ blog_fest.blogname }}</a>
+                </li>
+            </ol>
         {% endfor %}
-    </ul>
-</div>
+        </div>
+    </div>
+{% endif %}
 
-<style>
-.arrangementer-liste {
-    height: 300px;
-    overflow: hidden;
-}
-.arrangementer-liste .list-group {
-    height: 200px;
-    overflow-y: scroll;
-}
-.arrangementer-liste ul li.as-card-2 {
-    box-shadow: none !important;
-    background: var(--color-primary-bla-lightest);
-}
-.arrangementer-liste ul li.as-card-2 a {
-    color: var(--color-primary-black);
-}
-</style>
+
