@@ -27,13 +27,14 @@
         margin-right: 0;
     }
     .user-list-item.kommune {
-        transition: 0.3s;
         background: var(--as-color-primary-warning-lightest);
+        transition-property: border, background, color;
+        transition-duration: .05s;
+        transition-timing-function: ease-in-out;
     }
     .user-list-item.kommune:hover {
         background: var(--as-color-primary-warning-lighter);
         cursor: pointer;
-        transition: 0.3s;
     }
     .header-with-icon {
         display: flex;

@@ -27,13 +27,14 @@
         margin-right: 0;
     }
     .user-list-item.fylke {
-        transition: 0.3s;
         background: var(--as-color-primary-success-lightest);
+        transition-property: border, background, color;
+        transition-duration: .05s;
+        transition-timing-function: ease-in-out;
     }
     .user-list-item.fylke:hover {
         background: var(--as-color-primary-success-lighter);
         cursor: pointer;
-        transition: 0.3s;
     }
     .user-main-item.fylker .header-with-icon {
         display: flex;
