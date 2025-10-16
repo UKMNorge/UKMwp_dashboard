@@ -46,7 +46,7 @@ if( is_user_admin() ) {
 	$omrader = $current_admin->getOmrader();
 	$user_arrangementer = [];
 	foreach($omrader as $omrade) {
-		foreach($omrade->getKommendeArrangementer()->getAll() as $arrangement) {
+		foreach($omrade->getAktuelleArrangementer()->getAll() as $arrangement) {
 			$user_arrangementer[$arrangement->getId()] = $arrangement;
 		}
 	}
