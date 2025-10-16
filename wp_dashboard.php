@@ -79,7 +79,7 @@ if( is_user_admin() ) {
 
 
 require(ABSPATH . 'wp-admin/admin-footer.php');
-
+die();
 
 
 
