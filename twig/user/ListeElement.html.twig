@@ -21,7 +21,10 @@
 			</p>
 		</div>
 		<div class="as-margin-auto as-margin-right-none">
-			<a href="//delta.{{ UKM_HOSTNAME }}/login/arrsys/meldpa/{{ arrangement.getType() == 'fylke' ? 'fylke' : arrangement.getEierKommune().getId() }}-{{ arrangement.getId() }}/" target="_blank" class="btn as-padding-left-space-2 as-padding-right-space-2 btn-primary">Meld deg på</a>
+			<a href="//delta.{{ UKM_HOSTNAME }}/login/arrsys/meldpa/{{ arrangement.getType() == 'fylke' ? 'fylke' : arrangement.getEierKommune().getId() }}-{{ arrangement.getId() }}/" target="_blank" class="as-btn-simple meld-deg-paa-btn primary as-btn-ahref">
+				<span>Meld deg på</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-right-icon lucide-circle-arrow-right"><circle cx="12" cy="12" r="10"/><path d="m12 16 4-4-4-4"/><path d="M8 12h8"/></svg>
+			</a>
 		</div>
 	</div>
 </div>
@@ -29,6 +32,20 @@
 .title-arr-div, 
 .right-side {
 	width: 100%;
+}
+.meld-deg-paa-btn {
+	padding: 10px 15px !important;
+	text-align: center;
+}
+.meld-deg-paa-btn span {
+	margin: auto;
+	margin-right: 10px;
+}
+.meld-deg-paa-btn svg {
+	vertical-align: middle;
+	margin-left: 10px;
+	margin: auto;
+	margin-right: 0;
 }
 @media (max-width: 1400px) {
 	.right-side {

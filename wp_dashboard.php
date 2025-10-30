@@ -1,7 +1,16 @@
 <?php
 
+/**
+ * This file is part of the UKMwp_dashboard plugin.
+ *
+ * Contains core functionality for the WordPress dashboard enhancements provided by the plugin.
+ */
+
 use UKMNorge\Nettverk\Administrator;
 use UKMNorge\OAuth2\ArrSys\AccessControlArrSys;
+use UKMNorge\Nettverk\Omrade;
+
+
 
 /* ****************************************************************
 Omkring linje 12 i wp-admin/index.php skal require dashboard
@@ -37,13 +46,16 @@ if( is_user_admin() ) {
 	$omrader = $current_admin->getOmrader();
 	$user_arrangementer = [];
 	foreach($omrader as $omrade) {
-		foreach($omrade->getKommendeArrangementer()->getAll() as $arrangement) {
+		foreach($omrade->getAktuelleArrangementer()->getAll() as $arrangement) {
 			$user_arrangementer[$arrangement->getId()] = $arrangement;
 		}
 	}
 
 	$TWIGdata['user_arrangementer'] = $user_arrangementer;
 	$TWIGdata['isFylkeAdmin'] = AccessControlArrSys::hasFylkeAccess();
+	$TWIGdata['admin_fylker'] = getUserFylker();
+	$TWIGdata['admin_kommuner'] = getUserKommuner();
+
 
 
 	require_once('controller/user/dashboard.controller.php');
@@ -68,3 +80,37 @@ if( is_user_admin() ) {
 
 require(ABSPATH . 'wp-admin/admin-footer.php');
 die();
+
+
+
+/**
+ * Hent alle fylker brukeren er admin for
+ * @return Omrade[]
+ */
+function getUserFylker() {
+	$retFylker = [];
+	$user = new Administrator( get_current_user_id() );
+
+	foreach($user->getOmrader() as $omrade) {
+		if($omrade->getType() == 'fylke') {
+			$retFylker[] = $omrade;
+		}
+	}
+	return $retFylker;
+}
+
+/** 
+ * Hent alle kommuner brukeren er admin for
+ * @return Omrade[]
+ */
+function getUserKommuner() {
+	$retKommuner = [];
+	$user = new Administrator( get_current_user_id() );
+
+	foreach($user->getOmrader() as $omrade) {
+		if($omrade->getType() == 'kommune') {
+			$retKommuner[] = $omrade;
+		}
+	}
+	return $retKommuner;
+}

@@ -1,7 +1,12 @@
-<div class="user-arrangementer nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 mt-0 mb-4">
-    <h4 class="nom as-margin-bottom-space-3">Mine aktive arrangementer</h4>
-{% for arrangement in user_arrangementer|sort((a, b) => a.getStart() <=> b.getStart())|slice(0, 5) %}
-    <div class="arrangement as-margin-top-space-1 as-padding-space-2">            
+{% from 'user/components/doughnut_pair.twig' import doughnut_pair %}
+
+<div class="user-arrangementer as-xs-padding-space-2 as-xs-padding-space-2 nop as-card-2 as-padding-space-3 as-margin-bottom-space-2 mt-0 mb-4">
+    <div class="header-with-icon as-margin-bottom-space-4">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-party-popper-icon lucide-party-popper"><path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/><path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17"/><path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7"/><path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/></svg>
+        <h4 class="title">Aktive arrangementer</h4>
+    </div>
+{% for arrangement in user_arrangementer|sort((a, b) => b.getStart() <=> a.getStart())|slice(0, 10) %}
+    <div class="arrangement as-margin-top-space-1 as-padding-space-2">        
         <div class="float-left overunder as-padding-right-space-2">
             <div class="over" style="font-size: .7em;">
                 {{ arrangement.getStart()|dato('D')|upper }}
@@ -15,8 +20,19 @@
             </div>
         </div>
         <div class="title as-padding-left-space-2">
-            <div class="right-side">
-                <a class="title-link as-btn-hover-default" href="{{ arrangement.getLink() }}wp-admin/">{{ arrangement.getNavn()}}</a>
+            <div class="right-side">    
+            {% if arrangement.erFerdig() %}
+                <div class="as-mini-label-style">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 6 24 24" style="fill: none" stroke="var(--color-primary-grey-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check-icon lucide-calendar-check">
+                            <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/>
+                        </svg>
+                    <span>Ferdig</span>
+                </div>
+            {% endif %}
+                <div>
+                    <a class="title-link as-btn-hover-default" href="{{ arrangement.getLink() }}wp-admin/">{{ arrangement.getNavn()}}</a>
+                </div>
                 <p class="nom place">
                     {% if arrangement.harKart() and arrangement.getKart().getName() %}
                         {{ arrangement.getKart().getName() }}
@@ -29,12 +45,31 @@
                     <p class="nom">{{ arrangement.getInnslag().getAntallPersonerSimple() }} påmeldte</p>
                 </div>
             </div>
+            <div class="doughnut-fullforte-paameldinger">
+            {# {{ arrangement.getInnslag().getAntall() }}
+            {{ arrangement.getAntallInnslag() }} #}
+
+            {% set allePaameldingerMedZero = arrangement.getInnslag().getAntall() + arrangement.getInnslag().getAllUfullstendige()|length %}
+            {% set allePaameldinger = allePaameldingerMedZero == 0 ? 1 : allePaameldingerMedZero %}
+            {% set ufullfortePaameldinger = arrangement.getInnslag().getAllUfullstendige()|length %}
+            {% set fullforingVal = (1 - (ufullfortePaameldinger / allePaameldinger)) * 100 %}
+
+
+
+            {{ doughnut_pair(
+                '#00004c', (ufullfortePaameldinger == 0 and allePaameldingerMedZero == 0 ? 0 : fullforingVal),
+                '#d9d9e4', null,   
+                100, 7,           
+                'Fullførte', 'Ikke fullførte', 'Fullførte påmeldinger'
+            ) }}
+            </div>
         </div>
 
     </div>
 {% else %}
-    <p class="nom ingen-arrangement">Ingen arrangement!</p>
+    <p class="nom ingen-arrangement">Du har ingen aktive arrangementer!</p>
 {% endfor %}
+<p class="nom as-margin-top-space-2">For å opprette et nytt arrangement, velg din kommune eller ditt fylke.</p>
 </div>
 
 <style>
@@ -52,10 +87,12 @@
     align-self: center;
     min-height: 54px;
     display: flex;
+    width: 100%;
 }
 .user-arrangementer .arrangement .title .right-side {
     margin: auto;
     margin-left: 0;
+    padding-right: calc(var(--initial-space-box)/2);
 }
 .user-arrangementer .arrangement .title .place,
 .user-arrangementer .arrangement .title .info-with-icon {
@@ -64,6 +101,7 @@
 .user-arrangementer .arrangement .title .title-link {
     font-size: 14px;
     color: var(--color-primary-black);
+    word-break: break-word;
 }
 .user-arrangementer .arrangement .title .info-with-icon {
     display: flex;
@@ -81,5 +119,12 @@
     font-size: 11px;
     color: var(--color-primary-grey-dark);
 }
-
+.doughnut-fullforte-paameldinger {
+    display: flex;
+}
+@media (max-width: 576px) {
+    .doughnut-fullforte-paameldinger {
+        max-width: 80px;   
+    }
+}
 </style>
