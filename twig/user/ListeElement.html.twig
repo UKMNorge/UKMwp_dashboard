@@ -13,7 +13,7 @@
 <div class="title title-arr-div as-padding-left-space-2">
 	<div class="right-side as-display-flex">
 		<div class="as-margin-auto as-margin-left-none">
-			<a class="title-link as-btn-hover-default" href="{{ arrangement.getLink() }}">{{ arrangement.getNavn()}}</a>
+			<a class="title-link as-btn-hover-default" href="{{ arrangement.getArrangementNettsideURL() }}">{{ arrangement.getNavn()}}</a>
 			<p class="nom place">
 				{% if arrangement.harKart() and arrangement.getKart().getName() %}
 					{{ arrangement.getSted() }}
