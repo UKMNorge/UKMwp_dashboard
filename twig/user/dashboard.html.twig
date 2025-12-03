@@ -60,10 +60,13 @@
 						<div class="col-xs-12 nop">
 							{% include "user/user_kommuner.html.twig" %}
 						</div>
+
+						{% if admin_fylker|length > 0 %}
+							<div class="col-xs-12 nop">
+								{% include "user/stimuleringsmidler_min_side.html.twig" %}
+							</div>
+						{% endif %}
 						
-						<div class="col-xs-12 nop">
-							{% include "user/stimuleringsmidler_min_side.html.twig" %}
-						</div>
 
 						<div class="col-xs-12 nop">
 							{% include "user/butikk.html.twig" %}
