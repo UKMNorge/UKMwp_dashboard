@@ -9,7 +9,7 @@
             <div class="card">
                 {% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
                     <div class="clearfix"></div>
-                    {% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()} %}
+                    {% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()|sort((a, b) => b.getStart() <=> a.getStart())} %}
                     <div class="clearfix"></div>
                     <div class="mb-5"></div>
                 {% else %}
@@ -22,7 +22,7 @@
             <div class="card">
                 {% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
                     <div class="clearfix"></div>
-                    {% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getTidligereArrangementer().getAll()} %}
+                    {% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getTidligereArrangementer().getAll()|sort((a, b) => b.getStart() <=> a.getStart())} %}
                     <div class="clearfix"></div>
                     <div class="mb-5"></div>	
                 {% else %}

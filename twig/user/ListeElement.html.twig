@@ -20,11 +20,26 @@
 				{% endif %}
 			</p>
 		</div>
+		{% if not arrangement.erFerdig() %}
 		<div class="as-margin-auto as-margin-right-none">
 			<a href="//delta.{{ UKM_HOSTNAME }}/login/arrsys/meldpa/{{ arrangement.getType() == 'fylke' ? 'fylke' : arrangement.getEierKommune().getId() }}-{{ arrangement.getId() }}/" target="_blank" class="as-btn-simple meld-deg-paa-btn primary as-btn-ahref">
 				<span>Meld deg på</span>
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-right-icon lucide-circle-arrow-right"><circle cx="12" cy="12" r="10"/><path d="m12 16 4-4-4-4"/><path d="M8 12h8"/></svg>
 			</a>
+		</div>		
+		{% endif %}
+		<div class="as-margin-top-space-2">
+			<span>{{ arrangement.getInfoTilDeltakere() }}</span>
+			<div class="lenker-fra-arrangor as-margin-top-space-1">
+				{% if arrangement.getLenkeTilDeltakere() is not empty %}
+					{% for link in arrangement.getLenkeTilDeltakere()|split(' ') %}
+						<div class="lenke-fra-arrangor">
+							<a class="as-btn-hover-default" href="//{{ link }}" target="_blank">{{ link }}</a>
+						</div>
+					{% endfor %}
+				{% endif %}
+
+			</div>
 		</div>
 	</div>
 </div>
@@ -46,6 +61,12 @@
 	margin-left: 10px;
 	margin: auto;
 	margin-right: 0;
+}
+.lenker-fra-arrangor {
+	display: block !important;
+}
+.title-link {
+	font-weight: bold;
 }
 @media (max-width: 1400px) {
 	.right-side {
