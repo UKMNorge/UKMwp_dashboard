@@ -4,7 +4,7 @@
             <h2 style="margin-left: .5em;" class="mb-0">Kurs og webinar</h2>
             <a rel="noopener noreferrer" href="/wp-admin/user/" style="margin-left: 1.2em; margin-top: .5em">Tilbake til min side</a>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-4">
+        <div class="col-xs-12 col-sm-6">
             <h4>Kommende arrangementer</h4>
             <div class="card">
                 {% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
@@ -17,7 +17,7 @@
                 {% endif %}
             </div>
     	</div>
-        <div class="col-xs-12 col-sm-5 col-md-4">
+        <div class="col-xs-12 col-sm-6">
             <h4>Tidligere arrangementer</h4>
             <div class="card">
                 {% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
