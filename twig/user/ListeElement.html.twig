@@ -35,7 +35,7 @@
 					<h6 class="as-margin-top-space-3"><b>Lenker:</b></h6>
 					{% for link in arrangement.getLenkeTilDeltakere()|split(' ') %}
 						<div class="lenke-fra-arrangor">
-							<a class="as-btn-hover-default" href="{{ link }}" target="_blank">{{ link }}</a>
+							<a class="as-btn-hover-default" href="{{ link starts with 'http' ? link : '//' ~ link }}" target="_blank">{{ link }}</a>
 						</div>
 					{% endfor %}
 				{% endif %}
