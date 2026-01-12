@@ -16,9 +16,14 @@
 			{% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()} %}
 			<div class="clearfix"></div>
 			<div class="mb-5"></div>
-		{% else %}
+		{# {% else %}
 			<p class="nom as-margin-top-space-4">Ingen planlagte kurs og webinar akkurat nå.</p>
-		{% endif %}
+		{% endif %} #}
+        {% else %}
+            <p class="nom as-margin-top-space-4">Lag arrangement for visning på UKM.no</p>
+            <p class="nom"><strong>14.01.2026 10:00–10:45</strong></p>
+            <a class="btn btn-primary" href="https://events.teams.microsoft.com/event/b8ed9f58-54b5-4fe2-a66f-bd6e79296e85%40f6cf44f6-1d95-4382-9b92-672205898c4b" target="_blank" rel="noopener noreferrer">Meld deg på</a>
+        {% endif %}
 	</div>
 </div>
 
