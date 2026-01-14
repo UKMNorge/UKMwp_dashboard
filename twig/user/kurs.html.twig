@@ -2,28 +2,22 @@
 	<div class="header-with-icon">
         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-projector-icon lucide-projector"><path d="M5 7 3 5"/><path d="M9 6V3"/><path d="m13 7 2-2"/><circle cx="9" cy="13" r="3"/><path d="M11.83 12H20a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h2.17"/><path d="M16 16h2"/></svg>
         <h4 class="title">Kurs og webinar</h4>
-		{% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
+		{# {% if kurskommune.getTidligereArrangementer().getAntall() > 0 %}
 		<div>
 			<a class="title-link as-btn-hover-default" rel="noopener noreferrer" href="?visKurs=true">Se tidligere kurs og webinarer</a>	
 		</div>
-		{% endif %}
+		{% endif %} #}
     </div>
 
-
 	<div>
-		{% if kurskommune.getKommendeArrangementer().getAntall() > 0 %}
+		{% if teamsWebinarer|length > 0 %}
 			<div class="clearfix"></div>
-			{% include "user/ArrangementListe.html.twig" with {arrangementer: kurskommune.getKommendeArrangementer().getAll()} %}
+			{% include "user/TeamsWebinar.html.twig" with {webinarer: teamsWebinarer} %}
 			<div class="clearfix"></div>
 			<div class="mb-5"></div>
-		{# {% else %}
+		{% else %}
 			<p class="nom as-margin-top-space-4">Ingen planlagte kurs og webinar akkurat nå.</p>
-		{% endif %} #}
-        {% else %}
-            <h4 class="nom as-margin-top-space-4">Lag arrangement for visning på UKM.no</h4>
-            <p class="nom"><strong>21.01.2026 10:00–10:45</strong></p>
-            <a class="btn btn-primary" href="https://events.teams.microsoft.com/event/d8c97f75-feb5-43f7-a5bb-0a99e0bb7699@f6cf44f6-1d95-4382-9b92-672205898c4b" target="_blank" rel="noopener noreferrer">Meld deg på</a>
-        {% endif %}
+		{% endif %}
 	</div>
 </div>
 

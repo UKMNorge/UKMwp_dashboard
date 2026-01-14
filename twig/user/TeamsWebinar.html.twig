@@ -1,0 +1,65 @@
+<div class="user-arrangementer nop as-margin-top-space-3">
+    {% for webinar in webinarer|sort((a, b) => a.getStart() <=> b.getStart()) %}
+        <div style="{{ arrangement.erFerdig() ? 'opacity: .65' }}" class="arrangement as-margin-top-space-1 as-padding-space-2">
+
+            <div class="float-left overunder as-padding-right-space-2">
+                <div class="over" style="font-size: .7em;">
+                    {{ webinar.getStart()|dato('D')|upper }}
+                </div>
+                <div class="under" style="font-size:1.4em;">
+                    {{ webinar.getStart()|dato('d')}}
+                </div>
+                <div class="under" style="font-size: .7em; margin-top: 0.2em; white-space: nowrap;">
+                    {{ webinar.getStart()|dato('M')|upper }}
+                    {{ webinar.getStart()|dato('Y')|upper }}
+                </div>
+            </div>
+            <div class="title title-arr-div as-padding-left-space-2">
+                <div class="right-side">
+                    <div class="as-margin-auto as-margin-left-none">
+                        <a class="title-link as-btn-hover-default" href="{{ webinar.getURL() }}">{{ webinar.getNavn()}}</a>
+                        <p class="nom place">
+                            Teams
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<style>
+.title-arr-div, 
+.right-side {
+	width: 100%;
+}
+.meld-deg-paa-btn {
+	padding: 10px 15px !important;
+	text-align: center;
+}
+.meld-deg-paa-btn span {
+	margin: auto;
+	margin-right: 10px;
+}
+.meld-deg-paa-btn svg {
+	vertical-align: middle;
+	margin-left: 10px;
+	margin: auto;
+	margin-right: 0;
+}
+.lenker-fra-arrangor {
+	display: block !important;
+}
+.title-link {
+	font-weight: bold;
+}
+.lenke-fra-arrangor a {
+	word-break: break-all;
+}
+@media (max-width: 1400px) {
+	.right-side {
+		display: block;
+	}
+}
+</style>
+
