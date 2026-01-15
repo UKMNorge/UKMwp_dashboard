@@ -1,6 +1,6 @@
-<div class="user-arrangementer nop as-margin-top-space-3">
+<div class="user-arrangementer teams-webinarer-user nop as-margin-top-space-3">
     {% for webinar in webinarer|sort((a, b) => a.getStart() <=> b.getStart()) %}
-        <div style="{{ arrangement.erFerdig() ? 'opacity: .65' }}" class="arrangement as-margin-top-space-1 as-padding-space-2">
+        <div style="{{ webinar.erFerdig() ? 'opacity: .65' }}" class="arrangement as-margin-top-space-1 as-padding-space-2">
 
             <div class="float-left overunder as-padding-right-space-2">
                 <div class="over" style="font-size: .7em;">
@@ -17,6 +17,11 @@
             <div class="title title-arr-div as-padding-left-space-2">
                 <div class="right-side">
                     <div class="as-margin-auto as-margin-left-none">
+                        {% if webinar.erFerdig() %}                        
+                        <p class="nom place">
+                            <b>Ferdig</b>
+                        </p>
+                        {% endif %}
                         <a class="title-link as-btn-hover-default" href="{{ webinar.getURL() }}">{{ webinar.getNavn()}}</a>
                         <p class="nom place">
                             Teams
@@ -55,6 +60,10 @@
 }
 .lenke-fra-arrangor a {
 	word-break: break-all;
+}
+.teams-webinarer-user {
+    max-height: 420px;
+    overflow: scroll;
 }
 @media (max-width: 1400px) {
 	.right-side {
