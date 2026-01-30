@@ -8,7 +8,7 @@
         {% for blog_fest in blogs %}
             <ol class="list-group user-arrangementer nom-impt" style="margin-top: calc(var(--initial-space-box)*2) !important;">
                 <li class="list-group-item arrangement as-margin-top-space-1 noborder-impt">
-                    <a class="as-btn-hover-default" href="//{{UKM_HOSTNAME_SUBDOMAIN}}{{ blog_fest.path }}wp-admin/">{{ blog_fest.blogname }}</a>
+                    <a class="as-btn-hover-default" href="//{{UKM_HOSTNAME == 'ukm.no' ? 'sys.ukm.no' : 'ukm.dev'}}{{ blog_fest.path }}wp-admin/">{{ blog_fest.blogname }}</a>
                 </li>
             </ol>
         {% endfor %}
