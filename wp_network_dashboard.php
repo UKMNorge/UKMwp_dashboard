@@ -16,6 +16,7 @@ require(ABSPATH . 'wp-admin/admin-header.php');
 
 $MESSAGES = array();
 $TWIGdata = array();
+$TWIGdata['UKM_HOSTNAME_SUBDOMAIN'] = UKM_HOSTNAME_SUBDOMAIN;
 $TWIGdata['UKM_HOSTNAME'] = UKM_HOSTNAME;
 $TWIGdata['plugin_path'] = plugin_dir_url( __FILE__ ).'/';
 $TWIGdata['base_path'] = '//'. UKM_HOSTNAME .'/';
