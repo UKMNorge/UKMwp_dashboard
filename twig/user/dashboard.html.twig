@@ -20,7 +20,7 @@
 				</div>
 				
 				{# Main left #}
-				<div class="container-left col-xs-12 col-md-8 nop">
+				<div class="container-left col-xs-12 col-md-4 nop">
 					<div class="col-xs-12 nyheter-main">
 						{% if not fylke_eller_kommunebruker and blogs|length > 1 %}
 							{% include "user/arrangementer.html.twig" with { blogs : blogs|filter(blog => blog.path != '/festivalen/' ) } %}
@@ -30,6 +30,17 @@
 						{# Festivalen - brukeren kan være admin i en kommune og arrangør i festivalen #}
 						{% include "user/arrangement_festivalen.html.twig" with { blog_festivalen : blogs|filter(blog => blog.path == '/festivalen/' ) } %}
 
+						<div class="col-xs-12 nop">
+							{% include "user/user_fylker.html.twig" %}
+						</div>
+						
+						<div class="col-xs-12 nop">
+							{% include "user/user_kommuner.html.twig" %}
+						</div>
+						
+						<div class="col-xs-12 nop">
+							{% include "user/current_user.html.twig" %}
+						</div>
 
 						<div class="col-xs-12 user-aktive-arrangementer nop">
 							{% include "user/user_arrangementer.html.twig" %}
@@ -42,6 +53,22 @@
 					</div>
 				</div>
 
+                {# Main center #}
+                <div class="container-center col-xs-12 col-md-4 nop">
+                    <div class="main-side-center nop col-xs-12">
+						<div class="col-xs-12 nop">
+							{% include "user/stimuleringsmidler_min_side.html.twig" %}
+						</div>
+						<div class="col-xs-12 nop">
+							{% include "user/butikk.html.twig" %}
+						</div>
+
+						<div class="col-xs-12 nop">
+							{% include "user/materiell.html.twig" %}
+						</div>
+                    </div>
+                </div>
+
 				{# Main right #}
 				<div class="container-right col-xs-12 col-md-4 nop">
 					<div class="main-side-left nop col-xs-12">
@@ -53,28 +80,12 @@
 							{% include "user/kurs.html.twig" %}
 						</div>
 						
-						<div class="col-xs-12 nop">
-							{% include "user/user_fylker.html.twig" %}
-						</div>
-						
-						<div class="col-xs-12 nop">
-							{% include "user/user_kommuner.html.twig" %}
-						</div>
-
-						{% if admin_fylker|length > 0 %}
+						{#{% if admin_fylker|length > 0 %}
 							<div class="col-xs-12 nop">
-								{% include "user/stimuleringsmidler_min_side.html.twig" %}
+								{% include "user/stimuleringsmidleradmin_min_side.html.twig" %}
 							</div>
-						{% endif %}
+						{% endif %}#}
 						
-
-						<div class="col-xs-12 nop">
-							{% include "user/butikk.html.twig" %}
-						</div>
-
-						<div class="col-xs-12 nop">
-							{% include "user/current_user.html.twig" %}
-						</div>
 
 						{# Spotify UKMpodden, UKM podden, UKM podkast #}
 						{# <div class="col-xs-12 nop order-md-last">
@@ -97,8 +108,19 @@
 
 <!-- CSS for min side -->
 <style>
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
 .container-right,
 .container-left,
+.container-center,
 .main-side-left,
 .user-aktive-arrangementer
 {
