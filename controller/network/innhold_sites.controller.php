@@ -95,7 +95,33 @@
 	$site->posts = posts( $site->ID, 1 );
 	
 	$sites[] = $site;
+
+	// UKM-festivalen 2025
+	$site = new stdClass();
+	$site->key = 'festivalen-arkiv-2025';
+	$site->ID = UKM_HOSTNAME_SUBDOMAIN == 'ukm.dev' ? 580 : 7708;
+	$site->title = 'UKM-festivalen 2025';
+	$site->link_add = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen-arkiv-2025/wp-admin/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen-arkiv-2025/wp-admin/wp-admin/';
+	$site->frequency = 365; #days
+	$site->status = 'info';
+	$site->posts = posts( $site->ID, 1 );
 	
+	$sites[] = $site;
+	
+	// UKM-festivalen 2024
+	$site = new stdClass();
+	$site->key = 'festivalen-arkiv-2024';
+	$site->ID = UKM_HOSTNAME_SUBDOMAIN == 'ukm.dev' ? 580 : 8012;
+	$site->title = 'UKM-festivalen 2024';
+	$site->link_add = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen-arkiv-2024/wp-admin/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen-arkiv-2024/wp-admin/wp-admin/';
+	$site->frequency = 365; #days
+	$site->status = 'info';
+	$site->posts = posts( $site->ID, 1 );
+	
+	$sites[] = $site;
+
 	// UKM-festivalen 2023
 	$site = new stdClass();
 	$site->key = 'festivalen-arkiv-2023';
@@ -110,20 +136,6 @@
 		$site->frequency = 365; #days
 		$site->status = 'info';
 	}
-	$site->posts = posts( $site->ID, 1 );
-	
-	$sites[] = $site;
-
-
-	// UKM-festivalen 2024
-	$site = new stdClass();
-	$site->key = 'festivalen-arkiv-2024';
-	$site->ID = UKM_HOSTNAME_SUBDOMAIN == 'ukm.dev' ? 580 : 8012;
-	$site->title = 'UKM-festivalen 2024';
-	$site->link_add = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen-arkiv-2024/wp-admin/wp-admin/post-new.php';
-	$site->link_panel = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen-arkiv-2024/wp-admin/wp-admin/';
-	$site->frequency = 365; #days
-	$site->status = 'info';
 	$site->posts = posts( $site->ID, 1 );
 	
 	$sites[] = $site;
