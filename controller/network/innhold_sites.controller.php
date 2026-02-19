@@ -80,11 +80,11 @@
 
 	// UKM-festivalen
 	$site = new stdClass();
-	$site->key = 'festivalen';
+	$site->key = 'festivalen2026';
 	$site->ID = UKM_HOSTNAME_SUBDOMAIN == 'ukm.dev' ? 580 : 8012;
-	$site->title = 'UKM-festivalen';
-	$site->link_add = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen/wp-admin/post-new.php';
-	$site->link_panel = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen/wp-admin/';
+	$site->title = 'UKM-festivalen 2026';
+	$site->link_add = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen2026/wp-admin/post-new.php';
+	$site->link_panel = '//'. UKM_HOSTNAME_SUBDOMAIN .'/festivalen2026/wp-admin/';
 	if( date('m') < 7 && date('m') > 4 ) {
 		$site->frequency = 10; #days
 		$site->status = post_status( $site );
