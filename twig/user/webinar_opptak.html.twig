@@ -2,8 +2,8 @@
     <div class="col-xs-12 nop as-card-2 as-xs-padding-space-2 as-padding-space-3 as-margin-bottom-space-2">
         <div class="webinar-opptak-header">
             <div>
-                <h2 class="mb-0">Webinar-opptak</h2>
-                <p class="nom as-margin-top-space-1 webinar-opptak-subtitle">Oversikt over tidligere webinarer med opptak når de finnes.</p>
+                <h2 class="mb-0">Webinarer</h2>
+                <p class="nom as-margin-top-space-1 webinar-opptak-subtitle">Opptak av tidligere webinarer</p>
             </div>
             <a rel="noopener noreferrer" href="/wp-admin/user/" class="as-btn-hover-default">Tilbake til min side</a>
         </div>
@@ -27,11 +27,7 @@
 
                             <div class="webinar-col webinar-col-recording">
                                 <div class="webinar-col-label">Opptak</div>
-                                {% if rad.opptak %}
-                                    <a class="as-btn-hover-default" href="{{ rad.opptak.url }}" target="_blank" rel="noopener noreferrer">{{ rad.opptak.filename }}</a>
-                                {% else %}
-                                    <span class="webinar-missing">Ikke funnet</span>
-                                {% endif %}
+                                <a class="as-btn-hover-default" href="{{ rad.opptak.url }}" target="_blank" rel="noopener noreferrer">{{ rad.opptak.filename }}</a>
                             </div>
                         </div>
                     {% endfor %}

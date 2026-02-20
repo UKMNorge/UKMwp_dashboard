@@ -174,6 +174,10 @@ foreach ($alleTeamsWebinarer as $webinar) {
         $bestMatch = null;
     }
 
+    if (!$bestMatch) {
+        continue;
+    }
+
     $webinarHistorikkOpptak[] = [
         'title' => $webinarNavn,
         'date' => $webinarDato,
