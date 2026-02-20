@@ -187,6 +187,86 @@ foreach ($alleTeamsWebinarer as $webinar) {
     ];
 }
 
+foreach ($webinarOpptak as $fil) {
+    if (isset($brukteOpptakIds[$fil['id']])) {
+        continue;
+    }
+
+    $filenameLower = mb_strtolower((string) $fil['filename']);
+    if (strpos($filenameLower, 'webinar_opptak') !== 0) {
+        continue;
+    }
+
+    $filenameNoExt = pathinfo((string) $fil['filename'], PATHINFO_FILENAME);
+    $rest = preg_replace('/^webinar_opptak[_-]?/i', '', $filenameNoExt);
+
+    $manualTimestamp = 0;
+    $manualDate = '';
+    $manualTitle = (string) $fil['title'];
+
+    if (preg_match('/^(\d{8})(?:[_-]?(\d{4}))?[_-]?(.*)$/', (string) $rest, $matches)) {
+        $datePart = $matches[1] ?? null;
+        $timePart = '1000';
+        $titlePart = trim((string) ($matches[3] ?? ''));
+
+        $dateObj = DateTime::createFromFormat('Ymd Hi', $datePart . ' ' . $timePart);
+        if ($dateObj instanceof DateTime) {
+            $manualTimestamp = $dateObj->getTimestamp();
+            $manualDate = $dateObj->format('d.m.Y H:i');
+        }
+
+        if ($titlePart !== '') {
+            $manualTitle = $titlePart;
+        }
+    }
+
+    if ($manualDate === '') {
+        $fallbackDateObj = DateTime::createFromFormat('d.m.Y H:i', (string) $fil['date']);
+        if (!$fallbackDateObj instanceof DateTime) {
+            try {
+                $fallbackDateObj = new DateTime((string) $fil['date']);
+            } catch (Exception $e) {
+                $fallbackDateObj = null;
+            }
+        }
+
+        if ($fallbackDateObj instanceof DateTime) {
+            $fallbackDateObj->setTime(10, 0);
+            $manualTimestamp = $fallbackDateObj->getTimestamp();
+            $manualDate = $fallbackDateObj->format('d.m.Y H:i');
+        }
+    }
+
+    $manualTitle = trim(str_replace(['_', '-'], ' ', (string) $manualTitle));
+    if ($manualTitle === '') {
+        $manualTitle = trim(str_replace(['_', '-'], ' ', (string) $filenameNoExt));
+    }
+
+    $manualTitleNorm = $normalizeText($manualTitle);
+    if (in_array($manualTitleNorm, $ekskluderteWebinarNavn, true)) {
+        continue;
+    }
+
+    $manualDedupeKey = 'name:' . $manualTitleNorm . '|t:' . $manualTimestamp;
+    if ($manualTitleNorm === '' && $manualTimestamp === 0) {
+        $manualDedupeKey = 'file:' . (string) $fil['id'];
+    }
+
+    if (isset($seenWebinarKeys[$manualDedupeKey])) {
+        continue;
+    }
+    $seenWebinarKeys[$manualDedupeKey] = true;
+    $brukteOpptakIds[$fil['id']] = true;
+
+    $webinarHistorikkOpptak[] = [
+        'title' => $manualTitle,
+        'date' => $manualDate,
+        'timestamp' => $manualTimestamp,
+        'webinarUrl' => null,
+        'opptak' => $fil,
+    ];
+}
+
 usort($webinarHistorikkOpptak, function (array $a, array $b) {
     return ($b['timestamp'] ?? 0) <=> ($a['timestamp'] ?? 0);
 });
