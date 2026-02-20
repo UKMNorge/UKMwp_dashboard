@@ -1,5 +1,7 @@
 {% if post is defined %}
 	{% embed "post.html.twig" %}{% endembed %}
+{% elseif GET('visOpptak') %}
+	{% include "user/webinar_opptak.html.twig" %}
 {% elseif GET('visKurs') %}
   {% include "user/arrangement/alle.html.twig" %}
 {% else %}

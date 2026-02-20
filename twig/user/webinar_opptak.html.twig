@@ -1,0 +1,113 @@
+<div class="container-fluid webinar-opptak-page">
+    <div class="col-xs-12 nop as-card-2 as-xs-padding-space-2 as-padding-space-3 as-margin-bottom-space-2">
+        <div class="webinar-opptak-header">
+            <div>
+                <h2 class="mb-0">Webinar-opptak</h2>
+                <p class="nom as-margin-top-space-1 webinar-opptak-subtitle">Oversikt over tidligere webinarer med opptak når de finnes.</p>
+            </div>
+            <a rel="noopener noreferrer" href="/wp-admin/user/" class="as-btn-hover-default">Tilbake til min side</a>
+        </div>
+
+        <div class="webinar-opptak-body as-margin-top-space-2">
+            {% if webinarHistorikkOpptak|length > 0 %}
+                <div class="webinar-list">
+                    {% for rad in webinarHistorikkOpptak %}
+                        <div class="webinar-row as-padding-space-2 as-margin-bottom-space-1">
+                            <div class="webinar-col webinar-col-main">
+                                <div class="webinar-col-label">Webinar</div>
+                                {% if rad.webinarUrl %}
+                                    <a class="title-link as-btn-hover-default" href="{{ rad.webinarUrl }}" target="_blank" rel="noopener noreferrer">{{ rad.title ?: 'Uten navn' }}</a>
+                                {% else %}
+                                    <span class="title-link">{{ rad.title ?: 'Uten navn' }}</span>
+                                {% endif %}
+                                {% if rad.date %}
+                                    <div class="webinar-date">{{ rad.date }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="webinar-col webinar-col-recording">
+                                <div class="webinar-col-label">Opptak</div>
+                                {% if rad.opptak %}
+                                    <a class="as-btn-hover-default" href="{{ rad.opptak.url }}" target="_blank" rel="noopener noreferrer">{{ rad.opptak.filename }}</a>
+                                {% else %}
+                                    <span class="webinar-missing">Ikke funnet</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% elseif webinarOpptak|length > 0 %}
+                <p class="webinar-opptak-meta">Fant opptak, men ingen ferdige webinarer i webinar-kilden akkurat nå.</p>
+                <div class="webinar-list">
+                    {% for fil in webinarOpptak %}
+                        <div class="webinar-row as-padding-space-2 as-margin-bottom-space-1">
+                            <div class="webinar-col webinar-col-main">
+                                <div class="webinar-col-label">Filnavn</div>
+                                <a class="title-link as-btn-hover-default" href="{{ fil.url }}" target="_blank" rel="noopener noreferrer">{{ fil.filename }}</a>
+                                <div class="webinar-date">{{ fil.title ?: 'Uten tittel' }} · {{ fil.mime }} · {{ fil.date }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="webinar-opptak-meta">Fant ingen ferdige webinarer å vise.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.webinar-opptak-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.webinar-opptak-subtitle,
+.webinar-opptak-meta,
+.webinar-date,
+.webinar-missing {
+    opacity: .8;
+}
+
+.webinar-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.webinar-row {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.webinar-col {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.webinar-col-main {
+    min-width: 50%;
+}
+
+.webinar-col-label {
+    font-size: .78em;
+    text-transform: uppercase;
+    opacity: .65;
+    letter-spacing: .03em;
+}
+
+@media (max-width: 900px) {
+    .webinar-opptak-header,
+    .webinar-row {
+        flex-direction: column;
+    }
+}
+</style>
