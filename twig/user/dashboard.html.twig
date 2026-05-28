@@ -30,7 +30,7 @@
 
 						
 						{# Festivalen - brukeren kan være admin i en kommune og arrangør i festivalen #}
-						{% include "user/arrangement_festivalen.html.twig" with { blog_festivalen : blogs|filter(blog => blog.path == '/festivalen/' ) } %}
+						{% include "user/arrangement_festivalen.html.twig" with { blog_festivalen : blogs|filter(blog => (blog.path == '/festivalen/' or blog.path == '/festivalen2026/' or blog.path == '/festivalen2027/' or blog.path == '/festivalen2028/')) } %}
 
 						<div class="col-xs-12 nop">
 							{% include "user/user_fylker.html.twig" %}
